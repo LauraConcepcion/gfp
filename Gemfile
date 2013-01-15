@@ -24,6 +24,10 @@ end
 gem 'jquery-rails'
 gem 'rails_admin'
 
+gem 'haml-rails'
+gem 'simple_form'
+gem 'show_for'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

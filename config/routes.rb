@@ -2,7 +2,8 @@ Gfp::Application.routes.draw do
   devise_for :users
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-
+  root :to => "rails_admin::Main#dashboard"
+  match ':controller(/:action(/:id(.:format)))' 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
