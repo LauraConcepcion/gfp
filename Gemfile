@@ -38,3 +38,6 @@ gem 'rails_admin'
 
 # To use debugger
 # gem 'debugger'
+
+
+gem "devise"
