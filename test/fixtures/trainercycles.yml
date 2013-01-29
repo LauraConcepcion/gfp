@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  turno: MyString
+  numanios: MyString
+  string: MyString
+  edition: MyString
+  string: MyString
+
+two:
+  turno: MyString
+  numanios: MyString
+  string: MyString
+  edition: MyString
+  string: MyString

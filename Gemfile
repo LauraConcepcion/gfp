@@ -7,7 +7,11 @@ gem 'rails', '3.2.11'
 
 gem 'pg', '=0.13.2'
 
-
+group :development do
+  gem 'debugger'
+  gem 'rspec-rails'
+end
+  
 
 # Gems used only for assets and not required
 # in production environments by default.
