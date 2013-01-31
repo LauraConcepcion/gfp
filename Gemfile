@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-
+gem 'cancan'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -27,6 +27,8 @@ end
 
 gem 'jquery-rails'
 gem 'rails_admin'
+gem "rails_admin_import", :git => "git://github.com/stephskardal/rails_admin_import.git"
+
 
 gem 'haml-rails'
 gem 'simple_form'
