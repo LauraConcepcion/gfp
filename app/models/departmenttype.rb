@@ -1,4 +1,4 @@
-class Departmenttypes < ActiveRecord::Base
+class Departmenttype < ActiveRecord::Base
   attr_accessible validates :name, :code, :presence => true
   has_many :departments
 end
