@@ -5,4 +5,5 @@ class Department < ActiveRecord::Base
   belongs_to :institute
   has_many :modules
   belongs_to :departamenttype
+  has_and_belongs_to_many :teachers
 end

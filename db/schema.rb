@@ -11,10 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201140012) do
+ActiveRecord::Schema.define(:version => 20130202091803) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "classrooms", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "score"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -29,6 +37,13 @@ ActiveRecord::Schema.define(:version => 20130201140012) do
 
   create_table "departmenttypes", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -61,6 +76,21 @@ ActiveRecord::Schema.define(:version => 20130201140012) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
+  create_table "scheludes", :force => true do |t|
+    t.string   "diasemana"
+    t.string   "hora"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "nomber"
+    t.string   "apellidos"
+    t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "teachers", :force => true do |t|
     t.string   "name"
     t.string   "surname"
@@ -76,6 +106,12 @@ ActiveRecord::Schema.define(:version => 20130201140012) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "institute_id"
+  end
+
+  create_table "trainercycletypes", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
