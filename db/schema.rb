@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202091803) do
+ActiveRecord::Schema.define(:version => 20130206191713) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -27,18 +27,49 @@ ActiveRecord::Schema.define(:version => 20130202091803) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "contentblocks", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "contents", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "criterion_qualifyingentities", :force => true do |t|
+    t.string   "percentage"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "criterions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "departments", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "institute_id"
     t.integer  "aacce_id"
+    t.integer  "departmenttype_id"
+  end
+
+  create_table "departments_teachers", :id => false, :force => true do |t|
+    t.integer "department_id"
+    t.integer "teacher_id"
   end
 
   create_table "departmenttypes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "code"
   end
 
   create_table "groups", :force => true do |t|
@@ -63,6 +94,37 @@ ActiveRecord::Schema.define(:version => 20130202091803) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "objetive_averages", :force => true do |t|
+    t.string   "name"
+    t.integer  "average"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "objetives", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "qualifyingentities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "qualifyingentity_students", :force => true do |t|
+    t.integer  "score"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "quarters", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rails_admin_histories", :force => true do |t|
     t.text     "message"
     t.string   "username"
@@ -76,7 +138,7 @@ ActiveRecord::Schema.define(:version => 20130202091803) do
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
-  create_table "scheludes", :force => true do |t|
+  create_table "schedules", :force => true do |t|
     t.string   "diasemana"
     t.string   "hora"
     t.datetime "created_at", :null => false
@@ -95,6 +157,12 @@ ActiveRecord::Schema.define(:version => 20130202091803) do
     t.string   "name"
     t.string   "surname"
     t.string   "code"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tlresults", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
