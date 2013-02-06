@@ -8,7 +8,7 @@ development:
   adapter: postgresql
   database: gfp_development
   username: postgres
-  password: comemierda
+  password: 
   timeout: 5000
 
 # Warning: The database defined as "test" will be erased and
@@ -19,7 +19,7 @@ test:
   host: localhost
   database: gfp_test
   username: postgres
-  password: comemierda
+  password: 
   timeout: 5000
 
 production:
@@ -27,5 +27,5 @@ production:
   host: localhost
   database: gfp_production
   username: postgres
-  password: comemierda
+  password: 
   timeout: 5000
