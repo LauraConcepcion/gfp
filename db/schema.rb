@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206191713) do
+ActiveRecord::Schema.define(:version => 20130212211029) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -23,20 +23,28 @@ ActiveRecord::Schema.define(:version => 20130206191713) do
     t.string   "name"
     t.string   "code"
     t.integer  "score"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "trainercycle_id"
+    t.integer  "teacher_id"
+    t.integer  "student_id"
+    t.integer  "group_id"
   end
 
   create_table "contentblocks", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "matter_id"
+    t.integer  "quarter_id"
   end
 
   create_table "contents", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "criterion_id"
+    t.integer  "contentblock_id"
   end
 
   create_table "criterion_qualifyingentities", :force => true do |t|
@@ -49,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130206191713) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "content_id"
   end
 
   create_table "departments", :force => true do |t|
@@ -75,8 +84,9 @@ ActiveRecord::Schema.define(:version => 20130206191713) do
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "classroom_id"
   end
 
   create_table "institutes", :force => true do |t|
@@ -90,15 +100,18 @@ ActiveRecord::Schema.define(:version => 20130206191713) do
   create_table "matters", :force => true do |t|
     t.string   "name"
     t.integer  "curso"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "department_id"
+    t.integer  "contentblock_id"
   end
 
   create_table "objetive_averages", :force => true do |t|
     t.string   "name"
     t.integer  "average"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "objetive_id"
   end
 
   create_table "objetives", :force => true do |t|
@@ -109,14 +122,25 @@ ActiveRecord::Schema.define(:version => 20130206191713) do
 
   create_table "qualifyingentities", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "classroom_id"
+  end
+
+  create_table "qualifyingentity_criterions", :force => true do |t|
+    t.integer  "percentage"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "criterion_id"
+    t.integer  "qualifyingentity_id"
   end
 
   create_table "qualifyingentity_students", :force => true do |t|
     t.integer  "score"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "qualifyingentity_id"
+    t.integer  "student_id"
   end
 
   create_table "quarters", :force => true do |t|
@@ -141,8 +165,17 @@ ActiveRecord::Schema.define(:version => 20130206191713) do
   create_table "schedules", :force => true do |t|
     t.string   "diasemana"
     t.string   "hora"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "classroom_id"
+  end
+
+  create_table "scores", :force => true do |t|
+    t.integer  "grade"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "qualifyingentity_id"
+    t.integer  "student_id"
   end
 
   create_table "students", :force => true do |t|

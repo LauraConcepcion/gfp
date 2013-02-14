@@ -1,5 +1,5 @@
 class Department < ActiveRecord::Base
-  attr_accessible :name, :institute_id, :aacce_id, :departmenttype_id
+  attr_accessible :name, :institute_id, :aacce_id, :departmenttype_id, :teacher_ids
   validates :name, :presence => true
   belongs_to :aacce
   belongs_to :institute

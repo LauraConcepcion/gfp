@@ -1,4 +1,4 @@
 class Quarter < ActiveRecord::Base
-  attr_accessible :name, :content_ids
-  has_many :contents
+  attr_accessible :name, :contentblock_ids
+  has_many :contentblocks
 end

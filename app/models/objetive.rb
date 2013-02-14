@@ -1,4 +1,4 @@
 class Objetive < ActiveRecord::Base
-  attr_accessible :name, :objetive_matter_ids
-  has_many :objetive_matters
+  attr_accessible :name, :objetiveaverage_ids
+  has_many :objetiveaverages
 end
