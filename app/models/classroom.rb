@@ -1,5 +1,5 @@
 class Classroom < ActiveRecord::Base
-  attr_accessible  :code, :name, :score, :trainercycle_id, :teacher_id, :student_id, :group_id, :matter_id, :schedule_ids, :qualifyingentity_ids
+  attr_accessible  :code, :name, :trainercycle_id, :teacher_id, :student_id, :group_id, :matter_id, :schedule_ids, :qualifyingentity_ids
   belongs_to :trainercycle, :foreign_key => 'trainercycle_id'
   belongs_to :teacher
   belongs_to :student
