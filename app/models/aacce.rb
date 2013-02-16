@@ -1,5 +1,5 @@
 class Aacce < ActiveRecord::Base
-  attr_accessible :name, :institute_ids, :department_ids
+  attr_accessible :name
   validates :name, :presence => true
   has_many :institutes
   has_many :departments
