@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216095257) do
+ActiveRecord::Schema.define(:version => 20130216100857) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -46,12 +46,6 @@ ActiveRecord::Schema.define(:version => 20130216095257) do
     t.datetime "updated_at",      :null => false
     t.integer  "criterion_id"
     t.integer  "contentblock_id"
-  end
-
-  create_table "criterion_qualifyingentities", :force => true do |t|
-    t.string   "percentage"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "criterions", :force => true do |t|
