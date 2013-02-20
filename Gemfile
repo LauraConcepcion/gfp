@@ -7,9 +7,10 @@ gem 'cancan'
 
 gem 'pg', '=0.13.2'
 
-group :development do
+group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
+  gem 'capybara'
 end
   
 

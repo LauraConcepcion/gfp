@@ -3,6 +3,11 @@ class Ability
 
   def initialize(user)
     can :import, [User,Institute, Aacce, Department]
+    # if user.kind_of?(Admin)
+    can :access, :rails_admin
+    # elsif user.kind_of?(Teacher)
+    #   can :dashboard
+    #end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
