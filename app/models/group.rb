@@ -1,4 +1,4 @@
 class Group < ActiveRecord::Base
-  attr_accessible :code, :name, :classroom_id
-  belongs_to :classroom
+  attr_accessible :code, :name
+  has_many :classrooms
 end

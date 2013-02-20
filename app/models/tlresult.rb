@@ -1,5 +1,5 @@
 class Tlresult < ActiveRecord::Base
-  attr_accessible :name, :criterion_ids, :contentblock_id
-  has_and_belongs_to_many :criterions
+  attr_accessible :name, :criterion_id, :contentblock_id
+  belongs_to :criterion
   belongs_to :contentblock
 end

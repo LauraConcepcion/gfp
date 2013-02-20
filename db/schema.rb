@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216103006) do
+ActiveRecord::Schema.define(:version => 20130219224912) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130216103006) do
     t.integer  "matter_id"
     t.integer  "quarter_id"
     t.integer  "tlresult_id"
+    t.integer  "aacce_id"
   end
 
   create_table "contents", :force => true do |t|
@@ -78,9 +79,8 @@ ActiveRecord::Schema.define(:version => 20130216103006) do
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.string   "code"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "classroom_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "institutes", :force => true do |t|
@@ -89,6 +89,9 @@ ActiveRecord::Schema.define(:version => 20130216103006) do
     t.datetime "updated_at", :null => false
     t.string   "address"
     t.integer  "aacce_id"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "web"
   end
 
   create_table "matters", :force => true do |t|
@@ -103,9 +106,10 @@ ActiveRecord::Schema.define(:version => 20130216103006) do
   create_table "objetive_averages", :force => true do |t|
     t.string   "name"
     t.integer  "average"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "objetive_id"
+    t.integer  "classroom_id"
   end
 
   create_table "objetives", :force => true do |t|
@@ -193,6 +197,7 @@ ActiveRecord::Schema.define(:version => 20130216103006) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "contentblock_id"
+    t.integer  "criterion_id"
   end
 
   create_table "trainercycles", :force => true do |t|
