@@ -4,7 +4,7 @@ class Contentblock < ActiveRecord::Base
   belongs_to :quarter
   belongs_to :matter
   belongs_to :tlresult
-  belongs_to :aacce_id
+  belongs_to :aacce
   has_and_belongs_to_many :qualifyingentities
 #  has_many :qualifyingentity_contentblocks
 end

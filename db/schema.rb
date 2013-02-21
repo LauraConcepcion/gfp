@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219224912) do
+ActiveRecord::Schema.define(:version => 20130221165438) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20130219224912) do
     t.integer  "teacher_id"
     t.integer  "student_id"
     t.integer  "group_id"
+    t.integer  "matter_id"
   end
 
   create_table "contentblocks", :force => true do |t|
@@ -38,6 +39,11 @@ ActiveRecord::Schema.define(:version => 20130219224912) do
     t.integer  "quarter_id"
     t.integer  "tlresult_id"
     t.integer  "aacce_id"
+  end
+
+  create_table "contentblocks_qualifyingentities", :force => true do |t|
+    t.integer "contentblock_id"
+    t.integer "qualifyingentity_id"
   end
 
   create_table "contents", :force => true do |t|
@@ -101,11 +107,11 @@ ActiveRecord::Schema.define(:version => 20130219224912) do
     t.datetime "updated_at",      :null => false
     t.integer  "department_id"
     t.integer  "contentblock_id"
+    t.integer  "trainercycle_id"
   end
 
   create_table "objetive_averages", :force => true do |t|
     t.string   "name"
-    t.integer  "average"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "objetive_id"
@@ -131,14 +137,6 @@ ActiveRecord::Schema.define(:version => 20130219224912) do
     t.datetime "updated_at",          :null => false
     t.integer  "criterion_id"
     t.integer  "qualifyingentity_id"
-  end
-
-  create_table "qualifyingentity_students", :force => true do |t|
-    t.integer  "score"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.integer  "qualifyingentity_id"
-    t.integer  "student_id"
   end
 
   create_table "quarters", :force => true do |t|
@@ -177,7 +175,7 @@ ActiveRecord::Schema.define(:version => 20130219224912) do
   end
 
   create_table "students", :force => true do |t|
-    t.string   "nomber"
+    t.string   "nombre"
     t.string   "apellidos"
     t.string   "code"
     t.datetime "created_at", :null => false
@@ -202,7 +200,7 @@ ActiveRecord::Schema.define(:version => 20130219224912) do
 
   create_table "trainercycles", :force => true do |t|
     t.string   "turno"
-    t.string   "numaios"
+    t.string   "numanio"
     t.string   "edition"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
