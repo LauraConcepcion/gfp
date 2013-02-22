@@ -1,4 +1,5 @@
 class CustomAdminController < RailsAdmin::MainController
+  before_filter :authenticate_user!
   def import
     #TODO
     if request.post?

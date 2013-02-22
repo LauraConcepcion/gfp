@@ -1,4 +1,5 @@
 class InstitutesController < ApplicationController
+  before_filter :authenticate_teacher!
   # GET /institutes
   # GET /institutes.json
   def index
