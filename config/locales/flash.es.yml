@@ -1,0 +1,10 @@
+es:
+  flash:
+    actions:
+      create:
+        notice: "Se creó un nuevo %{resource_name}"
+        notice_with_link: "Se creó un nuevo %{resource_name} (%{handing_link})"
+      update:
+        notice: "Se actualizó el %{resource_name}"
+      destroy:
+        notice: "Se eliminó un %{resource_name}"

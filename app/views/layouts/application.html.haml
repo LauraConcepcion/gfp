@@ -1,0 +1,29 @@
+!!! 
+%html 
+  %head
+    %title ForProf
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body     
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        - if teacher_signed_in?
+          = render "layouts/head"
+    .container-fluid
+      .row-fluid
+        .span2
+          - if teacher_signed_in?
+            menú lateral
+        .span10
+          -if notice
+            %div.flash.notice= notice
+          -if alert
+            %div.flash.alert= alert
+          %h2
+            = yield :title
+          = yield
+    #version= t(:version_x, :version => '0')
+
+
+
