@@ -22,7 +22,12 @@ Gfp::Application.routes.draw do
 
   devise_for :users
   
-  root :to => "rails_admin::Main#dashboard"
+  devise_for :users
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  
+  devise_for :teachers
+  resources :institutes
+  root :to => 'institutes#index'
   match ':controller(/:action(/:id(.:format)))' 
   # The priority is based upon order of creation:
   # first created -> highest priority.

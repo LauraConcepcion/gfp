@@ -1,0 +1,28 @@
+.container-fluid
+  .container
+    %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+      .icon-bar
+      .icon-bar
+      .icon-bar
+  = link_to t(:title), "#", :class=>"brand pjax"
+  .nav-collapse
+    %ul.nav.pull-right
+      %li= link_to t(:institutes), institutes_path
+      %li= link_to t(:institutes), institutes_path
+      - if teacher_signed_in?
+        %li= link_to t(:people), institutes_path
+        %li.dropdown
+          = link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown", :role => 'menu' do
+            = t(:settings)
+            %b.caret
+          %ul.dropdown-menu
+            %li= link_to t(:companies), institutes_path
+            %li= link_to t(:buildings), institutes_path
+  #main-navigation
+    %ul.nav
+      %li.dropdown
+        = link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" do
+          = current_teacher.email
+          %b.caret
+        %ul.dropdown-menu
+          %li= link_to t(:logout), destroy_teacher_session_path, :method => :delete
