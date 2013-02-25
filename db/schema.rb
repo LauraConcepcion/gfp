@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221165438) do
+ActiveRecord::Schema.define(:version => 20130222095453) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -124,6 +124,19 @@ ActiveRecord::Schema.define(:version => 20130221165438) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "profiles", :force => true do |t|
+    t.integer  "institute_id"
+    t.integer  "trainercycle_id"
+    t.integer  "matter_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "teacher_id"
+  end
+
+  add_index "profiles", ["institute_id"], :name => "index_profiles_on_institute_id"
+  add_index "profiles", ["matter_id"], :name => "index_profiles_on_matter_id"
+  add_index "profiles", ["trainercycle_id"], :name => "index_profiles_on_trainercycle_id"
+
   create_table "qualifyingentities", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",   :null => false
@@ -205,6 +218,7 @@ ActiveRecord::Schema.define(:version => 20130221165438) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "institute_id"
+    t.string   "name"
   end
 
   create_table "trainercycletypes", :force => true do |t|
