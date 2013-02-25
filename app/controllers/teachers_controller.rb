@@ -1,10 +1,3 @@
-class TeachersController < ApplicationController
-  def index
-  end
-
-  def new
-  end
-
-  def edit
-  end
+class TeachersController < InheritedResources::Base
+  respond_to :html, :xml, :json
 end

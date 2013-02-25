@@ -1,8 +1,3 @@
-class ProfilesController < ApplicationController
-  def index
-    debugger
-  end
-
-  def new
-  end
+class ProfilesController < InheritedResources::Base
+  respond_to :html, :xml, :json
 end
