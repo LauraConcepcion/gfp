@@ -32,6 +32,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'inherited_resources'
 gem "twitter-bootstrap-rails"
 gem 'jquery-rails'
 gem 'rails_admin'
