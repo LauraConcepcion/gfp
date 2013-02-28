@@ -5,14 +5,6 @@ Gfp::Application.routes.draw do
 
   get "teachers/edit"
 
-  get "profiles/index"
-
-  get "profiles/new"
-
-  get "profile/index"
-
-  get "profile/new"
-
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :institutes
   resources :teachers do 

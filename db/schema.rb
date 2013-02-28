@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222095453) do
+ActiveRecord::Schema.define(:version => 20130228140650) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -228,10 +228,11 @@ ActiveRecord::Schema.define(:version => 20130222095453) do
     t.string   "turno"
     t.string   "numanio"
     t.string   "edition"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "institute_id"
     t.string   "name"
+    t.integer  "trainercycletype_id"
   end
 
   create_table "trainercycletypes", :force => true do |t|
