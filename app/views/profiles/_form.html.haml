@@ -1,0 +1,7 @@
+= simple_form_for [@teacher, @profile], :html => { :class => 'form-horizontal' } do |f|
+  = f.association :institute
+  = f.association :trainercycle
+  = f.association :matter
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), teacher_profiles_path, :class => 'btn'
