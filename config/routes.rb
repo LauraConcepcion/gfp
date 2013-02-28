@@ -20,12 +20,31 @@ Gfp::Application.routes.draw do
   end
   resources :teachers
 
-  devise_for :users
   
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  
-  devise_for :teachers
+  devise_for :teacher, 
+      :controllers => { 
+       :sessions => "teachers/sessions", 
+       :passwords => "teachers/passwords",
+       :registrations => "teachers/registrations" }, :path => "teachers",
+          :skip => [:sessions, :passwords, :registrations] do
+          get 'teacher/sign_in' => 'teachers/sessions#new', :as => :new_teacher_session
+          post 'teacher/sign_in' => 'teachers/sessions#create', :as => :teacher_session
+          get 'teacher/sign_out' => 'teachers/sessions#destroy', :as => :destroy_teacher_session
+
+          get 'teacher/sign_up' => 'teachers/registrations#new', :as => :new_teacher_registration
+          get 'teacher/account' => 'teachers/registrations#edit', :as => :edit_teacher_registration
+          post 'teacher/account' => 'teachers/registrations#create', :as => :teacher_registration
+          get 'teacher/cancel' => 'teachers/registrations#cancel', :as => :cancel_teacher_registration
+          put 'teacher/account' => 'teachers/registrations#update'
+          delete 'teacher/account' => 'teachers/registrations#destroy'
+                                       
+          post 'teacher/password' => 'teachers/passwords#create', :as => :teacher_password
+          get 'teacher/password/new' => 'teachers/passwords#new', :as => :new_teacher_password
+          get 'teacher/password/edit' => 'teachers/passwords#edit', :as => :edit_teacher_password    
+          put 'teacher/password' => 'teachers/passwords#update'
+  end 
   resources :institutes
   root :to => 'institutes#index'
   match ':controller(/:action(/:id(.:format)))' 
