@@ -1,4 +1,26 @@
-%h1 Profiles#index
--debugger
-%p Find me in app/views/profiles/index.html.haml
-%p Find me in app/views/profiles/index.html.haml
+- model_class = Profile
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:teacher)
+      %th= model_class.human_attribute_name(:institute)
+      %th= model_class.human_attribute_name(:trainercycle)
+      %th= model_class.human_attribute_name(:matter)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - current_teacher.profiles.each do |profile|
+      %tr
+        %td= link_to profile.id, teacher_profile_path(current_teacher.id,profile.id)
+        %td= current_teacher.name
+        %td= profile.institute.name
+        %td= profile.trainercycle.trainercycletype.name
+        %td= profile.matter.name
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_teacher_profile_path(current_teacher.id,profile.id), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), teacher_profile_path(current_teacher.id,profile.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_teacher_profile_path, :class => 'btn btn-primary'
+

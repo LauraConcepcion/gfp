@@ -1,5 +1,14 @@
 Gfp::Application.routes.draw do
+<<<<<<< HEAD
   devise_for :users
+=======
+  get "teachers/index"
+
+  get "teachers/new"
+
+  get "teachers/edit"
+
+>>>>>>> 6c35db018f72a3ba73588f677de319290117cbce
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :teachers
 

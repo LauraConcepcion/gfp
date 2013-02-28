@@ -1,2 +1,6 @@
-%h1 Profiles#new
-%p Find me in app/views/profiles/new.html.haml
+- model_class = Profile
+%p Sr 
+= current_teacher.name
+.page-header
+  %h1=t '.title', :default => [:'helpers.profiles.new', 'New %{model}'], :model => model_class.model_name.human
+= render :partial => "form"

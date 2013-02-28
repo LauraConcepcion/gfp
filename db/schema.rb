@@ -229,6 +229,10 @@ ActiveRecord::Schema.define(:version => 20130228140650) do
     t.string   "edition"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+<<<<<<< HEAD
+=======
+    t.integer  "institute_id"
+>>>>>>> 6c35db018f72a3ba73588f677de319290117cbce
     t.string   "name"
     t.integer  "trainercycletype_id"
   end
