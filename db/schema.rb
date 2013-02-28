@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130222095453) do
     t.string   "name"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "institute_id"
     t.integer  "aacce_id"
     t.integer  "departmenttype_id"
   end
@@ -231,8 +232,6 @@ ActiveRecord::Schema.define(:version => 20130222095453) do
     t.datetime "updated_at",   :null => false
     t.integer  "institute_id"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "trainercycletypes", :force => true do |t|
