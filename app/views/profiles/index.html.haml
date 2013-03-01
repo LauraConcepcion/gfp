@@ -16,7 +16,7 @@
         %td= link_to profile.id, teacher_profile_path(current_teacher.id,profile.id)
         %td= current_teacher.name
         %td= profile.institute.name
-        %td= profile.trainercycle.trainercycletype.name
+        %td= profile.trainercycle.name
         %td= profile.matter.name
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_teacher_profile_path(current_teacher.id,profile.id), :class => 'btn btn-mini'
