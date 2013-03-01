@@ -1,0 +1,7 @@
+= simple_form_for resource do |f|
+  %div.errors
+    = f.error_notification
+  = f.input :name
+  = f.association :classroom  
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t(:cancel), collection_path, :class => 'btn'

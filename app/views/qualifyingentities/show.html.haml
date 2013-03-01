@@ -1,0 +1,4 @@
+= show_for resource do |item|
+  = item.attribute :name
+  = item.association :classroom
+= link_to t(:back), collection_path, :class => 'btn'

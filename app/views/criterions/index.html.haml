@@ -1,0 +1,17 @@
+.page-header
+  %h1=t '.title', :default => Criterion.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Criterion.human_attribute_name(:name)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - collection.each do |resource|
+      = content_tag_for(:tr, resource) do
+        %td= resource.try(:name)
+        %td
+          = link_to t(:edit), edit_resource_path(resource), :class => 'btn btn-mini'
+          = link_to t(:destroy), collection_path(resource), :method => :delete, :data => {:confirm => t(:are_you_sure?)}, :class => 'btn btn-mini btn-danger'
+= link_to t(:new), new_resource_path, :class => 'btn btn-primary'
+
+

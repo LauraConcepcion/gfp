@@ -1,0 +1,19 @@
+.page-header
+  %h1=t '.title', :default => QualifyingentityCriterion.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= QualifyingentityCriterion.human_attribute_name(:name)
+      %th= QualifyingentityCriterion.human_attribute_name(:classroom)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - collection.each do |resource|
+      = content_tag_for(:tr, resource) do
+        %td= resource.try(:name)
+        %td
+        %td
+          = link_to t(:edit), edit_resource_path(resource), :class => 'btn btn-mini'
+          = link_to t(:destroy), resource_path(resource), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'btn btn-mini btn-danger'
+= link_to t(:new), new_resource_path, :class => 'btn btn-primary'
+
+

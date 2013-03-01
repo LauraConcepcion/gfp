@@ -38,7 +38,7 @@ gem 'jquery-rails'
 gem 'rails_admin'
 gem "rails_admin_import", :git => "git://github.com/stephskardal/rails_admin_import.git"
 
-
+gem "ransack" 
 gem 'haml-rails'
 gem 'simple_form'
 gem 'show_for'

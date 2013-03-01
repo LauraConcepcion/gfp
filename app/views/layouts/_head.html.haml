@@ -7,17 +7,10 @@
   = link_to t(:title), "#", :class=>"brand pjax"
   .nav-collapse
     %ul.nav.pull-right
-      %li= link_to t(:institutes), institutes_path
-      %li= link_to t(:institutes), institutes_path
-      - if teacher_signed_in?
-        %li= link_to t(:people), institutes_path
-        %li.dropdown
-          = link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown", :role => 'menu' do
-            = t(:settings)
-            %b.caret
-          %ul.dropdown-menu
-            %li= link_to t(:companies), institutes_path
-            %li= link_to t(:buildings), institutes_path
+      %li= link_to t(:profile), teacher_profiles_path(current_teacher) 
+      %li= link_to t(:criterions), criterions_path
+      %li= link_to t(:qualifyingentities), qualifyingentities_path
+      %li= link_to t(:percentage), qualifyingentity_criterions_path
   #main-navigation
     %ul.nav
       %li.dropdown

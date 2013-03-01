@@ -1,17 +1,12 @@
 Gfp::Application.routes.draw do
-<<<<<<< HEAD
+  get "qualifyingentity_criterions/edit"
+
   devise_for :users
-=======
-  get "teachers/index"
-
-  get "teachers/new"
-
-  get "teachers/edit"
-
->>>>>>> 6c35db018f72a3ba73588f677de319290117cbce
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :teachers
-
+  resources :criterions
+  resources :qualifyingentities
+  resources :qualifyingentity_criterions
   resources :institutes
   resources :teachers do 
     resources :profiles  

@@ -2,9 +2,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :import, [User,Institute, Aacce, Department]
-    # if user.kind_of?(Admin)
-    can :access, :rails_admin
+#    if user.kind_of?(Teacher)
+      can :manage, :all
+ #   else
+      can :access, :rails_admin
+      can :import, [User,Institute, Aacce, Department]
+      can :manage, :all
+  #  end
     # elsif user.kind_of?(Teacher)
     #   can :dashboard
     #end
