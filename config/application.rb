@@ -58,5 +58,9 @@ module Gfp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    #pa que funcione en heroku
+    #While precompiling assets, in Rails 3.1.1 and up, you can prevent initializing your application and connecting to the database
+    config.assets.initialize_on_precompile = false 
   end
 end
