@@ -3,7 +3,7 @@
     .span4
       = f.association :criterion, :collection => Proc.new{ Criterion.all.map{ |c| [c.name, c.id]}}
     .span4
-      = f.association :qualifyingentity, :collection => Proc.new{ Qualifyingentity.all.map{ |q| [q.name, q.id]}}
+      = f.association :qualifyingentity, :collection => Proc.new{ Qualifyingentity.all.map{ |q| [q.name, q.id]}}, :as => :check_boxes
     .span2
       %p Percentage
       %fieldset

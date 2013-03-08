@@ -26,4 +26,7 @@ class ProfilesController < InheritedResources::Base
     @teacher = current_teacher
     @qualifyingentity = Qualifyingentity.all
   end
+  def update
+    debugger
+  end
 end
