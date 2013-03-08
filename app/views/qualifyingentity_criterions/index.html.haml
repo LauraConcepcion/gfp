@@ -3,14 +3,16 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= QualifyingentityCriterion.human_attribute_name(:name)
-      %th= QualifyingentityCriterion.human_attribute_name(:classroom)
+      %th= QualifyingentityCriterion.human_attribute_name(:criterion)
+      %th= QualifyingentityCriterion.human_attribute_name(:qualifyungentity)
+      %th= QualifyingentityCriterion.human_attribute_name(:percentage)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - collection.each do |resource|
       = content_tag_for(:tr, resource) do
-        %td= resource.try(:name)
-        %td
+        %td= resource.criterion.try(:name)
+        %td= resource.qualifyingentity.try(:name)
+        %td= resource.try(:percentage)
         %td
           = link_to t(:edit), edit_resource_path(resource), :class => 'btn btn-mini'
           = link_to t(:destroy), resource_path(resource), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'btn btn-mini btn-danger'

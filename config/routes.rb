@@ -1,4 +1,6 @@
 Gfp::Application.routes.draw do
+  get "asign_quealifyingentity_to_criterions/view"
+
   get "qualifyingentity_criterions/edit"
 
   devise_for :users
@@ -9,7 +11,9 @@ Gfp::Application.routes.draw do
   resources :qualifyingentity_criterions
   resources :institutes
   resources :teachers do 
-    resources :profiles  
+    resources :profiles do
+      get 'asign_criterion'
+    end
   end
 
   root :to => 'institutes#index'

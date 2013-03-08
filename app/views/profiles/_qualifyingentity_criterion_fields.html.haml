@@ -1,0 +1,13 @@
+.nested-fields
+  .span10
+    .span4
+      = f.association :criterion, :collection => Proc.new{ Criterion.all.map{ |c| [c.name, c.id]}}
+    .span4
+      = f.association :qualifyingentity, :collection => Proc.new{ Qualifyingentity.all.map{ |q| [q.name, q.id]}}
+    .span2
+      %p Percentage
+      %fieldset
+      -@qualifyingentity.each do |qe|
+        //= text_field_tag "porcentage""#{qe.id}", :value
+        = f.text_field :percentage, :name => "#{f.object_name}[percentage][]", :class =>:percentage 
+      = link_to_remove_association "remove percentage", f

@@ -9,6 +9,7 @@
       %th= model_class.human_attribute_name(:institute)
       %th= model_class.human_attribute_name(:trainercycle)
       %th= model_class.human_attribute_name(:matter)
+      %th= model_class.human_attribute_name(:criterions)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - current_teacher.profiles.each do |profile|
@@ -18,6 +19,7 @@
         %td= profile.institute.try(:name)
         %td= profile.trainercycle.try(:name)
         %td= profile.matter.try(:name)
+        %td= link_to "Criterions", :controller => "profiles", :action => "asign_criterion", :id => profile
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_teacher_profile_path(current_teacher.id,profile.id), :class => 'btn btn-mini'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), teacher_profile_path(current_teacher.id,profile.id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'

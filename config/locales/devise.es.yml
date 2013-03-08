@@ -1,0 +1,58 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+es:
+  errors:
+    messages:
+      expired: "ha expiriado, pof favor entre de nuevo"
+      not_found: "no encontrado"
+      already_confirmed: "fue confirmado, por favor tintente validarse"
+      not_locked: "no estaba bloqueado"
+      not_saved:
+        one: "1 error no permite que este %{resource} sea salvado:"
+        other: "%{count} errores no permite que %{resource} sea salvado:"
+
+  devise:
+    failure:
+      already_authenticated: 'Estas Autenticado.'
+      unauthenticated: 'Necesitas autenticarte antes de continuar.'
+      unconfirmed: 'Tienes que confirmar tu cuenta antes de congitnuar.'
+      locked: 'Tu cuenta esta bloqueada.'
+      invalid: 'Email o password invalido.'
+      invalid_token: 'Token de autnentiacion invalido.'
+      timeout: 'Tu sesión ha expriado, por favor validate de nuevo y continua.'
+      inactive: 'Tu cuenta no ha sido activada todavia.'
+    sessions:
+      signed_in: 'Has sido registrado correctamente.'
+      signed_out: 'Dado de baja correctamente.'
+    passwords:
+      send_instructions: 'Tu recibiras un email con las instrucciones sobre como resetear tu contraseña en unos minutos.'
+      updated: 'Tu password fue cambiado correctamente. Ya puedes validarte.'
+      updated_not_active: 'Tu password fue cambiado correctamente.'
+      send_paranoid_instructions: "Si tu email existe en nuestra base de datos, recibiras un link para recuperar el password"
+    confirmations:
+      send_instructions: 'Tu recibiras un email con instrucciones sobre como confirmar tu cuenta en unos minutos.'
+      send_paranoid_instructions: 'Si tu email existe en nuestra base de datos, tu recibiras un mail con instrucciones sobre como confirmar tu cuenta.'
+      confirmed: 'Tu cuenta ha sido confirmada correctamente. Estas dado de alta.'
+    registrations:
+      signed_up: 'Bienvenido! Has sido registrado correctamente.'
+      inactive_signed_up: 'Has registrado correctamente. Así que, podriamos no registrarte porque tu cuenta está %{reason}.'
+      updated: 'Has actualizado correctamente tu cuenta.'
+      destroyed: 'Adios! Tu cuenta fue cancelada correctamente. Esperamos verte de nuevo.'
+      reasons:
+        inactive: 'intactivo'
+        unconfirmed: 'no confirmado'
+        locked: 'bloqueado'
+    unlocks:
+      send_instructions: 'Tu recibirás un email con instrucciones sobre como desbloquerar tu cuenta en unos minutos.'
+      unlocked: 'Tu cuenta fue desbloqueada. Estas registrado.'
+      send_paranoid_instructions: 'Si tu cuenta existe, recibiras un mail con instrucciones en unos minutos.'
+    omniauth_callbacks:
+      success: 'Correctamente autorizado desde la cuenta %{kind}.'
+      failure: 'Podria no autorizarse desde %{kind} porque "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Confirmación de instrucciones'
+      reset_password_instructions:
+        subject: 'Reset password'
+      unlock_instructions:
+        subject: 'Desbloquear Instrucciones'

@@ -1,0 +1,8 @@
+= simple_form_for [@teacher,@profile] do |f|
+  %h3 Criterios
+  #qualifyingentities
+  = f.simple_fields_for :qualifyingentity_criterions do |qc|
+    = render 'percentage_fields', :f => qc
+  .links
+    = link_to_add_association 'add percentage', f, :qualifyingentity_criterions
+  = f.submit
