@@ -309,9 +309,9 @@
         breadcrumb: "Elimina multiples"
         bulk_link: "Elimina %{model_label_plural} seleccionado"
       export:
-        title: "Exportación %{model_label}"
-        menu: "Exportación"
-        breadcrumb: "Exportación"
+        title: "Exportar %{model_label}"
+        menu: "Exportar"
+        breadcrumb: "Exportar"
         link: "Exportación %{model_label_plural} encontrados"
         bulk_link: "Exportación %{model_label_plural} seleccionado"
         done: "Exportación"
