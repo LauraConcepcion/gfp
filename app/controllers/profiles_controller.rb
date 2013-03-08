@@ -24,6 +24,5 @@ class ProfilesController < InheritedResources::Base
   def asign_criterion
     @profile = Profile.find(params[:profile_id])
     @teacher = current_teacher
-    @qualifyingentity = Qualifyingentity.all
   end
 end
