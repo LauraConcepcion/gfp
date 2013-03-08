@@ -5,7 +5,7 @@ class QualifyingentityCriterionsController < InheritedResources::Base
   private
   def collection
     @q ||= QualifyingentityCriterion.accessible_by(current_ability).search(params[:q])
-    @q.sorts = "name asc" if @q.sorts.empty?
+    @q.sorts = "id asc" if @q.sorts.empty?
     @qualifyingentitiycriterions||= @q.result(:distintct => true).page(params[:page])
   end
 end

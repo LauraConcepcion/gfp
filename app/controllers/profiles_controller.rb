@@ -18,7 +18,12 @@ class ProfilesController < InheritedResources::Base
       flash[:notice] = "Succesfully registered"
       redirect_to teacher_profile_path(current_teacher.id,@profile.id)
     else
-        render :action => 'new'
+      render :action => 'new'
     end
+  end
+  def asign_criterion
+    @profile = Profile.find(params[:profile_id])
+    @teacher = current_teacher
+    @qualifyingentity = Qualifyingentity.all
   end
 end
