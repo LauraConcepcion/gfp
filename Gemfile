@@ -27,14 +27,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', :platforms => :ruby
-  gem "therubyracer"
-  gem "less-rails",  '2.2.2'
+  # gem 'therubyracer', :platforms => :ruby
+  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
   gem 'uglifier', '>= 1.0.3'
 end
 
 gem 'inherited_resources'
-gem "twitter-bootstrap-rails"
 gem 'jquery-rails'
 gem 'rails_admin'
 gem "rails_admin_import", :git => "git://github.com/stephskardal/rails_admin_import.git"

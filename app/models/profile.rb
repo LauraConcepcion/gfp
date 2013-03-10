@@ -8,9 +8,13 @@ class Profile < ActiveRecord::Base
   has_many :qualifyingentities, :through => :qualifyingentity_criterions
   has_many :criterions, :through => :qualifyingentity_criterions
   accepts_nested_attributes_for :qualifyingentity_criterions, :qualifyingentities, :criterions, :reject_if => :all_blank, :allow_destroy => true
-  def qualifyingentity_ids=(qualifyingentity_ids)  
-    qualifyingentity_ids.each do |attributes|
-      qualifyingentities.build(attributes)
+
+  def asign_criterions
+    #TODO se deben filtrar los criterios del perfil en base a los contenidos de la materia
+    Criterion.all.each do |criterion|
+      Qualifyingentity.all.each do |qc|
+        self.qualifyingentity_criterions << QualifyingentityCriterion.new(:percentage => 0, :criterion_id => criterion.id, :qualifyingentity_id => qc.id)
+      end
     end
   end
 end
