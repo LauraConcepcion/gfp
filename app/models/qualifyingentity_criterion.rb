@@ -3,9 +3,5 @@ class QualifyingentityCriterion < ActiveRecord::Base
   belongs_to :criterion
   belongs_to :qualifyingentity
   belongs_to :profile
-  def qualifyingentities_attr=(qualifyingentities_attr)  
-    qualifyingentities_attr.each do |attributes|
-      qualifyingentities.build(attributes)
-    end
-  end
+  
 end
