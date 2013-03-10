@@ -2,7 +2,6 @@
   #qualifyingentity_criterions
     %h3= t(:qualifyingentity_criterions) 
     = f.simple_fields_for :qualifyingentity_criterions do |qc|
-      - debugger
       = render 'qualifyingentity_criterion_fields', :f => qc
     .links
       = link_to_add_association 'add percentage', f, :qualifyingentity_criterions
