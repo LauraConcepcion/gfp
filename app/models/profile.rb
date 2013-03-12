@@ -4,6 +4,7 @@ class Profile < ActiveRecord::Base
   belongs_to :trainercycle
   belongs_to :matter
   belongs_to :teacher
+  belongs_to :group
   has_many :qualifyingentity_criterions
   has_many :qualifyingentities, :through => :qualifyingentity_criterions
   has_many :criterions, :through => :qualifyingentity_criterions
