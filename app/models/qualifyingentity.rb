@@ -8,9 +8,17 @@ class Qualifyingentity < ActiveRecord::Base
   has_and_belongs_to_many :contentblocks
   #has_many :qualifyingentity
   accepts_nested_attributes_for :qualifyingentity_criterions, :reject_if => :all_blank, :allow_destroy => true 
+
   def teacher
     unless self.classroom.nil?
       self.classrrom.teacher
+    end
+  end
+
+  def asign_criterions(profile)
+    #TODO se deben filtrar los criterios del perfil en base a los contenidos de la materia
+    Criterion.all.each do |criterion|
+      self.qualifyingentity_criterions << QualifyingentityCriterion.new(:percentage => 0, :criterion_id => criterion.id, :profile_id => profile.id)
     end
   end
 end
