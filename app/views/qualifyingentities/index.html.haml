@@ -5,12 +5,16 @@
     %tr
       %th= Qualifyingentity.human_attribute_name(:name)
       %th= Qualifyingentity.human_attribute_name(:classroom)
+      %th= Qualifyingentity.human_attribute_name(:contentblock)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - collection.each do |resource|
       = content_tag_for(:tr, resource) do
         %td= resource.try(:name)
         %td= resource.classroom.try(:name)
+        %td
+          - resource.contentblocks.each do |cb|
+            = cb.try(:name)
         %td
           = link_to t(:edit), edit_resource_path(resource), :class => 'btn btn-mini'
           = link_to t(:destroy), resource_path(resource), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'btn btn-mini btn-danger'
