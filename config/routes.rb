@@ -8,11 +8,11 @@ Gfp::Application.routes.draw do
   devise_for :teachers
   resources :criterions
   resources :qualifyingentities
-  resources :qualifyingentity_criterions
+  resources :qualifyingentity_tlresults
   resources :institutes
   resources :teachers do 
     resources :profiles do
-      get 'asign_criterion'
+      get 'asign_tlresult'
     end
   end
 
