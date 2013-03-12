@@ -4,6 +4,5 @@ class Criterion < ActiveRecord::Base
   has_many :qualifyingentity_criterions
   has_many :qualifyingentities, :through => :qualifyingentity_criterions
   accepts_nested_attributes_for :qualifyingentities, :reject_if => :all_blank, :allow_destroy => true
-  has_many :tlresults
-
+  belongs_to :tlresult
 end
