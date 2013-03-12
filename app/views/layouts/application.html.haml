@@ -12,17 +12,19 @@
           = render "layouts/head"
     .container-fluid
       .row-fluid
-        .span2
+        .container
           - if teacher_signed_in?
-            menú lateral
-        .span10
-          -if notice
-            %div.flash.notice= notice
-          -if alert
-            %div.flash.alert= alert
-          %h2
-            = yield :title
-          = yield
+            = render 'head', :resource => Profile.find(params[:profile_id])
+      .span2
+        menú lateral
+      .span10
+        -if notice
+          %div.flash.notice= notice
+        -if alert
+          %div.flash.alert= alert
+        %h2
+          = yield :title
+        = yield
     #version= t(:version_x, :version => '0')
 
 
