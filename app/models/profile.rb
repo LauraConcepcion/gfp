@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
   belongs_to :group
   has_many :qualifyingentity_tlresults
   has_many :qualifyingentities, :through => :qualifyingentity_tlresults
-  has_many :criterions, :through => :qualifyingentity_criterions
+  has_many :tlresults, :through => :qualifyingentity_tlresults
   accepts_nested_attributes_for :qualifyingentity_tlresults, :qualifyingentities, :tlresults, :reject_if => :all_blank, :allow_destroy => true
 
   def asign_criterions
