@@ -13,7 +13,7 @@
     .container-fluid
       .row-fluid
         .container
-          - if teacher_signed_in?
+          - if teacher_signed_in? and !params[:profile_id].blank?
             = render 'head', :resource => Profile.find(params[:profile_id])
       .span2
         menú lateral
