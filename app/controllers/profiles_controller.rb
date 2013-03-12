@@ -19,11 +19,11 @@ class ProfilesController < InheritedResources::Base
       render :action => 'new'
     end
   end
-  def asign_criterion
+  def asign_tlresult
     @profile = Profile.find(params[:profile_id])
     @teacher = current_teacher
-    if @profile.qualifyingentity_criterions.blank?
-      @profile.asign_criterions
+    if @profile.qualifyingentity_tlresults.blank?
+      @profile.asign_tlresults
     end
   end
 end

@@ -10,11 +10,11 @@ class Profile < ActiveRecord::Base
   has_many :tlresults, :through => :qualifyingentity_tlresults
   accepts_nested_attributes_for :qualifyingentity_tlresults, :qualifyingentities, :tlresults, :reject_if => :all_blank, :allow_destroy => true
 
-  def asign_criterions
+  def asign_tlresults
     #TODO se deben filtrar los criterios del perfil en base a los contenidos de la materia
-    Tlresutl.all.each do |tl|
+    Tlresult.all.each do |tl|
       Qualifyingentity.all.each do |qc|
-        self.qualifyingentity_criterions << QualifyingentityCriterion.new(:percentage => 0, :tlresult_id => tl.id, :qualifyingentity_id => qc.id)
+        self.qualifyingentity_tlresults << QualifyingentityTlresult.new(:percentage => 0, :tlresult_id => tl.id, :qualifyingentity_id => qc.id)
       end
     end
   end
