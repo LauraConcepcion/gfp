@@ -15,6 +15,11 @@ Gfp::Application.routes.draw do
       get 'asign_tlresult'
     end
   end
+  resources :teachers do 
+    resources :profiles do
+      resources :qualifyingentities
+    end
+  end
 
   root :to => 'institutes#index'
   match ':controller(/:action(/:id(.:format)))' 
