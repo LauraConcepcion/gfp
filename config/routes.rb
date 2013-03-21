@@ -9,7 +9,6 @@ Gfp::Application.routes.draw do
   resources :criterions
   resources :qualifyingentities
   resources :qualifyingentity_tlresults
-  resources :institutes
   resources :teachers do 
     post 'change_current_profile'
     resources :profiles do
@@ -22,7 +21,7 @@ Gfp::Application.routes.draw do
     end
   end
 
-  root :to => 'institutes#index'
+  root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))' 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -4,4 +4,5 @@ class Trainercycle < ActiveRecord::Base
   belongs_to :trainercycletype
   has_many :matters
   has_many :classrooms
+  validates :name , :presence => true
 end

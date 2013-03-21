@@ -4,5 +4,6 @@ class Matter < ActiveRecord::Base
   belongs_to :department
   has_many :contentblocks
   belongs_to :trainercycle
+  validates :name , :presence => true
 
 end
