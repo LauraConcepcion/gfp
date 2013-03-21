@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :institute_id, :trainercycle_id, :matter_id, :criterion_ids, :qualifyingentity_ids, :qualifyingentity_tlresult_ids, :qualifyingentity_tlresults_attributes
+  attr_accessible :institute_id, :trainercycle_id, :matter_id, :criterion_ids, :qualifyingentity_ids, :qualifyingentity_tlresult_ids, :qualifyingentity_tlresults_attributes, :group_id
   belongs_to :institute
   belongs_to :trainercycle
   belongs_to :matter
@@ -17,5 +17,9 @@ class Profile < ActiveRecord::Base
         self.qualifyingentity_tlresults << QualifyingentityTlresult.new(:percentage => 0, :tlresult_id => tl.id, :qualifyingentity_id => qc.id)
       end
     end
+  end
+
+  def name
+    "#{self.matter.name} - #{self.institute.code} - #{self.trainercycle.name} - #{self.group.name}"
   end
 end

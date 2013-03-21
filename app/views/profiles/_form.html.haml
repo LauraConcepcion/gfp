@@ -2,6 +2,7 @@
   = f.association :institute
   = f.association :trainercycle
   = f.association :matter
+  = f.association :group
   .form-actions
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), teacher_profiles_path, :class => 'btn'

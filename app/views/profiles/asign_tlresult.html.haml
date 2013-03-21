@@ -4,5 +4,5 @@
     = f.simple_fields_for :qualifyingentity_tlresults do |qc|
       = render 'qualifyingentity_tlresult_fields', :f => qc
     .links
-      = link_to_add_association 'add percentage', f, :qualifyingentity_tlresults
+      = link_to_add_association t(:add), f, :qualifyingentity_tlresults
   = f.submit

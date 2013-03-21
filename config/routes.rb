@@ -11,6 +11,7 @@ Gfp::Application.routes.draw do
   resources :qualifyingentity_tlresults
   resources :institutes
   resources :teachers do 
+    post 'change_current_profile'
     resources :profiles do
       get 'asign_tlresult'
     end

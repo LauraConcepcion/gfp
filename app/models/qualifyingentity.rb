@@ -6,9 +6,11 @@ class Qualifyingentity < ActiveRecord::Base
   has_many :qualifyingentity_criterions
   has_many :criterions, :through => :qualifyingentity_criterions
   has_and_belongs_to_many :contentblocks
-  #has_many :qualifyingentity
+
   accepts_nested_attributes_for :qualifyingentity_criterions, :reject_if => :all_blank, :allow_destroy => true 
+
   before_destroy :can_be_destroyed?
+
   def can_be_destroyed?
     true unless self.classroom.empty?
   end

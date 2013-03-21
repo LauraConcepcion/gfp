@@ -1,0 +1,8 @@
+- if current_teacher.profiles
+  %ul.nav.nav-pills.nav-stacked
+    %h3= Profile.model_name.human.pluralize 
+    - current_teacher.profiles.each do |p|
+      - if p == current_teacher.current_profile
+        %li.active= link_to "#{p.name}", teacher_change_current_profile_path(current_teacher, :profile => p), :method=> :post
+      - else
+        %li= link_to "#{p.name}", teacher_change_current_profile_path(current_teacher, :profile => p), :method=> :post

@@ -1,14 +1,18 @@
 class ProfilesController < InheritedResources::Base
   before_filter :authenticate_teacher!  
+  add_breadcrumb :profile, "/profiles", only: [:new, :create]
   respond_to :html, :xml, :json
+  
   def new
     @profile = Profile.new
     @teacher = current_teacher
   end
+  
   def edit 
     @profile = Profile.find(params[:id])
     @teacher = current_teacher
   end
+  
   def create
     @profile = Profile.new(params[:profile])
     @profile.teacher = current_teacher
@@ -19,6 +23,7 @@ class ProfilesController < InheritedResources::Base
       render :action => 'new'
     end
   end
+  
   def asign_tlresult
     @profile = Profile.find(params[:profile_id])
     @teacher = current_teacher
@@ -26,4 +31,5 @@ class ProfilesController < InheritedResources::Base
       @profile.asign_tlresults
     end
   end
+
 end

@@ -1,0 +1,17 @@
+es:
+  activerecord:
+    errors:
+      messages:
+        blank: "El valor de este campo es necesario y no puede estar vacío"
+        taken: "El valor para este campo debe ser único y ya está en uso."
+    models:
+      profile: "Perfil"
+      criterion: "Criterio"
+      qualifyingentity_tlresult: "Entidades-REA"
+    attributes:
+      profile:
+        matter: "Módulo"
+        tlresult: "REA"
+        teacher: "Profesor"
+        institute: "Instituto"
+        trainercycle: "Ciclo Formativo"

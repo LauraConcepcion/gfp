@@ -11,20 +11,19 @@
         - if teacher_signed_in?
           = render "layouts/head"
     .container-fluid
+      = render_breadcrumbs
       .row-fluid
-        .container
-          - if teacher_signed_in? and !params[:profile_id].blank?
-            = render 'head', :resource => Profile.find(params[:profile_id])
-      .span2
-        menú lateral
-      .span10
-        -if notice
-          %div.flash.notice= notice
-        -if alert
-          %div.flash.alert= alert
-        %h2
-          = yield :title
-        = yield
+        .span3.bs-docs-sidebar
+          - if teacher_signed_in?
+            = render "layouts/profile"
+        .span9
+          -if notice
+            %div.flash.notice= notice
+          -if alert
+            %div.flash.alert= alert
+          %h2
+            = yield :title
+          = yield
     #version= t(:version_x, :version => '0')
 
 

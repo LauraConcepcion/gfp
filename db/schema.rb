@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312110116) do
+ActiveRecord::Schema.define(:version => 20130321160525) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20130312110116) do
     t.datetime "updated_at",      :null => false
     t.integer  "teacher_id"
     t.integer  "group_id"
+    t.boolean  "default"
   end
 
   add_index "profiles", ["institute_id"], :name => "index_profiles_on_institute_id"
@@ -153,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20130312110116) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "classroom_id"
+    t.integer  "profile_id"
   end
 
   create_table "qualifyingentity_criterions", :force => true do |t|

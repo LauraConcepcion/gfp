@@ -7,10 +7,9 @@
   = link_to t(:title), "#", :class=>"brand pjax"
   .nav-collapse
     %ul.nav.pull-right
-      %li= link_to t(:profile), teacher_profiles_path(current_teacher) 
-      %li= link_to t(:criterions), criterions_path
-      %li= link_to t(:qualifyingentities), qualifyingentities_path
-      %li= link_to t(:percentage), qualifyingentity_tlresults_path
+      %li= link_to Profile.model_name.human, teacher_profiles_path(current_teacher) 
+      %li= link_to Qualifyingentity.model_name.human, qualifyingentities_path()
+      %li= link_to QualifyingentityTlresult.model_name.human, teacher_profile_asign_tlresult_path(current_teacher, current_teacher.current_profile)
   #main-navigation
     %ul.nav
       %li.dropdown
