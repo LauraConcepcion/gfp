@@ -13,11 +13,15 @@ class Qualifyingentity < ActiveRecord::Base
 
   #accepts_nested_attributes_for :qualifyingentity_criterions, :reject_if => :all_blank, :allow_destroy => true 
 
-  before_destroy :can_be_destroyed?
+#  before_destroy :can_be_destroyed?
+  
+  scope :for_profile, lambda {|profile|
+    where("profile_id = ?", profile.id)
+  }
 
-  def can_be_destroyed?
-    true unless self.classroom.empty?
-  end
+#  def can_be_destroyed?
+#    true unless self.classroom.empty?
+#  end
   
   def teacher
     unless self.classroom.nil?
