@@ -9,7 +9,8 @@
     %ul.nav.pull-right
       %li= link_to Profile.model_name.human, teacher_profiles_path(current_teacher) 
       %li= link_to Qualifyingentity.model_name.human, qualifyingentities_path()
-      %li= link_to QualifyingentityTlresult.model_name.human, teacher_profile_asign_tlresult_path(current_teacher, current_teacher.current_profile)
+      - if (current_teacher.profiles.size > 0)
+        %li= link_to QualifyingentityTlresult.model_name.human, teacher_profile_asign_tlresult_path(current_teacher, current_teacher.current_profile)
   #main-navigation
     %ul.nav
       %li.dropdown
