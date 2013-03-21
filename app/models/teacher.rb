@@ -18,9 +18,11 @@ class Teacher < ActiveRecord::Base
 
   # Cambia le perfil actual de la aplicación
   def change_current_profile(new_profile)
-    current_profile = self.current_profile if self.current_profile
-    current_profile.default = false
-    current_profile.save!
+    if self.current_profile
+      current_profile = self.current_profile
+      current_profile.default = false
+      current_profile.save!
+    end
     profile = Profile.find(new_profile.id)
     profile.default = true
     profile.save!
