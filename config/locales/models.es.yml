@@ -6,6 +6,7 @@ es:
         taken: "El valor para este campo debe ser único y ya está en uso."
     models:
       profile: "Perfil"
+      qualifyingentity: "Entidad Calificable"
       criterion: "Criterio"
       qualifyingentity_tlresult: "Entidades-REA"
     attributes:

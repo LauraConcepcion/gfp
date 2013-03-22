@@ -5,6 +5,7 @@
 # Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
 
 "es":
+  saved: "salvado"
   date:
     formats:
       compact: "%d/%m/%y"

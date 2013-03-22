@@ -2,3 +2,6 @@ es:
   title: "ForProf"
   are_you_sure?: "¿Está usted seguro?, esta operación no puede deshacerse"
   destroy: "Eliminar"
+  breadcrums:
+    application:
+      index: "indice"
