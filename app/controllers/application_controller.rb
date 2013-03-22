@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::Base
   #load_and_authorize_resource
-  add_breadcrumb :index, :root_path
+ # add_breadcrumb :index, :root_path
   protect_from_forgery
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = nil
-    render :file => "#{Rails.root}/public/403.html", :status => 403
+    flash[:alert] = t(:access_denied)
+    redirect_to '/'
   end
 
   def current_ability

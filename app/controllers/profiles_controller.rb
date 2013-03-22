@@ -1,6 +1,5 @@
 class ProfilesController < InheritedResources::Base
   before_filter :authenticate_teacher!  
-  add_breadcrumb :profile, "/profiles", only: [:new, :create]
   respond_to :html, :xml, :json
   
   def new
@@ -27,9 +26,8 @@ class ProfilesController < InheritedResources::Base
   def asign_tlresult
     @profile = Profile.find(params[:profile_id])
     @teacher = current_teacher
-    if @profile.qualifyingentity_tlresults.blank?
-      @profile.asign_tlresults
-    end
+    #if @profile.qualifyingentity_tlresults.blank?
+    #  @profile.asign_tlresults
+    #end
   end
-
 end

@@ -1,8 +1,4 @@
 Gfp::Application.routes.draw do
-  get "asign_quealifyingentity_to_criterions/view"
-
-  get "qualifyingentity_criterions/edit"
-
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :teachers

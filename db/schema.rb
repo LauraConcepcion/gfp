@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321160525) do
+ActiveRecord::Schema.define(:version => 20130322091442) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -241,9 +241,8 @@ ActiveRecord::Schema.define(:version => 20130321160525) do
 
   create_table "tlresults", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "contentblock_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "trainercycles", :force => true do |t|

@@ -6,5 +6,13 @@ class Contentblock < ActiveRecord::Base
   belongs_to :tlresult
   belongs_to :aacce
   has_and_belongs_to_many :qualifyingentities
-#  has_many :qualifyingentity_contentblocks
+
+  # Método que devuelve el contenido bloque y su tlresult
+  def full_name
+    if self.tlresult
+      "#{self.name} || #{self.tlresult.name}" 
+    else 
+      "#{self.name}" 
+    end
+  end
 end

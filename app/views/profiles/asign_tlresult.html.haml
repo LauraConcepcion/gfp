@@ -1,8 +1,9 @@
 = simple_form_for [@teacher,@profile] do |f|
-  #qualifyingentity_tlresults
-    %h3= t(:qualifyingentity_tlresults) 
-    = f.simple_fields_for :qualifyingentity_tlresults do |qc|
-      = render 'qualifyingentity_tlresult_fields', :f => qc
-    .links
-      = link_to_add_association t(:add), f, :qualifyingentity_tlresults
+  = f.simple_fields_for :qualifyingentities do |qe|
+    .span
+      .span3= qe.input :name, :readonly => true
+      .span6
+        = qe.simple_fields_for :qualifyingentity_tlresults do |qc|
+          .left= qc.association :tlresult, :readonly => true
+          = qc.input :percentage, :input_html => {:class => 'span2'}
   = f.submit

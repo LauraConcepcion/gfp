@@ -1,7 +1,7 @@
 .nested-fields
   .span10
     .span3
-      = f.association :tlresult, :collection => Proc.new{ Tlresult.all.map{ |c| [c.name, c.id]}}
+      = f.association :tlresult, :collection => Proc.new{ Tlresult.all.map{ |c| [c.name, c.id]}}, :html_options => {:class => 'span2'}
     .span3
       = f.association :qualifyingentity, :collection => Proc.new{ Qualifyingentity.all.map{ |q| [q.name, q.id]}}
     .span3  
