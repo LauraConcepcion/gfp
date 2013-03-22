@@ -2,7 +2,6 @@ Gfp::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :teachers
-  resources :teachers
   resources :criterions
   resources :qualifyingentities
   resources :qualifyingentity_tlresults

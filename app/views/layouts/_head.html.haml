@@ -18,5 +18,5 @@
           = current_teacher.email
           %b.caret
         %ul.dropdown-menu
+          %li= link_to t(:edit), edit_teacher_registration_path
           %li= link_to t(:logout), destroy_teacher_session_path, :method => :delete
-          %li= link_to t(:edit), edit_teacher_registration_path(current_teacher.id)
