@@ -30,7 +30,126 @@ es:
       user: "usuarios"
     attributes:
       contentblock:
-        name: "nombre"
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        matter: "Modulo/Asignatura"
+        quarter: "Trimestre"
+      trainercycle:
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        editon: "Edición"
+      classroom:
+        name: "Nombre"
+        code: "Código"
+        trainercycle: "Ciclo Formativo"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        editon: "Edición"
+      aacce:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      content:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        criterion: "Criterio"
+        contentblock: "Bloque de Contenido"     
+      criterion:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        content: "Contenido"
+        tlresult: "REA"     
+      department:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        institute: "Instituto"
+        aacce: "Comunidad Autónoma"     
+      qualifyingentity:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        classroom: "Clase"
+        profile: "Perfil"     
+      qualifyingentity_tlresult:
+        qualifyingentity: "Entidad Calificable"
+        tlresult: "REA"
+        percentage: "Porcentaje"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      student:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        classroom: "Clase"
+        profile: "Perfil"     
+        code: "Código"
+      group:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        classrooms: "Clases"
+        code: "Código"
+      schedule:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        classroom: "Clase"
+      institute:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        address: "Dirección"
+        aacce: "Comunidad Autónoma"
+      matter:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        department: "Departamenton"
+        aacce: "Comunidad Autónoma"
+      score:
+        grade: "Nota"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        qualifyingentity: "Entidad Calificable"
+        student: "Estudiante"
+      objetive:
+        name: "Nombre"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      teacher:
+        name: "Nombre"
+        surname: "Nombre"
+        code: "Codigo"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      tlresult:
+        name: "Nombre"
+        contentblock: "Bloque de contenido"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      trainercycletype:
+        name: "Nombre"
+        trainercycle: "Ciclo Formativo"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      departmenttype:
+        name: "Nombre"
+        trainercycle: "Ciclo Formativo"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+        code: "Código"
+        departments: "Departamentos"
+      quarter:
+        name: "Nombre"
+        contentblocks: "Bloques de contenidos"
+        created_at: "Creado"
+        updated_at: "Actualizado"
+      user:
+        email: "correo"
       profile:
         matter: "Módulo"
         tlresult: "REA"
@@ -38,3 +157,5 @@ es:
         institute: "Instituto"
         trainercycle: "Ciclo Formativo"
         name: "Nombre"
+        updated_at: "Actualizado"
+        created_at: "Creado"
