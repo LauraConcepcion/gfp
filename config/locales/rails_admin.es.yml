@@ -86,7 +86,8 @@
       updated: "actualizado"
       delete: "borrar"
       deleted: "borrado"
-      export: "exportar"
+      export: 
+        menu: "Exportar"
       exported: "exportado"
     breadcrumbs:
       delete: "borrar"
