@@ -56,7 +56,7 @@
       are_you_sure_you_want_to_delete_the_object: "Estás seguro que quieres borrar %{model_name}"
       confirmation: "Sí, estoy seguro"
       delete_confirmation: "Confirmación de Borrado"
-      bulk_delete: "The following objects will be deleted, which may delete or orphan some of their related dependencies:"
+      bulk_delete: "Los siguientes objetos serán borrados, pudiendo borrar o dejar huerfanos algunos de sus dependencias:"
     export:
       confirmation: "Exportar a %{name}"
       select: "Selecciona los campos a exportar"

@@ -5,3 +5,8 @@ es:
   breadcrums:
     application:
       index: "indice"
+  edit: "Editar"
+  new: "Nuevo"
+  helpers:
+    links:
+      edit: "Editar"
