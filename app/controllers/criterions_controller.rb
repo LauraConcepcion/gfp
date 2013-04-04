@@ -4,9 +4,12 @@ class CriterionsController < InheritedResources::Base
   
   private
   def collection    
-    @q ||= Criterion.accessible_by(current_ability).search(params[:q])
-    @q.sorts = "name asc" if @q.sorts.empty?
-    @criterions ||= @q.result(:distintct => true).page(params[:page])
+    #@q ||= Criterion.accessible_by(current_ability).search(params[:q])
+    @q ||= end_of_association_chain
+    @criterions ||= @q.page(params[:page]).per(20)
+
+    #@q.sorts = "name asc" if @q.sorts.empty?
+    #@criterions ||= @q.result(:distintct => true).page(params[:page])
   end
 
 end
