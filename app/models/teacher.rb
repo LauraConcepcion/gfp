@@ -28,4 +28,8 @@ class Teacher < ActiveRecord::Base
     profile.save!
     self.save!
   end
+
+  def full_name
+    "#{self.name} #{self.surname}"
+  end
 end

@@ -13,17 +13,17 @@
     .container-fluid
       //= render_breadcrumbs
       .row-fluid
-        .span3.bs-docs-sidebar
+        .bs-docs-sidebar.profile.affix
           - if teacher_signed_in?
             = render "layouts/profile"
-        .span9
-          -if notice
-            %div.flash.notice= notice
-          -if alert
-            %div.flash.alert= alert
-          %h2
-            = yield :title
-          = yield
+        .content
+          .content-header
+          .content-body
+            -if notice
+              %div.alert.alert-success= notice
+            -if alert
+              %div.alert.fade.in= alert
+            = yield
     #version= t(:version_x, :version => '0')
 
 

@@ -1,0 +1,33 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+
+body {
+  border-top: 5px solid #fff;
+  background: url(noisy_grid.png) repeat center left fixed;
+}
+
+div.profile {
+  background: url(pizarra.png) no-repeat fixed left 50px transparent;
+  width: 28%;
+  min-height: 300px;
+  float: left;
+  padding: 65px 0 0 20px;
+}
+div.content {
+  width: 70%;
+  float: right;
+}
+div.content-header {
+  background: url("foliosuperior.png") repeat;
+  height: 70px;
+}
+div.content-body {
+  background: none repeat scroll 0 0 white;
+  padding: 5px 20px;
+}

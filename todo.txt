@@ -1,1 +1,2 @@
-aa
+- Dejar las pantallas de usuario (editar) corregido. Faltan traducciónes y hay dos label con el mismo nombre.
+º
