@@ -1,7 +1,6 @@
 class CriterionsController < InheritedResources::Base
   before_filter :authenticate_teacher!  
-  respond_to :html, :xml, :json
-  
+  respond_to :html, :xml, :json, :js
   private
   def collection    
     #@q ||= Criterion.accessible_by(current_ability).search(params[:q])

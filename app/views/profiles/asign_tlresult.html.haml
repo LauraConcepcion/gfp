@@ -1,9 +1,12 @@
 = simple_form_for [@teacher,@profile] do |f|
+  .span{:id =>'reas'}
   = f.simple_fields_for :qualifyingentities do |qe|
-    .span
+    .span 
       .span3= qe.input :name, :readonly => true
       .span6
         = qe.simple_fields_for :qualifyingentity_tlresults do |qc|
           .left= qc.association :tlresult, :readonly => true
+          .span3
+            = link_to Criterion.model_name.human.pluralize, tlresult_criterions_path(qc.object.tlresult_id), :remote =>true
           = qc.input :percentage, :input_html => {:class => 'span2'}
   = f.submit

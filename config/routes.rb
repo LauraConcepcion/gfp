@@ -3,6 +3,9 @@ Gfp::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :teachers
   resources :criterions
+  resources :tlresults do
+    resources :criterions
+  end
   resources :qualifyingentities
   resources :qualifyingentity_tlresults
   resources :teachers do 
