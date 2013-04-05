@@ -1,5 +1,6 @@
 window.build_dialog = (selector, content, dialog_title) ->
   but = undefined
+  close_dialog selector
   $("body").append "<div id=\"" + selector + "\">\n" + content + "</div>"
   but = new Object
 

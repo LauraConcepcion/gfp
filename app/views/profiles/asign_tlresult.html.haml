@@ -1,5 +1,4 @@
 = simple_form_for [@teacher,@profile] do |f|
-  .span{:id =>'reas'}
   = f.simple_fields_for :qualifyingentities do |qe|
     .span 
       .span3= qe.input :name, :readonly => true
