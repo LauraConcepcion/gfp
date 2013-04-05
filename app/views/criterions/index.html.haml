@@ -6,7 +6,7 @@
       %th= Criterion.human_attribute_name(:name)
       -# %th=t '.actions', :default => t("helpers.actions")
   %tbody
-    - collection.each do |resource|
+    - Tlresult.find(params[:tlresult_id]).criterions.each do |resource|
       = content_tag_for(:tr, resource) do
         %td= resource.try(:name)
       -#  %td
