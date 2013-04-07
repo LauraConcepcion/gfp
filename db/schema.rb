@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405204022) do
+ActiveRecord::Schema.define(:version => 20130407202039) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20130405204022) do
 
   create_table "institutes", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "address"
     t.integer  "aacce_id"
     t.string   "phone"
@@ -106,9 +106,9 @@ ActiveRecord::Schema.define(:version => 20130405204022) do
     t.string   "province"
     t.string   "fax"
     t.string   "holder"
-    t.string   "type"
     t.string   "nature"
     t.string   "island"
+    t.string   "code_import"
   end
 
   create_table "matters", :force => true do |t|
