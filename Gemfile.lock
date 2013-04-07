@@ -8,10 +8,10 @@ GIT
       railties (>= 3.1)
 
 GIT
-  remote: git://github.com/stephskardal/rails_admin_import.git
-  revision: 90f967a3700f803670cc59da916cd06999a9aebf
+  remote: https://github.com/RaVbaker/rails_admin_import.git
+  revision: c22217fdda56f38ef4e0e7e9ca8198d35cc83cea
   specs:
-    rails_admin_import (0.1.8)
+    rails_admin_import (0.1.13)
 
 GEM
   remote: https://rubygems.org/
