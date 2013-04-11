@@ -19,9 +19,16 @@ Gfp::Application.routes.draw do
       resources :qualifyingentities
     end
   end
-
+  resources :institutes do
+    resources :trainercycles do
+      resource :matters
+    end
+  end
   root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))' 
+
+  match 'institutes/update_trainercycle/:id', :controller=>'institutes', :action => 'update_trainercycle'
+  match 'trainercycles/update_matter/:id', :controller=>'trainercycles', :action => 'update_matter'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
