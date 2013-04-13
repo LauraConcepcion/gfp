@@ -7,11 +7,12 @@ RailsAdmin.config do |config|
     include_all_fields
     exclude_fields :institutes, :departments
   end 
+  
   config.model 'Student' do
     include_all_fields
     exclude_fields :scores, :classrooms
   end 
-
+  
   config.actions do
     # root actions
     dashboard                     # mandatory

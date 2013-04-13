@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409125739) do
+ActiveRecord::Schema.define(:version => 20130413093252) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "code_import"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "code"
+    t.string   "aacce_code"
   end
 
   create_table "classrooms", :force => true do |t|
@@ -30,11 +31,6 @@ ActiveRecord::Schema.define(:version => 20130409125739) do
     t.integer  "group_id"
     t.integer  "matter_id"
     t.string   "code_import"
-  end
-
-  create_table "coches", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "contentblocks", :force => true do |t|
@@ -72,7 +68,6 @@ ActiveRecord::Schema.define(:version => 20130409125739) do
     t.string   "name"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.integer  "institute_id"
     t.integer  "aacce_id"
     t.integer  "departmenttype_id"
   end
@@ -113,10 +108,10 @@ ActiveRecord::Schema.define(:version => 20130409125739) do
     t.string   "holder"
     t.string   "nature"
     t.string   "island"
+    t.string   "code_import"
     t.string   "codecenter"
     t.string   "com"
-    t.string   "typecenter"
-    t.string   "code_import"
+    t.string   "aacce_code"
   end
 
   create_table "matters", :force => true do |t|
@@ -259,7 +254,6 @@ ActiveRecord::Schema.define(:version => 20130409125739) do
     t.string   "edition"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.integer  "institute_id"
     t.string   "name"
     t.integer  "trainercycletype_id"
   end
