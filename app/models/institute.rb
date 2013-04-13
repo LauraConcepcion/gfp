@@ -8,5 +8,4 @@ class Institute < ActiveRecord::Base
   #attr_accessible :department_ids
 #  has_many :trainercycles
   #attr_accessible :trainercycle_ids
-  #
 end
