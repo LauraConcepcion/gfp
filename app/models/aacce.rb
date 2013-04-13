@@ -3,4 +3,5 @@ class Aacce < ActiveRecord::Base
   validates :name, :presence => true
   has_many :institutes
   has_many :departments
+
 end
