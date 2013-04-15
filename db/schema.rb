@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20130413110524) do
     t.string   "code_import"
   end
 
+  create_table "coches", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "contentblocks", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",  :null => false
@@ -68,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20130413110524) do
     t.string   "name"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "institute_id"
     t.integer  "aacce_id"
     t.integer  "departmenttype_id"
   end
@@ -110,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20130413110524) do
     t.string   "island"
     t.string   "codecenter"
     t.string   "com"
+    t.string   "typecenter"
     t.string   "aacce_code"
     t.string   "institute_code"
   end
@@ -254,6 +261,7 @@ ActiveRecord::Schema.define(:version => 20130413110524) do
     t.string   "edition"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "institute_id"
     t.string   "name"
     t.integer  "trainercycletype_id"
   end
