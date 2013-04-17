@@ -6,6 +6,6 @@ class Institute < ActiveRecord::Base
   belongs_to  :aacce
   #has_many :departments
   #attr_accessible :department_ids
-#  has_many :trainercycles
+  has_many :trainercycles
   #attr_accessible :trainercycle_ids
 end

@@ -54,13 +54,14 @@ module Gfp
     config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.enabled = true
+    config.assets.enabled = true 
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
     #pa que funcione en heroku
     #While precompiling assets, in Rails 3.1.1 and up, you can prevent initializing your application and connecting to the database
-    config.assets.initialize_on_precompile = false 
+    config.assets.initialize_on_precompile = false
+    config.assets.precompile += ['rails_admin/rails_admin.css','rails_admin/rails_admin.js']
   end
 end
