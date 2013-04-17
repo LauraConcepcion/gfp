@@ -23,6 +23,6 @@ class Profile < ActiveRecord::Base
   end
 
   def name
-    "#{self.matter.name} - #{self.institute.code_import} - #{self.trainercycle.name} - #{self.group.name}"
+    "#{self.matter.name} - #{self.institute.institute_code} - #{self.trainercycle.name} - #{self.group.name}"
   end
 end
