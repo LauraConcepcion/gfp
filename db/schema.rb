@@ -32,11 +32,6 @@ ActiveRecord::Schema.define(:version => 20130417110347) do
     t.string   "code_import"
   end
 
-  create_table "coches", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "contentblocks", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",  :null => false
