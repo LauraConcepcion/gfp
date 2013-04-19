@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417110347) do
+ActiveRecord::Schema.define(:version => 20130419104053) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(:version => 20130417110347) do
     t.integer  "group_id"
     t.integer  "matter_id"
     t.string   "code_import"
+  end
+
+  create_table "coches", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "contentblocks", :force => true do |t|
@@ -79,16 +84,16 @@ ActiveRecord::Schema.define(:version => 20130417110347) do
 
   create_table "departmenttypes", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "code_import"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "departmenttype_code"
   end
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "code_import"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "group_code"
   end
 
   create_table "institutes", :force => true do |t|
@@ -110,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20130417110347) do
     t.string   "island"
     t.string   "typecenter"
     t.string   "institute_code"
+    t.string   "type_center"
   end
 
   create_table "matters", :force => true do |t|
@@ -214,9 +220,9 @@ ActiveRecord::Schema.define(:version => 20130417110347) do
   create_table "students", :force => true do |t|
     t.string   "nombre"
     t.string   "apellidos"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "code_import"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "student_code"
   end
 
   create_table "teachers", :force => true do |t|
@@ -234,7 +240,7 @@ ActiveRecord::Schema.define(:version => 20130417110347) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "code_import"
+    t.string   "teacher_code"
   end
 
   add_index "teachers", ["email"], :name => "index_teachers_on_email", :unique => true

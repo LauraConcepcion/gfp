@@ -6,7 +6,7 @@ class Teacher < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :code_import, :name, :surname, :classroom_ids, :department_ids
+  attr_accessible :teacher_code, :name, :surname, :classroom_ids, :department_ids
   has_and_belongs_to_many :departments
   has_many :classrooms
   has_many :profiles, :order =>  'id ASC'
