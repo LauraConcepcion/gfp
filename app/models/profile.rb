@@ -6,7 +6,6 @@ class Profile < ActiveRecord::Base
   belongs_to :teacher
   belongs_to :group
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities
-
   has_many :qualifyingentities, :dependent => :destroy
 
 #  has_many :tlresults, :through => :qualifyingentity_tlresults
