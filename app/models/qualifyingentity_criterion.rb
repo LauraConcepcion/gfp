@@ -3,5 +3,5 @@ class QualifyingentityCriterion < ActiveRecord::Base
   belongs_to :criterion
   belongs_to :qualifyingentity
   belongs_to :profile
-  
+  validates :percentage, :presence => true 
 end

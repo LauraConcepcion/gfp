@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Score do
-  pending "add some examples to (or delete) #{__FILE__}"
+ it { should belong_to :qualifyingentity}
+ it { should belong_to :student}
+ it { should validate_presence_of :grade }
+
 end

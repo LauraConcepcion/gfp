@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Content do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to :criterion}
+  it { should belong_to :contentblock}
+  it { should validate_presence_of :name }
+
 end

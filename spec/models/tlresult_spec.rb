@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Tlresult do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many :qualifyingentity_tlresults}
+  it { should have_many :criterions}
+  it { should validate_presence_of :name }
 end

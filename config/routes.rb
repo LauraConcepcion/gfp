@@ -24,6 +24,10 @@ Gfp::Application.routes.draw do
       resource :matters
     end
   end
+
+  resources :students do
+    collection { post :import}
+  end
   root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))' 
 

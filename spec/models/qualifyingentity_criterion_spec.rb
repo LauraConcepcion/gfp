@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe QualifyingentityCriterion do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to :criterion}
+  it { should belong_to :qualifyingentity}
+  it { should belong_to :profile}
+  it { should validate_presence_of :percentage }
+
 end

@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe QualifyingentityTlresult do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to :qualifyingentity}
+  it { should belong_to :tlresult}
+  it { should validate_presence_of :percentage }
 end
