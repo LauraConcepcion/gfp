@@ -19,9 +19,8 @@ describe Qualifyingentity do
     @qualifyingentity = Qualifyingentity.create!(@attr)
   end
 
-  it "should find by profile"
+  it "should find by profile" do
     @qualifyingentity = Qualifyingentity.create!(@attr)
     @teacher = Teacher.create!(@teachattr)
-    @profile = Profile.create!() 
   end
 end
