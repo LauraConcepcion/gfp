@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :institute_id, :trainercycle_id, :matter_id, :criterion_ids, :qualifyingentity_ids, :qualifyingentity_tlresult_ids, :qualifyingentity_tlresults_attributes, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes
+  attr_accessible :institute_id,:teacher_id ,:trainercycle_id, :matter_id, :criterion_ids, :qualifyingentity_ids, :qualifyingentity_tlresult_ids, :qualifyingentity_tlresults_attributes, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes
   belongs_to :institute
   belongs_to :trainercycle
   belongs_to :matter
@@ -7,11 +7,11 @@ class Profile < ActiveRecord::Base
   belongs_to :group
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities
   has_many :qualifyingentities, :dependent => :destroy
-  validates :teacher, :presence => true
-  validates :institute, :presence => true
-  validates :trainercycle, :presence => true
-  validates :matter, :presence => true
-  validates :group, :presence => true
+  validates :teacher_id, :presence => true
+  validates :institute_id, :presence => true
+  validates :trainercycle_id, :presence => true
+  validates :matter_id, :presence => true
+  validates :group_id, :presence => true
 
 #  has_many :tlresults, :through => :qualifyingentity_tlresults
   accepts_nested_attributes_for :qualifyingentity_tlresults, :qualifyingentities,  :reject_if => :all_blank, :allow_destroy => true

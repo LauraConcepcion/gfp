@@ -4,14 +4,13 @@ describe Qualifyingentity do
   it { should belong_to :profile}
   it { should belong_to :classroom}
   it { should have_and_belong_to_many :contentblocks }
-  it { should have_many :socre}
+  it { should have_many :score}
   it { should have_many :qualifyingentity_criterions}
   it { should have_many :criterions}
   it { should validate_presence_of :name }
   
   before(:each) do  
     @attr = { :name => "Example Qualifyingentity" }
-    @teachattr = { :name => "Profesor" }
   end 
 
 
@@ -26,7 +25,8 @@ describe Qualifyingentity do
     trainercycle = Trainercycle.create(:name=>'Ciclo Formativo1')
     matter = Matter.create(:name=>'Materia1')
     group = Group.create(:name=>'Grupo1', :group_code => 'grupo1')
-    profiles = Profile.create(:institute => institute, :teacher => teacher,:matter => matter, :group => group)
-    qualifyingentity.for_profile
+    profile = Profile.create(:institute_id => institute.id, :teacher_id => teacher.id,:matter_id => matter.id, :group_id => group.id, :trainercycle_id => trainercycle.id)
+    
+    Qualifyingentity.for_profile(profile)
   end
 end

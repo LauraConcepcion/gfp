@@ -19,6 +19,7 @@ class Qualifyingentity < ActiveRecord::Base
   accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
   #  before_destroy :can_be_destroyed?
   after_create :create_qualifyingentity_tlresults
+  validates :name, :presence => true
 
   scope :for_profile, lambda {|profile|
     where("profile_id = ?", profile.id)
