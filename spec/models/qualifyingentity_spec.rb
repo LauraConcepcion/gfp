@@ -20,7 +20,13 @@ describe Qualifyingentity do
   end
 
   it "should find by profile" do
-    @qualifyingentity = Qualifyingentity.create!(@attr)
-    @teacher = Teacher.create!(@teachattr)
+    qualifyingentity = Qualifyingentity.create!(@attr)
+    teacher = Teacher.create!(:email=>'profesor1@prueba.es',:password =>'profesor1')
+    institute =  Institute.create(:name=>'Instituto1',:institute_code =>'Instituto1')
+    trainercycle = Trainercycle.create(:name=>'Ciclo Formativo1')
+    matter = Matter.create(:name=>'Materia1')
+    group = Group.create(:name=>'Grupo1', :group_code => 'grupo1')
+    profiles = Profile.create(:institute => institute, :teacher => teacher,:matter => matter, :group => group)
+    qualifyingentity.for_profile
   end
 end

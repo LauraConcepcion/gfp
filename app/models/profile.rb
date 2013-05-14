@@ -7,6 +7,11 @@ class Profile < ActiveRecord::Base
   belongs_to :group
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities
   has_many :qualifyingentities, :dependent => :destroy
+  validates :teacher, :presence => true
+  validates :institute, :presence => true
+  validates :trainercycle, :presence => true
+  validates :matter, :presence => true
+  validates :group, :presence => true
 
 #  has_many :tlresults, :through => :qualifyingentity_tlresults
   accepts_nested_attributes_for :qualifyingentity_tlresults, :qualifyingentities,  :reject_if => :all_blank, :allow_destroy => true
