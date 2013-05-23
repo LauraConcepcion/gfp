@@ -14,6 +14,10 @@ Gfp::Application.routes.draw do
       get 'asign_tlresult'
     end
   end
+  resources :qualifyingentities do 
+    get 'put_scores'
+  end
+
   resources :teachers do 
     resources :profiles do
       resources :qualifyingentities

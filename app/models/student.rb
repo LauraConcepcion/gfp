@@ -1,6 +1,12 @@
 class Student < ActiveRecord::Base
-  attr_accessible :name
-      
+  attr_accessible :name, :score_ids, :classroom_ids
+  has_many :scores
+  has_many :classrooms
+  
+  scope :student_list, lambda {|group_id, matter_id, trainercycle_id|
+    joins(:classrooms).where('classrooms.group_id = ? and classrooms.matter_id = ? and classrooms.trainercycle_id = ?', group_id, matter_id, trainercycle_id)
+  }
+
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)

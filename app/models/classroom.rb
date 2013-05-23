@@ -8,4 +8,6 @@ class Classroom < ActiveRecord::Base
   has_many :schedule
   has_many :qualifyingentities
   has_many :objetive_averages
+
+
 end

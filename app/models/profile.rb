@@ -13,9 +13,13 @@ class Profile < ActiveRecord::Base
   validates :matter_id, :presence => true
   validates :group_id, :presence => true
 
+  scope :active, lambda {|teacher_id|
+    where(:default => true, :teacher_id => teacher_id) unless teacher_id.nil?
+  }
+
+
 #  has_many :tlresults, :through => :qualifyingentity_tlresults
   accepts_nested_attributes_for :qualifyingentity_tlresults, :qualifyingentities,  :reject_if => :all_blank, :allow_destroy => true
-
   def asign_tlresults
     # Para todos los exámenes del perfil
     self.qualifyingentities.each do |qe|
