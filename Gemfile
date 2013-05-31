@@ -6,8 +6,10 @@ gem 'cocoon'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg', '=0.13.2'
+gem 'therubyracer'
 
+#gem 'pg', '=0.13.2'
+gem 'mysql2'
 
 group :development, :test do
   gem 'debugger'
