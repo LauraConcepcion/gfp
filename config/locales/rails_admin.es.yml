@@ -84,7 +84,8 @@
       created: "creado"
       update: "actualizar"
       updated: "actualizado"
-      delete: "borrar"
+      delete:
+        menu: "Borrar"
       deleted: "borrado"
       export: 
         menu: "Exportar"

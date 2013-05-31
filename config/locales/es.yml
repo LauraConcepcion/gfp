@@ -246,7 +246,7 @@
       add_new: "Añadir nuevo"
       chosen: "Seleccionado  %{name}"
       chose_all: "Elegir todos"
-      clear_all: "Cancelar tudos"
+      clear_all: "Cancelar todos"
       up: "Subir"
       down: "Bajar"
       navigation: "Menú"

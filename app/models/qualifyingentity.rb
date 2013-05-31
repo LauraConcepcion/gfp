@@ -24,7 +24,7 @@ class Qualifyingentity < ActiveRecord::Base
   validates :profile_id, :presence => true
   validates :scores_id, :presence => true
   scope :for_profile, lambda {|profile|
-    where("profile_id = ?", profile.id)
+    where("profile_id = ?", profile.id) if profile
   }
 
   #  def can_be_destroyed?

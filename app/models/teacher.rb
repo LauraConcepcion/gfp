@@ -13,7 +13,12 @@ class Teacher < ActiveRecord::Base
 
   # Devuleve el perfil actual con el que trabaja el usuario
   def current_profile
-    self.profiles.select{|a| a.default == true}.first if self.profiles
+    profile = profiles.detect {|a| a.default == true}
+    unless profile
+      profile = profiles.first
+      profile.update_attribute(:default, true)
+    end
+    profile
   end
 
   # Cambia le perfil actual de la aplicación

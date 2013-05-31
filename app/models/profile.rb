@@ -31,6 +31,6 @@ class Profile < ActiveRecord::Base
   end
 
   def name
-    "#{self.matter.name} - #{self.institute.institute_code} - #{self.trainercycle.name} - #{self.group.name}"
+    "#{self.matter.try(:name)} - #{self.institute.try(:institute_code)} - #{self.trainercycle.try(:name)} - #{self.group.try(:name)}"
   end
 end

@@ -108,7 +108,7 @@ es:
         name: "Nombre"
         created_at: "Creado"
         updated_at: "Actualizado"
-        department: "Departamenton"
+        department: "Departamento"
         aacce: "Comunidad Autónoma"
       score:
         grade: "Nota"
@@ -122,7 +122,7 @@ es:
         updated_at: "Actualizado"
       teacher:
         name: "Nombre"
-        surname: "Nombre"
+        surname: "Apellido"
         code: "Codigo"
         created_at: "Creado"
         updated_at: "Actualizado"

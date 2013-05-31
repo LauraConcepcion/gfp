@@ -3,6 +3,6 @@
     = f.error_notification
   = f.input :name
   //= f.association :classroom  
-  = f.association :contentblocks, collection: current_teacher.current_profile.matter.contentblocks, label_method: :full_name, :input_html => {:class => 'span6'}
+  = f.association :contentblocks, collection: contentblocks_options(current_teacher), label_method: :full_name, input_html: {class: 'span6'}
   = f.button :submit, :class => 'btn-primary'
   = link_to t(:cancel), collection_path, :class => 'btn'
