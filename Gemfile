@@ -14,6 +14,7 @@ gem 'mysql2'
 group :development, :test do
   gem 'debugger'
   gem "rspec-rails", "~> 2.0"
+  gem "railroady"
 end
 
 group :test do
