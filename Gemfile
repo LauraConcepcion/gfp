@@ -8,8 +8,8 @@ gem 'cocoon'
 
 gem 'therubyracer'
 
-#gem 'pg', '=0.13.2'
-gem 'mysql2'
+gem 'pg', '=0.13.2'
+#gem 'mysql2'
 
 group :development, :test do
   gem 'debugger'
