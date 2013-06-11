@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require chosen-jquery
 //= require twitter/bootstrap
 //= require_tree .
 //
@@ -31,4 +32,7 @@ $(document).ready(function(){
     });
     return false;
   });
+
+  // Inicializamos los autocompletar con chosen
+  $(".chzn-select").chosen();
 });

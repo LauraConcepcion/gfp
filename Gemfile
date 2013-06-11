@@ -37,6 +37,7 @@ end
 
 gem 'inherited_resources'
 gem 'jquery-rails'
+gem 'chosen-rails'
 gem 'jquery-ui-rails'
 gem 'rails_admin'
 gem "rails_admin_import", :git => "https://github.com/RaVbaker/rails_admin_import.git"
