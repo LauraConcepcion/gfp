@@ -1,0 +1,10 @@
+= simple_form_for resource do |f|
+  %div.errors
+    = f.error_notification
+  = f.input :name
+  = f.input :firstsurname
+  = f.input :secondsurname
+  = f.input :dni
+  = f.input :phone
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t(:cancel), collection_path, :class => 'btn'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419104053) do
+ActiveRecord::Schema.define(:version => 20130611130817) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -22,19 +22,9 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
 
   create_table "classrooms", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "trainercycle_id"
-    t.integer  "teacher_id"
-    t.integer  "student_id"
-    t.integer  "group_id"
-    t.integer  "matter_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "code_import"
-  end
-
-  create_table "coches", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "contentblocks", :force => true do |t|
@@ -72,7 +62,6 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
     t.string   "name"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.integer  "institute_id"
     t.integer  "aacce_id"
     t.integer  "departmenttype_id"
   end
@@ -113,7 +102,6 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
     t.string   "holder"
     t.string   "nature"
     t.string   "island"
-    t.string   "typecenter"
     t.string   "institute_code"
     t.string   "type_center"
   end
@@ -150,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
     t.integer  "teacher_id"
     t.integer  "group_id"
     t.boolean  "default"
+    t.integer  "classroom_id"
   end
 
   add_index "profiles", ["institute_id"], :name => "index_profiles_on_institute_id"
@@ -218,29 +207,36 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
   end
 
   create_table "students", :force => true do |t|
-    t.string   "nombre"
-    t.string   "apellidos"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "student_code"
+    t.string   "firstsurname"
+    t.string   "secondsurname"
+    t.string   "name"
+    t.string   "dni"
+    t.string   "mail"
+    t.string   "phone"
+    t.integer  "classroom_id"
   end
 
   create_table "teachers", :force => true do |t|
     t.string   "name"
     t.string   "surname"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "teacher_code"
+    t.string   "dni"
+    t.string   "phone"
   end
 
   add_index "teachers", ["email"], :name => "index_teachers_on_email", :unique => true
@@ -248,9 +244,8 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
 
   create_table "tlresults", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "contentblock_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "trainercycles", :force => true do |t|
@@ -259,7 +254,6 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
     t.string   "edition"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.integer  "institute_id"
     t.string   "name"
     t.integer  "trainercycletype_id"
   end
@@ -271,18 +265,18 @@ ActiveRecord::Schema.define(:version => 20130419104053) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

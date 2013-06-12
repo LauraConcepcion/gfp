@@ -1,5 +1,7 @@
 es:
   title: "ForProf"
+  import: "Importar"
+  students_import: "Importar Alumnos desde csv"
   wellcome: "Bienvenido, %{user}"
   are_you_sure?: "¿Está usted seguro?, esta operación no puede deshacerse"
   destroy: "Eliminar"

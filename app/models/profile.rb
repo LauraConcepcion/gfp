@@ -5,6 +5,8 @@ class Profile < ActiveRecord::Base
   belongs_to :matter
   belongs_to :teacher
   belongs_to :group
+  belongs_to :classroom
+
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities
   has_many :qualifyingentities, :dependent => :destroy
   validates :teacher_id, :presence => true
