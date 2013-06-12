@@ -8,6 +8,7 @@ Gfp::Application.routes.draw do
   end
   resources :qualifyingentities
   resources :qualifyingentity_tlresults
+
   resources :teachers do 
     post 'change_current_profile'
     resources :profiles do
@@ -29,12 +30,14 @@ Gfp::Application.routes.draw do
     get 'update_matter', :on => :member
   end
 
-  resources :students do
-    collection { post :import}
+  resources :classrooms do
+    post 'csv_import', :on => :member
   end
 
   resources :institutes
 
+  resources :students
+  
   root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))' 
 

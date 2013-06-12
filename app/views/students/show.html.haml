@@ -1,0 +1,9 @@
+= show_for resource do |item|
+  = item.attribute :name
+  = item.attribute :firstsurname
+  = item.attribute :secondsurname
+
+- if can? :edit, resource
+  = link_to t(:edit), edit_resource_path(resource), :class => 'btn'
+- if can? :destroy, resource
+  = link_to t(:destroy), resource_path(resource), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'btn btn-danger'

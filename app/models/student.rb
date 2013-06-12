@@ -1,7 +1,7 @@
 class Student < ActiveRecord::Base
-  attr_accessible :name, :score_ids, :classroom_ids
+  attr_accessible :name, :firstsurname, :secondsurname, :dni, :phone, :student_code, :score_ids, :classroom_id
   has_many :scores
-  has_many :classrooms
+  belongs_to :classroom
   
   scope :student_list, lambda {|group_id, matter_id, trainercycle_id|
     joins(:classrooms).where('classrooms.group_id = ? and classrooms.matter_id = ? and classrooms.trainercycle_id = ?', group_id, matter_id, trainercycle_id)

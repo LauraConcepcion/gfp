@@ -9,6 +9,7 @@
 //= require chosen-jquery
 //= require twitter/bootstrap
 //= require_tree .
+//= require cocoon
 //
 $(document).ready(function(){
   // Ahora mismo los ciclos formativos no están por instituto
