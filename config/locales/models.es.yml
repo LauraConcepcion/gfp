@@ -6,7 +6,7 @@ es:
         taken: "El valor para este campo debe ser único y ya está en uso."
     models:
       profile: "Perfil"
-      qualifyingentity: "Entidad Calificable"
+      qualifyingentity: "Entidad calificable"
       criterion: "Criterio"
       qualifyingentity_tlresult: "Entidades-REA"
       aacce: "Comunidad autónoma"
@@ -14,7 +14,7 @@ es:
       content: "Contenido"
       contentblock: "Bloque de contenido"
       department: "Departamento"
-      departmenttype: "Tipo de Departamento"
+      departmenttype: "Tipo de departamento"
       group: "Grupo"
       institute: "Instituto"
       matter: "Módulo/Asignatura"
@@ -25,8 +25,8 @@ es:
       student: "Estudiante"
       teacher: "Profesor"
       tlresult: "REA"
-      trainercycle: "Ciclo Formativo"
-      trainercycletype: "Tipo Cicloformativo"
+      trainercycle: "Ciclo formativo"
+      trainercycletype: "Tipo de ciclo formativo"
       user: "usuarios"
     attributes:
       contentblock:

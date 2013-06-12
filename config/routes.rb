@@ -11,11 +11,11 @@ Gfp::Application.routes.draw do
   resources :teachers do 
     post 'change_current_profile'
     resources :profiles do
-      get 'asign_tlresult'
+      get 'asign_tlresult', :on => :member
     end
   end
   resources :qualifyingentities do 
-    get 'put_scores'
+    get 'put_scores', :on => :member
   end
 
   resources :teachers do 
@@ -23,20 +23,23 @@ Gfp::Application.routes.draw do
       resources :qualifyingentities
     end
   end
-  resources :institutes do
-    resources :trainercycles do
-      resource :matters
-    end
+
+  resources :trainercycles do
+    resources :matters
+    get 'update_matter', :on => :member
   end
 
   resources :students do
     collection { post :import}
   end
+
+  resources :institutes
+
   root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))' 
 
-  match 'institutes/update_trainercycle/:id', :controller=>'institutes', :action => 'update_trainercycle'
-  match 'trainercycles/update_matter/:id', :controller=>'trainercycles', :action => 'update_matter'
+  # match 'institutes/update_trainercycle/:id', :controller=>'institutes', :action => 'update_trainercycle'
+  # match 'trainercycles/update_matter/:id', :controller=>'trainercycles', :action => 'update_matter'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
