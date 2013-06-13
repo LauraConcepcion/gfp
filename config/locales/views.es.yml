@@ -4,12 +4,14 @@ es:
   students_import: "Importar Alumnos desde csv"
   wellcome: "Bienvenido, %{user}"
   are_you_sure?: "¿Está usted seguro?, esta operación no puede deshacerse"
+  sign_in: "Inicie sesión"
   destroy: "Eliminar"
   breadcrums:
     application:
       index: "indice"
   edit: "Editar"
   new: "Nuevo"
+  accept: "Aceptar"
   helpers:
     links:
       edit: "Editar"

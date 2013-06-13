@@ -1,6 +1,7 @@
 class ProfilesController < InheritedResources::Base
   before_filter :authenticate_teacher!
-  belongs_to :teacher
+  load_and_authorize_resource
+#  belongs_to :teacher
   respond_to :html, :xml, :json
 
   # def create

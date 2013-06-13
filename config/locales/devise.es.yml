@@ -3,7 +3,7 @@
 es:
   errors:
     messages:
-      expired: "ha expiriado, pof favor entre de nuevo"
+      expired: "ha expirado, pof favor entre de nuevo"
       not_found: "no encontrado"
       already_confirmed: "fue confirmado, por favor tintente validarse"
       not_locked: "no estaba bloqueado"

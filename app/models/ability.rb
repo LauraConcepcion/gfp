@@ -2,8 +2,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-#    if user.kind_of?(Teacher)
-      can :manage, :all
+    if user.teacher?
+      can :manage, Profile, :teacher_id => user.id
+    end
  #   else
       can :access, :rails_admin
       can :import, [User,Institute, Aacce, Department]

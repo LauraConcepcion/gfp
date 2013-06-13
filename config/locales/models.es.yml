@@ -27,7 +27,7 @@ es:
       tlresult: "REA"
       trainercycle: "Ciclo formativo"
       trainercycletype: "Tipo de ciclo formativo"
-      user: "usuarios"
+      user: "Usuarios"
     attributes:
       contentblock:
         name: "Nombre"
@@ -149,7 +149,8 @@ es:
         created_at: "Creado"
         updated_at: "Actualizado"
       user:
-        email: "correo"
+        email: "Email"
+        password: "Contraseña"
       profile:
         matter: "Módulo"
         tlresult: "REA"
