@@ -7,10 +7,16 @@
   = link_to t(:title), "#", :class=>"brand pjax"
   .nav-collapse
     %ul.nav.pull-right
-      %li= link_to Profile.model_name.human, teacher_profiles_path(current_teacher) 
-      %li= link_to Qualifyingentity.model_name.human, qualifyingentities_path()
-      - if current_teacher.profiles
-        %li= link_to QualifyingentityTlresult.model_name.human, asign_tlresult_teacher_profile_path(current_teacher, current_teacher.current_profile) unless current_teacher.current_profile.nil?
+      -# %li= link_to Qualifyingentity.model_name.human, qualifyingentities_path()
+      -# - if current_teacher.profiles
+      -#   %li= link_to QualifyingentityTlresult.model_name.human, asign_tlresult_teacher_profile_path(current_teacher, current_teacher.current_profile) unless current_teacher.current_profile.nil?
+      %li.dropdown
+        = link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" do
+          = t(:setting)
+          %b.caret
+        %ul.dropdown-menu
+          -#%li= link_to Profile.model_name.human, teacher_profiles_path(current_teacher)
+          %li= link_to Classroom.model_name.human, classrooms_path
   #main-navigation
     %ul.nav
       %li.dropdown
@@ -18,5 +24,4 @@
           = current_teacher.email
           %b.caret
         %ul.dropdown-menu
-          %li= link_to t(:edit), edit_teacher_registration_path
           %li= link_to t(:logout), destroy_teacher_session_path, :method => :delete

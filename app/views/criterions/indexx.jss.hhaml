@@ -1,3 +1,0 @@
-:plain
-  $('#reas').html("#{escape_javascript(render(:partial =>"index"))}").dialog('open');
-  $('#reas').dialog();

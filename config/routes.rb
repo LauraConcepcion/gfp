@@ -1,30 +1,26 @@
 Gfp::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  devise_for :teachers
-  resources :criterions
-  resources :tlresults do
-    resources :criterions
-  end
-  resources :qualifyingentities
-  resources :qualifyingentity_tlresults
 
+  devise_for :teachers
+  
+  resources :qualifyingentities
+  
+ # resources :qualifyingentity_tlresults
+
+  resources :profiles
   resources :teachers do 
     post 'change_current_profile'
-    resources :profiles do
-      get 'asign_tlresult', :on => :member
-    end
+#    resources :profiles do
+#      get 'asign_tlresult', :on => :member
+#    end
   end
+
   resources :qualifyingentities do 
     get 'put_scores', :on => :member
   end
 
-  resources :teachers do 
-    resources :profiles do
-      resources :qualifyingentities
-    end
-  end
-
+  # Para realizar select anidados
   resources :trainercycles do
     resources :matters
     get 'update_matter', :on => :member
@@ -34,15 +30,12 @@ Gfp::Application.routes.draw do
     post 'csv_import', :on => :member
   end
 
-  resources :institutes
-
-  resources :students
+  #Ruta para usar en el momento de implementar ajax
+  #resources :institutes
   
   root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))' 
 
-  # match 'institutes/update_trainercycle/:id', :controller=>'institutes', :action => 'update_trainercycle'
-  # match 'trainercycles/update_matter/:id', :controller=>'trainercycles', :action => 'update_matter'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
