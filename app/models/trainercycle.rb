@@ -1,8 +1,9 @@
 class Trainercycle < ActiveRecord::Base
-  attr_accessible :name, :edition, :numanio, :turno, :trainercycletype_id, :matter_ids, :classroom_ids
+  attr_accessible :title, :edition,:description, :family, :cf_id, :cf_des, :cf_archivo, :trainercycletype_id, :matter_ids
+  #, :classroom_ids
   #belongs_to :institute
   belongs_to :trainercycletype
   has_many :matters
-  has_many :classrooms
-  validates :name , :presence => true
+#  has_many :classrooms
+  validates :title , :presence => true
 end

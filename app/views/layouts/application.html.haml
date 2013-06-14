@@ -14,8 +14,11 @@
       //= render_breadcrumbs
       .row-fluid
         .bs-docs-sidebar.profile.affix
-          - if teacher_signed_in?
-            = render "layouts/profile"
+          .blackboard
+            - if teacher_signed_in?
+              = render "layouts/profile"
+            - else
+              = t(:welcome)
         .content
           .content-header
           .content-body

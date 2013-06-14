@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611130817) do
+ActiveRecord::Schema.define(:version => 20130614120539) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(:version => 20130611130817) do
     t.integer  "curso"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-    t.integer  "department_id"
     t.integer  "trainercycle_id"
+    t.integer  "m_id"
   end
 
   create_table "objetive_averages", :force => true do |t|
@@ -125,8 +125,10 @@ ActiveRecord::Schema.define(:version => 20130611130817) do
 
   create_table "objetives", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "o_id"
+    t.integer  "trainercicle_id"
   end
 
   create_table "profiles", :force => true do |t|
@@ -249,13 +251,15 @@ ActiveRecord::Schema.define(:version => 20130611130817) do
   end
 
   create_table "trainercycles", :force => true do |t|
-    t.string   "turno"
-    t.string   "numanio"
-    t.string   "edition"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.string   "name"
     t.integer  "trainercycletype_id"
+    t.string   "cf_id"
+    t.string   "cf_des"
+    t.string   "cf_archivo"
+    t.string   "title"
+    t.string   "description"
+    t.string   "family"
   end
 
   create_table "trainercycletypes", :force => true do |t|

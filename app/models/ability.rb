@@ -5,14 +5,7 @@ class Ability
     if user.teacher?
       can :manage, Profile, :teacher_id => user.id
     end
- #   else
-      can :access, :rails_admin
-      can :import, [User,Institute, Aacce, Department]
-      can :manage, :all
-  #  end
-    # elsif user.kind_of?(Teacher)
-    #   can :dashboard
-    #end
+    
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

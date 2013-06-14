@@ -1,1 +1,13 @@
 %h1= t(:wellcome, :user => current_teacher.full_name)
+%br
+%i.icon-tag
+Cree un perfil para un instituto, ciclo formativo y módulo. Elija el perfil en el que trabajar
+= link_to image_tag("configuracion.png", :border => 0), {:action => 'index', :controller => 'profiles'}
+%br
+%i.icon-tag
+Proceda a gestionar los alumnos de la clase relacionada con su módulo
+= link_to image_tag("cuaderno.png", :border => 0), {:action => 'index', :controller => 'profiles'}
+%br
+%i.icon-tag
+El cuaderno de profesor le permitirá llevar un seguimiento de la clase
+= link_to image_tag("book.png", :border => 0), {:action => 'index', :controller => 'profiles'}
