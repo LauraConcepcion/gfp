@@ -1,11 +1,10 @@
-= simple_form_for [@teacher, @profile], :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for resource, :html => { :class => 'form-horizontal' } do |f|
   = f.association :institute, :input_html => {:class => 'chzn-select'}
   = f.association :trainercycle, :input_html => {:class => 'chzn-select'}
-  - matters = @profile.trainercycle.try(:matters) || []
+  - matters = resource.trainercycle.try(:matters) || []
   = f.association :matter, :collection => matters, :input_html => {:class => 'chzn-select'}
   = f.association :group, :input_html => {:class => 'chzn-select'}
   = f.input :created_at do
-    = l(resource.created_at, :format => :medium)
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), teacher_profiles_path, :class => 'btn'
+    = l(resource.created_at, :format => :medium) if resource.created_at
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t(:cancel), collection_path, :class => 'btn'

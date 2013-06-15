@@ -13,10 +13,10 @@
     .container-fluid
       //= render_breadcrumbs
       .row-fluid
-        .bs-docs-sidebar.profile.affix
+        .bs-docs-sidebar.menu_profiles.affix
           .blackboard
             - if teacher_signed_in?
-              = render "layouts/profile"
+              = render "layouts/menu_profiles"
             - else
               = t(:welcome)
         .content

@@ -19,12 +19,16 @@ body {
   background: url(noisy_grid.png) repeat center left fixed;
 }
 
-div.profile {
+div.blackboard{
+  width: 75%;
+}
+div.menu_profiles {
   background: url(pizarra.png) no-repeat fixed left 50px transparent;
   width: 28%;
   min-height: 300px;
   float: left;
-  padding: 65px 0 0 20px;
+  padding: 120px 0 0 20px;
+  color: white;
 }
 div.content {
   width: 70%;
@@ -37,4 +41,5 @@ div.content-header {
 div.content-body {
   background: none repeat scroll 0 0 white;
   padding: 5px 20px;
+  min-height: 400px;
 }
