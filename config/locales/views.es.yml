@@ -12,6 +12,8 @@ es:
   edit: "Editar"
   new: "Nuevo"
   accept: "Aceptar"
+  add: "Añadir"
+  remove: "Quitar"
   helpers:
     links:
       edit: "Editar"

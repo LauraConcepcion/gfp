@@ -18,7 +18,17 @@ class QualifyingentitiesController < InheritedResources::Base
   end
 
   def edit
+    @qualifyingentity = Qualifyingentity.find(params[:id])
     get_profile_data
+  end
+
+  def update
+    update! do |success, failure|
+      failure.html do
+        get_profile_data
+        render :new
+      end
+    end
   end
 
   def put_scores

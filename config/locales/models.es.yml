@@ -74,6 +74,7 @@ es:
         updated_at: "Actualizado"
         classroom: "Clase"
         profile: "Perfil"     
+        qualifyingentity_tlresults: "REAs calificados"
       qualifyingentity_tlresult:
         qualifyingentity: "Entidad Calificable"
         tlresult: "REA"

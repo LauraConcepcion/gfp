@@ -3,11 +3,11 @@
     = f.error_notification
   = f.input :name
   = f.association :profile, :as => :hidden
-  %h3= t(:qualifyingentity_tlresults)
+  %h3= Qualifyingentity.human_attribute_name(:qualifyingentity_tlresults)
   #qualifyingentity_tlresults.cocoon_with_chzn
     = f.simple_fields_for :qualifyingentity_tlresults do |qualifyingentity_tlresult|
       = render 'qualifyingentity_tlresult_fields', :f => qualifyingentity_tlresult
     .links
-      = link_to_add_association t(:add_qualifyingentity_tlresult), f, :qualifyingentity_tlresults
+      = link_to_add_association t(:add), f, :qualifyingentity_tlresults
   = f.button :submit, :class => 'btn-primary'
   = link_to t(:cancel), collection_path, :class => 'btn'

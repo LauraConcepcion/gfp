@@ -26,6 +26,7 @@ class Qualifyingentity < ActiveRecord::Base
   validates :name, :presence => true
   validates :profile_id, :presence => true
   #validates :score_ids, :presence => true
+  validates_associated :qualifyingentity_tlresults
 
   scope :for_profile, lambda {|profile|
     where("profile_id = ?", profile.id) if profile
