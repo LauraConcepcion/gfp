@@ -46,6 +46,7 @@ div.content-body {
 div.cocoon_with_chzn {
   div.nested-fields {
     clear: both;
+    padding-left: 10px;
     .control-group {
       float: left;
       margin-bottom: 2px;
@@ -63,5 +64,7 @@ div.cocoon_with_chzn {
   }
   div.links {
     margin-bottom: 10px;
+    padding-left: 10px;
+    clear: both;
   }
 }
