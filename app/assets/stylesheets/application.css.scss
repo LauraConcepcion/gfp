@@ -43,3 +43,25 @@ div.content-body {
   padding: 5px 20px;
   min-height: 400px;
 }
+div.cocoon_with_chzn {
+  div.nested-fields {
+    clear: both;
+    .control-group {
+      float: left;
+      margin-bottom: 2px;
+      margin-right: 10px;
+      label {
+        display: none;
+      }
+    }
+    &:first-child label {
+      display: block;
+    }
+    & + div.links {
+      clear: both;
+    }
+  }
+  div.links {
+    margin-bottom: 10px;
+  }
+}

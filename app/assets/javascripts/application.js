@@ -37,6 +37,10 @@ $(document).ready(function(){
     return false;
   });
 
-  // Inicializamos los autocompletar con chosen
+  // Inicializamos los autocompletar con chosen.
   $(".chzn-select").chosen();
+  // También después de insertar un cocoon.
+  $(".cocoon_with_chzn").bind('cocoon:after-insert', function() {
+    $(this).find(".chzn-select").chosen();
+  })
 });
