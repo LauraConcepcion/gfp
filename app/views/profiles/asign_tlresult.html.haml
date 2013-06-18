@@ -1,11 +1,20 @@
-= simple_form_for [@teacher,@profile] do |f|
-  = f.simple_fields_for :qualifyingentities do |qe|
-    .span 
-      .span3= qe.input :name, :readonly => true
-      .span6
-        = qe.simple_fields_for :qualifyingentity_tlresults do |qc|
-          .left= qc.association :tlresult, :readonly => true
-          .span3
-            = link_to Criterion.model_name.human.pluralize, tlresult_criterions_path(qc.object.tlresult_id), :remote =>true
-          = qc.input :percentage, :input_html => {:class => 'span2'}
-  = f.submit
+= simple_form_for resource do |f|
+  %table
+    %thead
+      %th.name= "#{I18n.t(:qualifyingentity, :scope => 'activerecord.models')} / #{I18n.t(:tlresult, :scope => 'activerecord.models')}"
+      - @tlresults.each do |tlr|
+        %th.tlresult= tlr.name
+    %tbody
+      = f.simple_fields_for :qualifyingentities do |qe|
+        %tr
+          = show_for qe.object do |qe_show|
+            %td.name= qe_show.attribute :name, :label => false
+              - @tlresults.each do |tlr|
+                - if qe.object.tlresults.include?(tlr)
+                  - qe_tlr = qe.object.qualifyingentity_tlresults.where(:tlresult_id => tlr)
+                  = qe.simple_fields_for :qualifyingentity_tlresults, qe_tlr do |qc|
+                    %td
+                      = qc.input :percentage, :input_html => {:class => 'span4'}, :label => false
+                - else
+                  %td.empty= 'N/A'
+= f.submit

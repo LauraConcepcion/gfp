@@ -4,17 +4,27 @@
   = f.input :name
   = f.association :profiles
   %h3= Student.model_name.pluralize
-  #students
-    = f.simple_fields_for :students do |detail|
-      = render 'student_fields', :f => detail
-    .links
-      = link_to_add_association 'add_student', f, :students
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= Student.human_attribute_name(:name)
+        %th= Student.human_attribute_name(:firstsurname)
+        %th= Student.human_attribute_name(:secondsurname)
+        %th= Student.human_attribute_name(:dni)
+        %th= Student.human_attribute_name(:phone)
+    %tbody
+      #students.cocoon_with_chzn
+        = f.simple_fields_for :students do |detail|
+          %tr= render 'student_fields', :f => detail
+        .links
+          = link_to_add_association 'add_student', f, :students
   #actions_form
     = f.button :submit
     = link_to t(:cancel), collection_path, :class => 'btn'
 
 - unless resource.new_record?
   %h3= t(:students_import)
+  = link_to t(:example), "alumnos_ejemplo.csv"
   = form_tag csv_import_classroom_path(resource), :multipart => true do
     = file_field_tag :file, :accept => "text/csv"
     = submit_tag t(:import), :class => 'btn'

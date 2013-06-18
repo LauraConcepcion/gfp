@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614120539) do
+ActiveRecord::Schema.define(:version => 20130618093720) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -245,9 +245,11 @@ ActiveRecord::Schema.define(:version => 20130614120539) do
   add_index "teachers", ["reset_password_token"], :name => "index_teachers_on_reset_password_token", :unique => true
 
   create_table "tlresults", :force => true do |t|
-    t.string   "name"
+    t.text     "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "matter_id"
+    t.string   "rayce_id"
   end
 
   create_table "trainercycles", :force => true do |t|

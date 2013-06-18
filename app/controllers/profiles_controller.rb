@@ -6,7 +6,8 @@ class ProfilesController < InheritedResources::Base
 
   def asign_tlresult
     @profile = Profile.find(params[:id])
-    @tlresults = @profile.tlresults.uniq
+    #    @tlresult = @profile.
+      tlresults.uniq
     #if @profile.qualifyingentity_tlresults.blank?
     #  @profile.asign_tlresults
     #end

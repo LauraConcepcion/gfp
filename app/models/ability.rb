@@ -4,6 +4,8 @@ class Ability
   def initialize(user)
     if user.teacher?
       can :manage, Profile, :teacher_id => user.id
+      can :manage, Qualifyingentity, :profile_id => user.current_profile.id
+      can :manage, Classroom
     end
     
     # Define abilities for the passed in user here. For example:

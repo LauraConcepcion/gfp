@@ -3,7 +3,7 @@ class Matter < ActiveRecord::Base
   has_many :profiles
   has_many :contentblocks
   # FIXME Por ahora los asociamos a través de contentblocks pero luego serán directos seguramente
-  has_many :tlresults, :through => :contentblocks
+  has_many :tlresults
   belongs_to :trainercycle
   validates :name , :presence => true
 

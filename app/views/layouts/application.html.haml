@@ -15,10 +15,13 @@
       .row-fluid
         .bs-docs-sidebar.menu_profiles.affix
           .blackboard
-            - if teacher_signed_in?
+            - if teacher_signed_in? && current_page?(root_path) 
               = render "layouts/menu_profiles"
             - else
-              = t(:welcome)
+              - if teacher_signed_in? && !current_page?(root_path)
+                = render "layouts/menu_profiles"
+              - else
+                = t(:welcome)
         .content
           .content-header
           .content-body
@@ -26,6 +29,7 @@
               %div.alert.alert-success= notice
             -if alert
               %div.alert.fade.in= alert
+            %h1= yield :title
             = yield
     #version= t(:version_x, :version => '0')
 

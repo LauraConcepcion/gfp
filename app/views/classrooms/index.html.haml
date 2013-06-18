@@ -1,25 +1,25 @@
 - content_for :title, Classroom.model_name.human.pluralize
-
-%table
+%table.table.table-striped
   %thead
-    %th= sort_link @q, :name, Classroom.human_attribute_name(:name)
-    %th= t(:profiles)
-    %th= sort_link @q, :created_at, Classroom.human_attribute_name(:created_at)
-    %th= t(:actions)
+    %tr
+      %th= sort_link @q, :name, Classroom.human_attribute_name(:name)
+      %th= t(:profiles)
+      %th= sort_link @q, :created_at, Classroom.human_attribute_name(:created_at)
+      %th= t(:actions)
   %tbody
-    - collection.each do |resource|
-      = content_tag_for(:tr, resource, :class => cycle(:odd, :even)) do
-        %td= resource.try(:name)
+    - collection.each do |item|
+      %tr
+        %td= item.try(:name)
         %td
-          - resource.association :profiles do
-            - resource.profiles.each do |profile|
-              %br= profile.name
-        %td= l(resource.created_at, :format => :short)
+          - item.profiles.each do |profile|
+            %br= profile.name
+        %td= l(item.created_at, :format => :short)
         %td
-          - if can? :read, resource
-            = link_to t(:edit), edit_resource_path(resource), :class => 'btn btn-mini'
-%div.actions_list
-  -if can? :create, Classroom
-    = link_to t(:add), new_resource_path, :class => 'btn'
+          - if can? :edit, item
+            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
+          - if can? :destroy, item
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+- if can? :create, Classroom
+  = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
 
 = paginate collection

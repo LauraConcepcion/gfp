@@ -8,12 +8,12 @@ Gfp::Application.routes.draw do
   
  # resources :qualifyingentity_tlresults
 
-  resources :profiles
+  resources :profiles do
+    get 'asign_tlresult', :on => :member
+  end
+  
   resources :teachers do 
     post 'change_current_profile'
-#    resources :profiles do
-#      get 'asign_tlresult', :on => :member
-#    end
   end
 
   resources :qualifyingentities do 

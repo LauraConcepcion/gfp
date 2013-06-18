@@ -31,8 +31,10 @@ div.menu_profiles {
   color: white;
 }
 div.content {
-  width: 70%;
+  display: inline-block;
   float: right;
+  width: 70%;
+
 }
 div.content-header {
   background: url("foliosuperior.png") repeat;

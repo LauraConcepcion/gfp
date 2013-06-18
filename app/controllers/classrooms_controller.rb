@@ -38,7 +38,7 @@ class ClassroomsController < InheritedResources::Base
       end
     end
     respond_to do |format|
-      format.html { redirect_to classrooms_path, :notice => "Successfully imported the CSV file. #{e}" }
+      format.html { redirect_to edit_classrooms_path, :notice => "Successfully imported the CSV file. #{e}" }
     end
   end
 

@@ -15,8 +15,10 @@
           = t(:setting)
           %b.caret
         %ul.dropdown-menu
-          -#%li= link_to Profile.model_name.human, teacher_profiles_path(current_teacher)
-          %li= link_to Classroom.model_name.human, classrooms_path
+          %li= link_to Profile.model_name.human.pluralize, profiles_path
+          %li= link_to Classroom.model_name.human.pluralize, classrooms_path
+          %li= link_to Qualifyingentity.model_name.human.pluralize, qualifyingentities_path
+          -# %li= link_to QualifyingentityTlresult.model_name.human.pluralize, qualifyingentity_tlresult_path
   #main-navigation
     %ul.nav
       %li.dropdown

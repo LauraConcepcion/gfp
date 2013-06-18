@@ -1,23 +1,24 @@
 .page-header
-  %h1=t '.title', :default => Qualifyingentity.model_name.human.pluralize
+  %h1= Qualifyingentity.model_name.human.pluralize
 %table.table.table-striped
   %thead
     %tr
       %th= Qualifyingentity.human_attribute_name(:name)
-      %th= Qualifyingentity.human_attribute_name(:classroom)
-      %th= Qualifyingentity.human_attribute_name(:contentblock)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - collection.each do |resource|
-      = content_tag_for(:tr, resource) do
-        %td= resource.try(:name)
-        %td= resource.classroom.try(:name)
+      %th= Matter.model_name.human
+      %th= Tlresult.model_name.human.pluralize
+      %th= t(:actions)
+    %tbody
+    - collection.each do |item|
+      = content_tag_for(:tr, item) do
+        %td= item.try(:name)
+        %td= item.profile.matter.try(:name)
         %td
-          - resource.contentblocks.each do |cb|
-            = cb.try(:name)
+          - item.tlresults.each do |rea|
+            = rea.try(:name)
         %td
-          = link_to t(:edit), edit_resource_path(resource), :class => 'btn btn-mini'
-          = link_to t(:destroy), resource_path(resource), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'btn btn-mini btn-danger'
-= link_to t(:new), new_resource_path, :class => 'btn btn-primary'
-
-
+          - if can? :edit, item
+            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
+          - if can? :destroy, item
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+- if can? :create, Qualifyingentity
+  = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
