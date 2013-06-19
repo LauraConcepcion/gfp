@@ -22,3 +22,5 @@
             = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
 - if can? :create, Qualifyingentity
   = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
+- if can? :read, Qualifyingentity
+  = link_to t(:tlresults), asign_tlresult_profile_path(current_teacher.current_profile), :class => 'btn'
