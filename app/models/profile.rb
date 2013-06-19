@@ -7,8 +7,8 @@ class Profile < ActiveRecord::Base
   belongs_to :group
   belongs_to :classroom
 
-  has_many :qualifyingentity_tlresults, :through => :qualifyingentities
-  has_many :qualifyingentities, :dependent => :destroy
+  has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'created_at ASC'
+  has_many :qualifyingentities, :dependent => :destroy, :order => 'created_at ASC'
   validates :teacher_id, :presence => true
   validates :institute_id, :presence => true
   validates :trainercycle_id, :presence => true
@@ -34,5 +34,13 @@ class Profile < ActiveRecord::Base
 
   def name
     "#{self.matter.try(:name)} - #{self.institute.try(:institute_code)} - #{self.trainercycle.try(:title)} - #{self.group.try(:name)}"
+  end
+
+  def tlresults
+    tlresults = []
+    self.qualifyingentity_tlresults.each do |qt|
+      tlresults << qt.tlresult 
+    end
+    tlresults.uniq!
   end
 end

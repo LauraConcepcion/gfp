@@ -1,14 +1,19 @@
+.page-header
+  %h1= QualifyingentityTlresult.model_name.human.pluralize
 = simple_form_for resource do |f|
-  %table
+  %table.table.table-striped
     %thead
       %th.name= "#{I18n.t(:qualifyingentity, :scope => 'activerecord.models')} / #{I18n.t(:tlresult, :scope => 'activerecord.models')}"
       - @tlresults.each do |tlr|
-        %th.tlresult= tlr.name
+        %th.tlresult
+          = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name , "title" => "Detalle" do
+            = truncate(tlr.name)
     %tbody
       = f.simple_fields_for :qualifyingentities do |qe|
         %tr
           = show_for qe.object do |qe_show|
-            %td.name= qe_show.attribute :name, :label => false
+            %td.name
+              = link_to qe_show.object.name, edit_qualifyingentity_path(qe_show.object)
               - @tlresults.each do |tlr|
                 - if qe.object.tlresults.include?(tlr)
                   - qe_tlr = qe.object.qualifyingentity_tlresults.where(:tlresult_id => tlr)
@@ -17,4 +22,4 @@
                       = qc.input :percentage, :input_html => {:class => 'span4'}, :label => false
                 - else
                   %td.empty= 'N/A'
-= f.submit
+  = f.submit

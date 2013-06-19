@@ -43,4 +43,7 @@ $(document).ready(function(){
   $(".cocoon_with_chzn").bind('cocoon:after-insert', function() {
     $(this).find(".chzn-select").chosen();
   })
+  //popovers
+  $('.pop-over').popover();
+  $('.tool-tip').tooltip();
 });
