@@ -1,16 +1,16 @@
 .page-header
   %h1= QualifyingentityTlresult.model_name.human.pluralize
 = simple_form_for resource do |f|
-  %table.table.table-striped
+  %table.table.table-striped#qualifyingentities_table
     %thead
       %th.name= "#{I18n.t(:qualifyingentity, :scope => 'activerecord.models')} / #{I18n.t(:tlresult, :scope => 'activerecord.models')}"
       - @tlresults.each do |tlr|
-        %th.tlresult
+        %th{:class => "tlresult_"+"#{tlr.id}"}
           = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name , "title" => "Detalle" do
             = truncate(tlr.name)
     %tbody
       = f.simple_fields_for :qualifyingentities do |qe|
-        %tr
+        %tr.sumable
           = show_for qe.object do |qe_show|
             %td.name
               = link_to qe_show.object.name, edit_qualifyingentity_path(qe_show.object)
@@ -19,7 +19,12 @@
                   - qe_tlr = qe.object.qualifyingentity_tlresults.where(:tlresult_id => tlr)
                   = qe.simple_fields_for :qualifyingentity_tlresults, qe_tlr do |qc|
                     %td
-                      = qc.input :percentage, :input_html => {:class => 'span4'}, :label => false
+                      = qc.input :percentage, :input_html => {:class => 'span3 tlresult_'+"#{tlr.id}", :onchange => 'window.calculatePercentageColumn(this);'}, :label => false
                 - else
                   %td.empty= 'N/A'
+      %tr
+        %td
+        - @tlresults.each do |tlr|
+          %td.tlresult
+            %span{:id => "total_tlresult_"+"#{tlr.id}"}
   = f.submit

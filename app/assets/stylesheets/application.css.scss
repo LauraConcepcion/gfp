@@ -23,6 +23,7 @@ div.blackboard{
   width: 75%;
 }
 div.menu_profiles {
+  display: none;
   background: url(pizarra.png) no-repeat fixed left 50px transparent;
   width: 28%;
   min-height: 300px;
@@ -30,11 +31,15 @@ div.menu_profiles {
   padding: 120px 0 0 20px;
   color: white;
 }
+
 div.content {
   display: inline-block;
   float: right;
-  width: 70%;
+  width: 100%;
+}
 
+.icon:before {
+  content: none;
 }
 div.content-header {
   background: url("foliosuperior.png") repeat;

@@ -46,4 +46,22 @@ $(document).ready(function(){
   //popovers
   $('.pop-over').popover();
   $('.tool-tip').tooltip();
+
+  //Si estamos en inicio sesión se debe mostrar la pizarra
+
+  if ((window.location.pathname == "/teachers/sign_in") || (window.location.pathname =="/")){
+      $('div.menu_profiles').show(1000);
+      $("div.content").css("width", "75%");
+  }
+
+  //mostrar o no la pizarra de los perfiles
+  $('.show_hide').click(function(){
+    if ($(".menu_profiles").is(':visible')){
+      $('div.menu_profiles').hide("fast");
+      $("div.content").css("width", "100%");
+    }else{
+      $('div.menu_profiles').show(1000);
+      $("div.content").css("width", "75%");
+    }
+  });
 });

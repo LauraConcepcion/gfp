@@ -1,11 +1,11 @@
-!!! 
-%html 
+!!!
+%html
   %head
     %title ForProf
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body     
+  %body
     .navbar.navbar-fixed-top
       .navbar-inner
         - if teacher_signed_in?
@@ -13,15 +13,14 @@
     .container-fluid
       //= render_breadcrumbs
       .row-fluid
-        .bs-docs-sidebar.menu_profiles.affix
-          .blackboard
-            - if teacher_signed_in? && current_page?(root_path) 
+        - if teacher_signed_in?
+          .bs-docs-sidebar.menu_profiles.affix
+            .blackboard
               = render "layouts/menu_profiles"
-            - else
-              - if teacher_signed_in? && !current_page?(root_path)
-                = render "layouts/menu_profiles"
-              - else
-                = t(:welcome)
+        - else
+          .bs-docs-sidebar.menu_profiles.affix
+            .blackboard
+              = t(:welcome)
         .content
           .content-header
           .content-body
@@ -31,7 +30,8 @@
               %div.alert.fade.in= alert
             %h1= yield :title
             = yield
-    #version= t(:version_x, :version => '0')
+  %footer
+    = t(:version_x, :version => '0')
 
 
 
