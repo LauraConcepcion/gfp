@@ -1,5 +1,5 @@
-.nested-fields
-  = f.association :tlresult, :collection => @tlresults, :input_html => { :class => 'chzn-select' }
+%tr.nested-fields
+  %td= f.association :tlresult, :collection => @tlresults, :label => false, :input_html => { :class => 'chzn-select' }
   -# = link_to Criterion.model_name.human.pluralize, tlresult_criterions_path(qc.object.tlresult_id), :remote =>true
-  = f.input :percentage
-  = link_to_remove_association t(:remove), f
+  %td= f.input :percentage, :label => false
+  %td= link_to_remove_association t(:remove), f, :class => 'ui-icon ui-icon-trash'

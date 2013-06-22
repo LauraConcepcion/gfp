@@ -4,10 +4,15 @@
   = f.input :name
   = f.association :profile, :as => :hidden
   %h3= Qualifyingentity.human_attribute_name(:qualifyingentity_tlresults)
-  #qualifyingentity_tlresults.cocoon_with_chzn
-    = f.simple_fields_for :qualifyingentity_tlresults do |qualifyingentity_tlresult|
-      = render 'qualifyingentity_tlresult_fields', :f => qualifyingentity_tlresult
-    .links
-      = link_to_add_association t(:add), f, :qualifyingentity_tlresults
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= QualifyingentityTlresult.human_attribute_name(:tlresult)
+        %th= QualifyingentityTlresult.human_attribute_name(:percentage)
+    %tbody#qualifyingentity_tlresults.cocoon_with_chzn
+      = f.simple_fields_for :qualifyingentity_tlresults do |qualifyingentity_tlresult|
+        = render 'qualifyingentity_tlresult_fields', :f => qualifyingentity_tlresult
+      %tr.links
+        %td{:colspan => 99}= link_to_add_association t(:add), f, :qualifyingentity_tlresults, "data-association-insertion-node" => ".links", :class => 'btn'
   = f.button :submit, :class => 'btn-primary'
   = link_to t(:cancel), collection_path, :class => 'btn'
