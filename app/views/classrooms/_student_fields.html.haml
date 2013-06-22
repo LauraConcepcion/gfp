@@ -1,7 +1,7 @@
-.nested-fields
-  %td= f.input :name, label: false 
-  %td= f.input :firstsurname, label: false 
-  %td= f.input :secondsurname, label: false 
-  %td= f.input :dni,label: false 
-  %td= f.input :phone,label: false 
-  %td= link_to_remove_association t(:remove_detail), f, :class => "ui-icon ui-icon-trash"
+%tr.nested-fields
+  %td= f.input :name, label: false
+  %td= f.input :firstsurname, label: false
+  %td= f.input :secondsurname, label: false
+  %td= f.input :dni, label: false
+  %td= f.input :phone, label: false
+  %td= link_to_remove_association t(:remove_detail), f, class: "ui-icon ui-icon-trash"

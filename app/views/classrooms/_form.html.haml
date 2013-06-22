@@ -12,12 +12,11 @@
         %th= Student.human_attribute_name(:secondsurname)
         %th= Student.human_attribute_name(:dni)
         %th= Student.human_attribute_name(:phone)
-    %tbody
-      #students.cocoon_with_chzn
-        = f.simple_fields_for :students do |detail|
-          %tr= render 'student_fields', :f => detail
-        .links
-          = link_to_add_association 'add_student', f, :students
+    %tbody#students.cocoon_with_chzn
+      = f.simple_fields_for :students do |student|
+        = render 'student_fields', :f => student
+      %tr.links
+        %td{:colspan => 99}= link_to_add_association t(:add_detail), f, :students, "data-association-insertion-node" => ".links", :class => 'btn'
   #actions_form
     = f.button :submit
     = link_to t(:cancel), collection_path, :class => 'btn'

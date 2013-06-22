@@ -9,6 +9,6 @@ class Classroom < ActiveRecord::Base
   has_many :qualifyingentities
   has_many :objetive_averages
 
-  accepts_nested_attributes_for :students, :allow_destroy => true
+  accepts_nested_attributes_for :students, :allow_destroy => true, :reject_if => :all_blank
 
 end
