@@ -3,13 +3,16 @@ Gfp::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   devise_for :teachers
-  
+
   resources :qualifyingentities
-  
+
  # resources :qualifyingentity_tlresults
 
   resources :profiles do
-    get 'asign_tlresult', :on => :member
+    get 'edit_tlresults', :on => :member
+    put 'update_tlresults', :on => :member
+    get 'edit_scores', :on => :member
+    put 'update_scores', :on => :member
   end
   
   resources :teachers do 

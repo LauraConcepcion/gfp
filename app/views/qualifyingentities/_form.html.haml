@@ -2,6 +2,7 @@
   %div.errors
     = f.error_notification
   = f.input :name
+  = f.input :date, :as => :string#, :input_html => { :class => 'datepicker' }
   = f.association :profile, :as => :hidden
   %h3= Qualifyingentity.human_attribute_name(:qualifyingentity_tlresults)
   %table.table.table-striped

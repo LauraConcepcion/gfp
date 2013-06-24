@@ -24,6 +24,10 @@ $(document).ready(function(){
   //     return false;
   // });
 
+  // Inicializamos datepickers
+  $.datepicker.setDefaults( $.datepicker.regional[ "es" ] );
+  $('.datepicker').datepicker();
+
   $("#profile_trainercycle_id").change(function() {
     var provenance = $('#profile_trainercycle_id');
     $.getJSON('/trainercycles/' + (provenance.val() || 0) + '/update_matter/', function(matters) {

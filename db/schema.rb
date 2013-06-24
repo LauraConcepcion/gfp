@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618093720) do
+ActiveRecord::Schema.define(:version => 20130624112520) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20130618093720) do
     t.datetime "updated_at",   :null => false
     t.integer  "classroom_id"
     t.integer  "profile_id"
+    t.date     "date"
   end
 
   create_table "qualifyingentity_criterions", :force => true do |t|

@@ -3,6 +3,6 @@ class QualifyingentityTlresult < ActiveRecord::Base
   belongs_to :qualifyingentity
   belongs_to :tlresult
 
-  validates :percentage, :presence => true
+  validates :tlresult_id, :percentage, :presence => true
   validates_uniqueness_of :tlresult_id, :scope => :qualifyingentity_id
 end

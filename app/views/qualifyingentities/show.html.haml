@@ -1,5 +1,6 @@
 = show_for resource do |item|
   = item.attribute :name
+  = item.attribute :date
   = item.association :classroom
   = item.association :tlresults
 = link_to t(:back), collection_path, :class => 'btn'

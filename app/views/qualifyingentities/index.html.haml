@@ -23,4 +23,4 @@
 - if can? :create, Qualifyingentity
   = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
 - if can? :read, Qualifyingentity
-  = link_to t(:tlresults), asign_tlresult_profile_path(current_teacher.current_profile), :class => 'btn'
+  = link_to t(:tlresults), edit_tlresults_profile_path(current_teacher.current_profile), :class => 'btn'

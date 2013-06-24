@@ -1,13 +1,13 @@
 class Qualifyingentity < ActiveRecord::Base
-  attr_accessible :name, :profile_id, :qualifyingentity_tlresults_attributes
+  attr_accessible :name, :date, :profile_id, :qualifyingentity_tlresults_attributes, :scores_attributes
   
   #Mediante profile se determina la asignatura para la que se están creando las entidades calificables
   belongs_to :profile
   #Relación con los tlresult y sus porcentajes
   has_many :qualifyingentity_tlresults
   has_many :tlresults, :through => :qualifyingentity_tlresults
-
   has_many :scores
+
   #FIXME: queda pendiente determinar las relaciones con los alumnos
   belongs_to :classroom
    #FIXME: revisar más adelante
@@ -17,10 +17,10 @@ class Qualifyingentity < ActiveRecord::Base
   has_and_belongs_to_many :contentblocks
 
   #accepts_nested_attributes_for :qualifyingentity_criterions, :reject_if => :all_blank, :allow_destroy => true 
-  accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
-  accepts_nested_attributes_for :scores
+  accepts_nested_attributes_for :qualifyingentity_tlresults, :scores, :reject_if => :all_blank, :allow_destroy => true
 
-  #  before_destroy :can_be_destroyed?
+  # before_destroy :can_be_destroyed?
+  #FIXME Necesario?
   after_save :create_qualifyingentity_tlresults
 
   validates :name, :presence => true

@@ -1,0 +1,33 @@
+.page-header
+  %h1= QualifyingentityTlresult.model_name.human.pluralize
+= simple_form_for resource, :url => update_tlresults_profile_path(resource), :html => {:method => 'put'} do |f|
+  %div.errors
+    = f.error_notification
+  %table.table.table-striped#qualifyingentities_table
+    %thead
+      %th.name= "#{I18n.t(:qualifyingentity, :scope => 'activerecord.models')} / #{I18n.t(:tlresult, :scope => 'activerecord.models')}"
+      - resource.tlresults.uniq.each do |tlr|
+        %th{:class => "tlresult_"+"#{tlr.id}"}
+          = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name , "title" => "Detalle" do
+            = truncate(tlr.name)
+    %tbody
+      - resource.qualifyingentities.each do |qe|
+        %tr.sumable
+          = show_for qe do |qe_show|
+            %td.name
+              = link_to qe.name, edit_qualifyingentity_path(qe)
+            - # Recorremos todos los qe_tlr del resource para crear los huecos N/A en la tabla
+            - resource.tlresults.uniq.each do |tlr|
+              - if qe.tlresults.include?(tlr)
+                - qe_tlr = resource.qualifyingentity_tlresults.detect {|qe_tlr| qe_tlr.qualifyingentity_id == qe.id && qe_tlr.tlresult == tlr}
+                = f.simple_fields_for 'qualifyingentity_tlresults', qe_tlr do |qe_tlr_form|
+                  %td
+                    = qe_tlr_form.input :percentage, :input_html => {:class => 'span3 tlresult_'+"#{tlr.id}", :onchange => 'window.calculatePercentageColumn(this);'}, :label => false
+              - else
+                %td.empty= 'N/A'
+      %tr
+        %td
+        - resource.tlresults.uniq.each do |tlr|
+          %td.tlresult
+            %span{:id => "total_tlresult_"+"#{tlr.id}"}
+  = f.submit
