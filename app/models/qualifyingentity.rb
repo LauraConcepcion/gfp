@@ -17,7 +17,8 @@ class Qualifyingentity < ActiveRecord::Base
   has_and_belongs_to_many :contentblocks
 
   #accepts_nested_attributes_for :qualifyingentity_criterions, :reject_if => :all_blank, :allow_destroy => true 
-  accepts_nested_attributes_for :qualifyingentity_tlresults, :scores, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :scores, :reject_if => :all_blank, :allow_destroy => true
 
   # before_destroy :can_be_destroyed?
   #FIXME Necesario?
@@ -25,7 +26,8 @@ class Qualifyingentity < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :profile_id, :presence => true
-  #validates :score_ids, :presence => true
+
+  validates_associated :scores
   validates_associated :qualifyingentity_tlresults
 
   scope :for_profile, lambda {|profile|

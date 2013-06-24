@@ -14,14 +14,12 @@ Gfp::Application.routes.draw do
     get 'edit_scores', :on => :member
     put 'update_scores', :on => :member
   end
-  
-  resources :teachers do 
+
+  resources :teachers do
     post 'change_current_profile'
   end
 
-  resources :qualifyingentities do 
-    get 'put_scores', :on => :member
-  end
+  resources :qualifyingentities
 
   # Para realizar select anidados
   resources :trainercycles do
@@ -35,9 +33,9 @@ Gfp::Application.routes.draw do
 
   #Ruta para usar en el momento de implementar ajax
   #resources :institutes
-  
+
   root :to => "pages#home"
-  match ':controller(/:action(/:id(.:format)))' 
+  match ':controller(/:action(/:id(.:format)))'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

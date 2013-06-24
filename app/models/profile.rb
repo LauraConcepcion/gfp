@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :institute_id,:teacher_id ,:trainercycle_id, :matter_id, :criterion_ids, :qualifyingentity_ids, :qualifyingentity_tlresult_ids, :qualifyingentity_tlresults_attributes, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes
+  attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentity_tlresults_attributes, :scores_attributes
   belongs_to :institute
   belongs_to :trainercycle
   belongs_to :matter
@@ -19,8 +19,10 @@ class Profile < ActiveRecord::Base
   validates :group_id, :presence => true
 
   validates_associated :qualifyingentity_tlresults
+  validates_associated :scores
 
   accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :scores, :reject_if => :all_blank, :allow_destroy => true
 
   scope :active, lambda {|teacher_id|
     where(:default => true, :teacher_id => teacher_id) unless teacher_id.nil?

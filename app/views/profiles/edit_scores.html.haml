@@ -1,0 +1,20 @@
+.page-header
+  %h1= Score.model_name.human.pluralize
+= simple_form_for resource, :url => update_scores_profile_path(resource), :html => {:method => 'put'} do |f|
+  .errors
+    = f.error_notification
+  %table
+    %thead
+      %th= Student.human_attribute_name(:name)
+      - resource.qualifyingentities.each do |qualifyingentity|
+        %th= qualifyingentity.name
+    %tbody
+      - resource.classroom.students.each do |student|
+        %tr
+          = show_for student do |student_show|
+            %td= student_show.attribute :name, :label => false
+          - resource.qualifyingentities.each do |qualifyingentity|
+            - score = resource.scores.detect {|r_score| r_score.qualifyingentity_id == qualifyingentity.id && r_score.student == student}
+            = f.simple_fields_for 'scores', score do |score_form|
+              %td= score_form.input :grade
+  = f.submit
