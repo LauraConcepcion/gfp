@@ -13,15 +13,14 @@ class ProfilesController < InheritedResources::Base
   end
 
   def edit_scores
-    students = resource.classroom.students
-    qualifyingentities = resource.qualifyingentities
-    students.each do |student|
-      qualifyingentities.each do |qualifyingentity|
-        score = resource.scores.where(:qualifyingentity_id => qualifyingentity.id, :student_id => student.id).first
-        # Creamos el score vacío si no existiera para ese alumno y entidad calificable
-        # TODO No se puede si no guardamos antes (el fields_for para habtm no funciona)
-        score = resource.scores.build(:qualifyingentity_id => qualifyingentity.id, :student_id => student.id) unless score
-        score.save :validate => false
+    @qualifyingentities = resource.qualifyingentities
+    @students = resource.classroom.students
+    @students.each do |student|
+      @qualifyingentities.each do |qe|
+        qe.qualifyingentity_tlresults.each do |qe_tlr|
+          score = qe_tlr.scores.where(:student_id => student).first
+          Score.create(:qualifyingentity_tlresult_id => qe_tlr.id, :student_id => student.id) unless score
+        end
       end
     end
   end
@@ -29,6 +28,8 @@ class ProfilesController < InheritedResources::Base
   def update_scores
     update! do |success, failure|
       failure.html do
+        @qualifyingentities = resource.qualifyingentities
+        @students = resource.classroom.students
         render :edit_scores
       end
     end
@@ -37,8 +38,8 @@ class ProfilesController < InheritedResources::Base
   private
 
   def collection
-    @q ||= Profile.accessible_by(current_ability).search(params[:q])
+    @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
     @q.sorts = "institute_id asc" if @q.sorts.empty?
-    @qualifyingentities||= @q.result(:distintct => true).page(params[:page])
+    @profiles ||= @q.result(:distintct => true).page(params[:page])
   end
 end

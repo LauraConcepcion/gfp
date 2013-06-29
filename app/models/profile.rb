@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentity_tlresults_attributes, :scores_attributes
+  attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes
   belongs_to :institute
   belongs_to :trainercycle
   belongs_to :matter
@@ -8,9 +8,9 @@ class Profile < ActiveRecord::Base
   belongs_to :classroom
 
   has_many :qualifyingentities, :dependent => :destroy, :order => 'date ASC'
-  has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'qualifyingentities.date ASC'
+  has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'qualifyingentities.date ASC, tlresults.name ASC'
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
-  has_many :scores, :through => :qualifyingentities
+  has_many :scores, :through => :qualifyingentity_tlresults
 
   validates :teacher_id, :presence => true
   validates :institute_id, :presence => true
@@ -18,11 +18,12 @@ class Profile < ActiveRecord::Base
   validates :matter_id, :presence => true
   validates :group_id, :presence => true
 
+  validates_associated :qualifyingentities
   validates_associated :qualifyingentity_tlresults
-  validates_associated :scores
 
+  accepts_nested_attributes_for :qualifyingentities, :reject_if => :all_blank, :allow_destroy => true
+  # NOTE La edición de poneraciones está hecha mediante el has_many through
   accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
-  accepts_nested_attributes_for :scores, :reject_if => :all_blank, :allow_destroy => true
 
   scope :active, lambda {|teacher_id|
     where(:default => true, :teacher_id => teacher_id) unless teacher_id.nil?

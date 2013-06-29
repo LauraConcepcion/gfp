@@ -2,7 +2,7 @@ class Classroom < ActiveRecord::Base
   attr_accessible  :code, :name, :student_ids, :profile_ids, :students_attributes
   validate :name, :profiles , :presence => true
   
-  has_many :students
+  has_many :students, :inverse_of => :classroom
   has_many :profiles
   
   has_many :schedule

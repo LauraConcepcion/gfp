@@ -1,20 +1,32 @@
 .page-header
-  %h1= Score.model_name.human.pluralize
+  %h1= Score.model_name.human
 = simple_form_for resource, :url => update_scores_profile_path(resource), :html => {:method => 'put'} do |f|
   .errors
     = f.error_notification
-  %table
-    %thead
-      %th= Student.human_attribute_name(:name)
-      - resource.qualifyingentities.each do |qualifyingentity|
-        %th= qualifyingentity.name
+  %table.table.table-striped#qualifyingentity_tlresults_table
+    %thead.qualifyingentities
+      %th.name
+      - qe_ant_id = nil
+      - resource.qualifyingentity_tlresults.each do |qualifyingentity_tlresult|
+        - next if qe_ant_id && qualifyingentity_tlresult.qualifyingentity_id == qe_ant_id
+        - count = resource.qualifyingentity_tlresults.where(:qualifyingentity_id => qualifyingentity_tlresult.qualifyingentity_id).count
+        - qe_ant_id = qualifyingentity_tlresult.qualifyingentity_id
+        %th{:colspan => count}= qualifyingentity_tlresult.qualifyingentity.name
+    %thead.qualifyingentity_tlresults
+      %th.name= Student.human_attribute_name(:name)
+      - resource.qualifyingentity_tlresults.uniq.each do |qualifyingentity_tlresult|
+        %th
+          - name = qualifyingentity_tlresult.tlresult.name
+          = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => name, "title" => "Detalle" do
+            = truncate(name, :length => 20)
     %tbody
-      - resource.classroom.students.each do |student|
+      - @students.each do |student|
         %tr
           = show_for student do |student_show|
-            %td= student_show.attribute :name, :label => false
-          - resource.qualifyingentities.each do |qualifyingentity|
-            - score = resource.scores.detect {|r_score| r_score.qualifyingentity_id == qualifyingentity.id && r_score.student == student}
-            = f.simple_fields_for 'scores', score do |score_form|
-              %td= score_form.input :grade
+            %td.name= student_show.attribute :name, :label => false
+          = f.simple_fields_for :qualifyingentities do |qe_form|
+            = qe_form.simple_fields_for :qualifyingentity_tlresults do |qe_tlr_form|
+              - score = qe_tlr_form.object.scores.find_by_student_id(student.id)
+              = qe_tlr_form.simple_fields_for :scores, score do |score_form|
+                %td= score_form.input :grade, :input_html => {:class => 'span4'}, :label => false
   = f.submit
