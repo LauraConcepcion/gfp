@@ -11,13 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625172858) do
+ActiveRecord::Schema.define(:version => 20130630110106) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "aacce_code"
+  end
+
+  create_table "absences", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "profile_id"
+    t.datetime "absence_datetime"
+    t.boolean  "justified"
+    t.text     "observations"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "classrooms", :force => true do |t|
@@ -85,6 +95,15 @@ ActiveRecord::Schema.define(:version => 20130625172858) do
     t.string   "group_code"
   end
 
+  create_table "incidents", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "profile_id"
+    t.datetime "incident_datetime"
+    t.text     "observations"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "institutes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at",     :null => false
@@ -129,6 +148,25 @@ ActiveRecord::Schema.define(:version => 20130625172858) do
     t.datetime "updated_at",      :null => false
     t.string   "o_id"
     t.integer  "trainercicle_id"
+  end
+
+  create_table "observations", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "profile_id"
+    t.datetime "observation_datetime"
+    t.text     "text"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  create_table "points", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "profile_id"
+    t.integer  "num"
+    t.datetime "point_datetime"
+    t.text     "observations"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "profiles", :force => true do |t|

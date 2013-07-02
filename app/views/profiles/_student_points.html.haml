@@ -1,0 +1,1 @@
+= link_to profile.points.where(:student_id => student.id).calculate(:sum, :num), profile_student_points_path(profile, student), :remote => true

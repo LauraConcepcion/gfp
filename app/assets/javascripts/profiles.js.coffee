@@ -17,6 +17,7 @@ window.calculatePercentageColumn = (input) ->
 
 
 $(document).ready ->
+  # edit_tlresults initializations
   $.map($('table').find("th"), (v, k) ->
     tlresult_id = v.className.split("tlresult_").pop()
     total = 0.0
@@ -27,4 +28,6 @@ $(document).ready ->
     if total > 100
       $("#total_tlresult_"+tlresult_id).css('color', 'red')
   )
+
+  # edit_scores initializations
 

@@ -13,6 +13,9 @@ Gfp::Application.routes.draw do
     put 'update_tlresults', :on => :member
     get 'edit_scores', :on => :member
     put 'update_scores', :on => :member
+    resources :students do
+      resources :points
+    end
   end
 
   resources :teachers do

@@ -11,6 +11,8 @@ class Profile < ActiveRecord::Base
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'qualifyingentities.date ASC, tlresults.name ASC'
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
   has_many :scores, :through => :qualifyingentity_tlresults
+  has_many :points
+  has_many :students, :through => :classroom
 
   validates :teacher_id, :presence => true
   validates :institute_id, :presence => true

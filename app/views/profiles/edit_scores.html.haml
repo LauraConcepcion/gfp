@@ -5,15 +5,23 @@
     = f.error_notification
   %table.table.table-striped#qualifyingentity_tlresults_table
     %thead.qualifyingentities
-      %th.name
+      %th.name= link_to t(:new), new_qualifyingentity_path, :remote => true
+      %th.aux
       - qe_ant_id = nil
       - resource.qualifyingentity_tlresults.each do |qualifyingentity_tlresult|
         - next if qe_ant_id && qualifyingentity_tlresult.qualifyingentity_id == qe_ant_id
         - count = resource.qualifyingentity_tlresults.where(:qualifyingentity_id => qualifyingentity_tlresult.qualifyingentity_id).count
         - qe_ant_id = qualifyingentity_tlresult.qualifyingentity_id
-        %th{:colspan => count}= qualifyingentity_tlresult.qualifyingentity.name
+        %th{:colspan => count}
+          = qualifyingentity_tlresult.qualifyingentity.name
+          = link_to t(:edit), edit_qualifyingentity_path(qualifyingentity_tlresult.qualifyingentity), :class => 'dialog', :remote => true
     %thead.qualifyingentity_tlresults
       %th.name= Student.human_attribute_name(:name)
+      %th.aux.span2
+        = link_to t(:points), '#', :class => 'button'
+        = link_to t(:absences), '#', :class => 'button'
+        = link_to t(:incidents), '#', :class => 'button'
+        = link_to t(:observations), '#', :class => 'button'
       - resource.qualifyingentity_tlresults.uniq.each do |qualifyingentity_tlresult|
         %th
           - name = qualifyingentity_tlresult.tlresult.name
@@ -21,9 +29,11 @@
             = truncate(name, :length => 20)
     %tbody
       - @students.each do |student|
-        %tr
+        %tr{:id => "student_#{student.id}"}
           = show_for student do |student_show|
             %td.name= student_show.attribute :name, :label => false
+          %td{:id => "aux_#{student.id}"}
+            = render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
           = f.simple_fields_for :qualifyingentities do |qe_form|
             = qe_form.simple_fields_for :qualifyingentity_tlresults do |qe_tlr_form|
               - score = qe_tlr_form.object.scores.find_by_student_id(student.id)

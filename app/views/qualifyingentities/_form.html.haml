@@ -1,4 +1,4 @@
-= simple_form_for resource do |f|
+= simple_form_for resource, :remote => request.xhr? do |f|
   %div.errors
     = f.error_notification
   = f.input :name

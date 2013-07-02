@@ -17,6 +17,8 @@
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
             = link_to t(:tlresult), edit_tlresults_profile_path(item), :class => 'ui-icon ui-icon-calculator'
+            - if item.classroom && item.classroom.students
+              = link_to t(:score), edit_scores_profile_path(item), :class => 'ui-icon ui-icon-contact'
           - if can? :destroy, item
             = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
 - if can? :create, Profile

@@ -9,15 +9,15 @@
     %ul.nav.pull-right
       -# %li= link_to Qualifyingentity.model_name.human, qualifyingentities_path()
       -# - if current_teacher.profiles
-      -#   %li= link_to QualifyingentityTlresult.model_name.human, asign_tlresult_teacher_profile_path(current_teacher, current_teacher.current_profile) unless current_teacher.current_profile.nil?
+      -#   %li= link_to QualifyingentityTlresult.model_name.human, assign_tlresults_profile_path(current_teacher, current_teacher.current_profile) unless current_teacher.current_profile.nil?
       %li.dropdown
         = link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" do
           = t(:setting)
           %b.caret
         %ul.dropdown-menu
-          %li= link_to Profile.model_name.human.pluralize, profiles_path
-          %li= link_to Classroom.model_name.human.pluralize, classrooms_path
-          %li= link_to Qualifyingentity.model_name.human.pluralize, qualifyingentities_path
+          %li= link_to t(:profiles), profiles_path
+          %li= link_to t(:classrooms), classrooms_path
+          %li= link_to t(:qualifyingentities), qualifyingentities_path
           -# %li= link_to QualifyingentityTlresult.model_name.human.pluralize, qualifyingentity_tlresult_path
   #main-navigation
     %ul.nav

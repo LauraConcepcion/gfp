@@ -14,7 +14,7 @@ class ProfilesController < InheritedResources::Base
 
   def edit_scores
     @qualifyingentities = resource.qualifyingentities
-    @students = resource.classroom.students
+    @students = resource.classroom ? resource.classroom.students : []
     @students.each do |student|
       @qualifyingentities.each do |qe|
         qe.qualifyingentity_tlresults.each do |qe_tlr|
@@ -27,6 +27,7 @@ class ProfilesController < InheritedResources::Base
 
   def update_scores
     update! do |success, failure|
+      success.html { redirect_to profiles_path}
       failure.html do
         @qualifyingentities = resource.qualifyingentities
         @students = resource.classroom.students

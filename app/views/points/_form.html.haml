@@ -1,0 +1,7 @@
+= simple_form_for [@profile, @student, resource], :html => { :class => 'form-horizontal' }, :remote => true do |f|
+  = f.input :num, :as => :numeric
+  = f.input :point_datetime, :as => :string, :input_html => { :class => 'datepicker', :value => (I18n.l(resource.point_datetime, :format => :medium) if resource.point_datetime) }
+  = f.input :observations, :as => :text
+  = f.input :profile_id, :as => :hidden, :input_html => {:value => @profile.id}
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t(:cancel), profile_student_points_path(@profile, @student), :class => 'btn'

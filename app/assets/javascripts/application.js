@@ -6,12 +6,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require chosen-jquery
 //= require twitter/bootstrap
+//= require initializations
 //= require_tree .
 //= require cocoon
 //
 $(document).ready(function(){
+  window.initialize($(this))
+
   // Ahora mismo los ciclos formativos no están por instituto
   // $("#profile_institute_id").change(function() {
   //   var provenance = $('#profile_institute_id');
@@ -23,10 +27,6 @@ $(document).ready(function(){
   //     });
   //     return false;
   // });
-
-  // Inicializamos datepickers
-  $.datepicker.setDefaults( $.datepicker.regional[ "es" ] );
-  $('.datepicker').datepicker();
 
   $("#profile_trainercycle_id").change(function() {
     var provenance = $('#profile_trainercycle_id');
@@ -40,16 +40,6 @@ $(document).ready(function(){
     });
     return false;
   });
-
-  // Inicializamos los autocompletar con chosen.
-  $(".chzn-select").chosen();
-  // También después de insertar un cocoon.
-  $(".cocoon_with_chzn").bind('cocoon:after-insert', function() {
-    $(this).find(".chzn-select").chosen();
-  })
-  //popovers
-  $('.pop-over').popover();
-  $('.tool-tip').tooltip();
 
   //Si estamos en inicio sesión se debe mostrar la pizarra
 

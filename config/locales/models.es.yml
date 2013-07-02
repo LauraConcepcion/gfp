@@ -19,6 +19,7 @@ es:
       institute: "Instituto"
       matter: "Módulo/Asignatura"
       objetive: "Objetivo"
+      point: "Punto"
       quarter: "Trimestre"
       schedule: "Horario"
       score: "Nota/Puntuación"
@@ -165,3 +166,7 @@ es:
         name: "Nombre"
         updated_at: "Actualizado"
         created_at: "Creado"
+      point:
+        point_datetime: "Fecha"
+        num: "Número"
+        observations: "Observación"

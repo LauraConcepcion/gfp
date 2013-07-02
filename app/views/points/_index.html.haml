@@ -1,0 +1,23 @@
+.page-header
+  %h1= Point.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Point.human_attribute_name(:student)
+      %th= Point.human_attribute_name(:point_datetime)
+      %th= Point.human_attribute_name(:num)
+      %th= t(:actions)
+  %tbody
+    - collection.each do |item|
+      %tr{:id => item.id}
+        %td= item.student.try(:name)
+        %td= item.point_datetime ? I18n.l(item.point_datetime, :format => :medium) : '-'
+        %td= item.num
+        %td
+          - if can? :edit, item
+            = link_to t(:edit), edit_profile_student_point_path(@profile, @student, item), :class => 'ui-icon ui-icon-pencil', :remote => true
+          - if can? :destroy, item
+            = link_to t(:destroy), profile_student_point_path(@profile, @student, item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+- if can? :create, Point
+  = link_to t(:new), new_profile_student_point_path(@profile, @student), :class => 'btn btn-primary', :remote => true
+

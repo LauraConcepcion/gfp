@@ -19,6 +19,10 @@ es:
   setting: "Configuración"
   show_menu_profiles: "Menú perfiles"
   tlresults: "Ponderaciones"
+  qualifyingentities: "Entidades calificables"
+  profiles: "Perfiles"
+  classrooms: "Clases"
+  scores: "Notas/Puntuaciones"
   helpers:
     links:
       edit: "Editar"

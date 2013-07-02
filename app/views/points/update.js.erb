@@ -1,0 +1,4 @@
+close_dialog('point_edit');
+$('#points_index').html('<%= escape_javascript(render :partial => 'index', :locals => {:profile => @profile, :student => @student} ) %>');
+$('#points_index').find('tr#<%= resource.id %>').animate({ color: "green" });
+$("#aux_<%= @student.id %>").html('<%= escape_javascript(render :partial => 'profiles/student_points', :locals => {:profile => @profile, :student => @student} ) %>');

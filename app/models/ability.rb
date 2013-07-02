@@ -6,6 +6,7 @@ class Ability
       can :manage, Profile, :teacher_id => user.id
       can :manage, Qualifyingentity, :profile_id => user.current_profile.id
       can :manage, Classroom
+      can :manage, Point, :profile_id => user.current_profile.id
     end
     
     # Define abilities for the passed in user here. For example:
