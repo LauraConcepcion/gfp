@@ -2,6 +2,6 @@
   %dt= Teacher.model_name.human+':'
   %dd= current_teacher.full_name
   %dt= Trainercycle.model_name.human+':'
-  %dd= current_teacher.current_profile.trainercycle.title
+  %dd= current_teacher.current_profile ? current_teacher.current_profile.trainercycle.try(:title) : t(:no_current_profile)
   %dt= Matter.model_name.human+':'
-  %dd= current_teacher.current_profile.matter.name
+  %dd= current_teacher.current_profile ? current_teacher.current_profile.matter.try(:name) : '-'

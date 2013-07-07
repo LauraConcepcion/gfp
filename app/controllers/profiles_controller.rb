@@ -1,5 +1,6 @@
 class ProfilesController < InheritedResources::Base
   before_filter :authenticate_teacher!
+  skip_before_filter :check_profiles
   load_and_authorize_resource
 
   respond_to :html, :xml, :json

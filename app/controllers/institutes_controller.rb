@@ -1,6 +1,7 @@
 class InstitutesController < InheritedResources::Base
   before_filter :authenticate_teacher!
   respond_to :html, :json, :js
+  skip_before_filter :check_profiles
 
   def search
     @institutes = Institute.search(:name_cont => params[:term]).result(:distinct => true)

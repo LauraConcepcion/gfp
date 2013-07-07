@@ -8,3 +8,6 @@ es:
         notice: "Se actualizó el %{resource_name}"
       destroy:
         notice: "Se eliminó un %{resource_name}"
+    general:
+      no_profiles_found: "No tiene ningún perfil, por favor créelo antes de seguir."
+      no_current_profile: "No ha seleccionado su perfil actual, algunas funcionalidades no no estarán disponibles."

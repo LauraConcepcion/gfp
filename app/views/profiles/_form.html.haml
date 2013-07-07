@@ -1,5 +1,5 @@
 = simple_form_for resource, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :institute_id, :input_html => {:class => 'select2-ajax span3', 'data-autocomplete-url' => search_institutes_path, "data-show-url" => institute_path(resource.institute_id)}
+  = f.input :institute_id, :input_html => {:class => 'select2-ajax span3', 'data-autocomplete-url' => search_institutes_path, "data-show-url" => (institute_path(resource.institute_id) unless resource.new_record?)}
   = f.association :trainercycle, :input_html => {:class => 'chzn-select span3'}
   - matters = resource.trainercycle.try(:matters) || []
   = f.association :matter, :collection => matters, :input_html => {:class => 'chzn-select span3'}
