@@ -28,9 +28,9 @@ window.initialize = (scope) ->
   init_select2_ajax scope.find('.select2-ajax')
 
   # También después de insertar un cocoon.
-  scope.find(".cocoon_with_chzn").bind "cocoon:after-insert", ->
-    $(this).find(".chzn-select").select2()
-    init_select2_ajax scope.find('.select2-ajax')
+  scope.find(".cocoon_with_chzn").bind "cocoon:after-insert", (e, inserted_row) ->
+    inserted_row.find(".chzn-select").select2()
+    init_select2_ajax inserted_row.find('.select2-ajax')
 
   #popovers
   scope.find(".pop-over").popover()

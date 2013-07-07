@@ -3,4 +3,8 @@
   = item.attribute :date
   = item.association :classroom
   = item.association :tlresults
+- if can? :edit, resource
+  = link_to t(:edit), edit_resource_path(resource), :class => 'btn'
+- if can? :destroy, resource
+  = link_to t(:destroy), resource_path(resource), :confirm => t(:are_you_sure?), :method => :delete, :class => 'btn btn-danger'
 = link_to t(:back), collection_path, :class => 'btn'

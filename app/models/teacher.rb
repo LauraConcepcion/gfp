@@ -16,7 +16,7 @@ class Teacher < ActiveRecord::Base
     profile = profiles.detect {|a| a.default == true}
     unless profile
       profile = profiles.first
-      profile.update_attribute(:default, true)
+      profile.update_attribute(:default, true) if profile
     end
     profile
   end

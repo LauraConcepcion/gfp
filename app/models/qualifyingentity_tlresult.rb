@@ -8,7 +8,7 @@ class QualifyingentityTlresult < ActiveRecord::Base
 
   validates :tlresult_id, :percentage, :presence => true
   validates_uniqueness_of :tlresult_id, :scope => :qualifyingentity_id
-  validates_associated :scores
+  #validates_associated :scores
 
   # FIXME Es necesario si hago el fields_for desde profile
   accepts_nested_attributes_for :scores, :allow_destroy => true
