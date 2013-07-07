@@ -1,3 +1,4 @@
+# Inicializaciones varias
 window.initialize = (scope) ->
   # Inicializamos datepickers
   $.datepicker.regional['es'] = {
@@ -17,17 +18,19 @@ window.initialize = (scope) ->
       firstDay: 1,
       isRTL: false,
       showMonthAfterYear: false,
-      yearSuffix: ''};
+      yearSuffix: ''}
   $.datepicker.setDefaults $.datepicker.regional["es"]
 
   scope.find(".datepicker").datepicker({ changeYear: true, yearRange: '-100+0' })
 
-  # Inicializamos los autocompletar con chosen.
-  scope.find(".chzn-select").chosen()
+  # Inicializamos los autocompletar con select2.
+  scope.find('.chzn-select').select2()
+  init_select2_ajax scope.find('.select2-ajax')
 
   # También después de insertar un cocoon.
   scope.find(".cocoon_with_chzn").bind "cocoon:after-insert", ->
-    $(this).find(".chzn-select").chosen()
+    $(this).find(".chzn-select").select2()
+    init_select2_ajax scope.find('.select2-ajax')
 
   #popovers
   scope.find(".pop-over").popover()

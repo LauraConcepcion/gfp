@@ -23,6 +23,7 @@ es:
   profiles: "Perfiles"
   classrooms: "Clases"
   scores: "Notas/Puntuaciones"
+  no_current_profile: '<sin perfil>'
   helpers:
     links:
       edit: "Editar"

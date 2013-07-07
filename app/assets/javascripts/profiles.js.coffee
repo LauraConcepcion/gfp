@@ -29,5 +29,31 @@ $(document).ready ->
       $("#total_tlresult_"+tlresult_id).css('color', 'red')
   )
 
-  # edit_scores initializations
+  # Profile linked inputs
+  # Ahora mismo los ciclos formativos no están por instituto
+  # $("#profile_institute_id").change(function() {
+  #   var provenance = $('#profile_institute_id');
+  #     $.getJSON('/institutes/update_trainercycle/' + provenance.val() || "0", function(trainercycles) {
+  #       var options = '';
+  #       for(var i = 0; i < trainercycles.length; i++)
+  #         options += '<option value="' + trainercycles[i][1] +'">' + trainercycles[i][0]+ '</option>';
+  #       $("select#profile_trainercycle_id").html(options);
+  #     });
+  #     return false;
+  # });
+
+  $("#profile_trainercycle_id").change ->
+    provenance = $("#profile_trainercycle_id")
+    $.getJSON "/trainercycles/" + (provenance.val() or 0) + "/update_matter/", (matters) ->
+      options = "<option value=''></option>"
+      i = 0
+
+      while i < matters.length
+        options += "<option value=\"" + matters[i][1] + "\">" + matters[i][0] + "</option>"
+        i++
+      destination = $("select#profile_matter_id")
+      destination.html options
+      destination.select2()
+
+    false
 

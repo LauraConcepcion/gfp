@@ -44,9 +44,9 @@ class ClassroomsController < InheritedResources::Base
 
   private
   def collection
-    @q ||= Classroom.accessible_by(current_ability).search(params[:q])
+    @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
     @q.sorts = "name asc" if @q.sorts.empty?
-    @qualifyingentities||= @q.result(:distintct => true).page(params[:page])
+    @classrooms||= @q.result(:distintct => true).page(params[:page])
  
   end
 end

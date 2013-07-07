@@ -8,9 +8,9 @@
  *
  *= bootstrap-sass
  *
- *= require_tree . 
+ *= require select2
  *
- *= require chosen
+ *= require_tree . 
 */
 
 
@@ -75,3 +75,22 @@ div.cocoon_with_chzn {
     clear: both;
   }
 }
+
+dl {
+  margin-top: 0px;
+  margin-bottom: 30px;
+  border-bottom: 1px dotted #CCCCCC;
+  height: 30px;
+  dt {
+    float:left;
+    margin-right: 5px;
+  }
+  dd {
+    float:left;
+    margin-right: 10px;
+  }
+}
+
+// select2
+.bigdrop.select2-container .select2-results {max-height: 300px;}
+.bigdrop .select2-results {max-height: 300px;}

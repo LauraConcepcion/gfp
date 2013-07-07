@@ -24,10 +24,12 @@
         .content
           .content-header
           .content-body
-            -if notice
+            - if notice
               %div.alert.alert-success= notice
-            -if alert
+            - if alert
               %div.alert.fade.in= alert
+            - if current_teacher
+              = render "layouts/profile_info"
             %h1= yield :title
             = yield
   %footer

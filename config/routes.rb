@@ -35,7 +35,11 @@ Gfp::Application.routes.draw do
   end
 
   #Ruta para usar en el momento de implementar ajax
-  #resources :institutes
+  resources :institutes do
+    get 'search', :on => :collection
+  end
+
+  resources :scores
 
   root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))'

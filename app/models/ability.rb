@@ -4,9 +4,12 @@ class Ability
   def initialize(user)
     if user.teacher?
       can :manage, Profile, :teacher_id => user.id
-      can :manage, Qualifyingentity, :profile_id => user.current_profile.id
-      can :manage, Classroom
-      can :manage, Point, :profile_id => user.current_profile.id
+      can :manage, Qualifyingentity, :profile_id => user.current_profile.try(:id)
+      can :manage, Classroom, Classroom.where(:id => user.profiles.map(&:classroom_id)) do |object|
+        user.profiles.map(&:classroom_id).include?(object.id)
+      end
+      cannot :create, Classroom if user.profiles.empty?
+      can :manage, Point, :profile_id => user.current_profile.try(:id)
     end
     
     # Define abilities for the passed in user here. For example:

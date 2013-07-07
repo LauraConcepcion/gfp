@@ -1,0 +1,7 @@
+%dl.profile_info
+  %dt= Teacher.model_name.human+':'
+  %dd= current_teacher.full_name
+  %dt= Trainercycle.model_name.human+':'
+  %dd= current_teacher.current_profile.trainercycle.title
+  %dt= Matter.model_name.human+':'
+  %dd= current_teacher.current_profile.matter.name
