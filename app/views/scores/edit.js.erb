@@ -1,5 +1,5 @@
 close_dialog('score_edit');
-build_dialog('score_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= t(:edit_score) %>', true);
+build_dialog('score_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>', true);
 //TODO Refactorizar: Guardamos pulsando fuera del formulario pero el blur no lo usa, así que usamos el click sobre el overlay. Ponerlo dentro del dialog.js
 $('.ui-widget-overlay').click(function() { $('#score_edit form').submit();})
 window.initialize($('#score_edit'));

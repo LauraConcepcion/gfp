@@ -23,6 +23,10 @@ es:
   profiles: "Perfiles"
   classrooms: "Clases"
   scores: "Notas/Puntuaciones"
+  points: "Puntos +/-"
+  absences: "Faltas"
+  incidents: "Incidencias"
+  observations: "Observaciones"
   no_current_profile: '<sin perfil>'
   helpers:
     links:

@@ -1,3 +1,3 @@
 close_dialog('point_edit');
-build_dialog('point_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= t(:edit_point) %>');
+build_dialog('point_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>');
 window.initialize($('#point_edit'));

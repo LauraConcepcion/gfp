@@ -1,3 +1,3 @@
 close_dialog('qualifyingentity_edit');
-build_dialog('qualifyingentity_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= t(:edit_qualifyingentity) %>');
+build_dialog('qualifyingentity_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>');
 window.initialize($('#qualifyingentity_edit'));
