@@ -32,6 +32,7 @@ Gfp::Application.routes.draw do
 
   resources :classrooms do
     post 'csv_import', :on => :member
+    resources :students
   end
 
   #Ruta para usar en el momento de implementar ajax

@@ -1,0 +1,3 @@
+close_dialog('student_edit');
+build_dialog('student_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= t(:edit_student) %>');
+window.initialize($('#student_edit'));

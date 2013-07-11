@@ -3,6 +3,7 @@
     = f.error_notification
   = f.input :name
   = f.association :profiles, :collection => current_teacher.profiles, :input_html => { :class => 'span5 chzn-select multiple'}
+
   %h3= Student.model_name.pluralize
   %table.table.table-striped
     %thead

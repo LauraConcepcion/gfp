@@ -35,3 +35,9 @@ window.initialize = (scope) ->
   # popovers
   scope.find(".pop-over").popover({trigger: 'hover'})
   scope.find(".tool-tip").tooltip()
+
+  # tabs
+  $('#tabs').tabs {
+    collapsible: true
+  }
+

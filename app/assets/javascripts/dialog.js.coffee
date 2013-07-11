@@ -1,5 +1,4 @@
-window.build_dialog = (selector, content, dialog_title, modal) ->
-  modal = true if modal == null
+window.build_dialog = (selector, content, dialog_title) ->
   but = undefined
   close_dialog selector
   $("body").append "<div id=\"" + selector + "\">\n" + content + "</div>"
@@ -17,11 +16,12 @@ window.build_dialog = (selector, content, dialog_title, modal) ->
   #   $(this).dialog "close"
 
   $("#" + selector).dialog
-    # buttons: but
-    modal: modal
+    modal: true
     title: dialog_title
     height: "auto"
     width: "auto"
+    # open: set_markitup()
+    # buttons: but
 
 window.close_dialog = (selector) ->
   $("#" + selector).dialog "close"

@@ -1,10 +1,25 @@
-= simple_form_for resource do |f|
+= simple_form_for [parent, resource], :remote => request.xhr? do |f|
   %div.errors
     = f.error_notification
-  = f.input :name
-  = f.input :firstsurname
-  = f.input :secondsurname
-  = f.input :dni
-  = f.input :phone
+  %div#tabs
+    %ul
+      %li
+        %a{:href => '#tabs-1'}= t(:personal)
+      %li
+        %a{:href => '#tabs-2'}= t(:contact)
+      %li
+        %a{:href => '#tabs-3'}= t(:school)
+    %div#tabs-1
+      = f.input :name
+      = f.input :firstsurname
+      = f.input :secondsurname
+      = f.input :dni
+      = f.input :birthdate, :as => :string, :input_html => {:class => 'datepicker', :value => (I18n.l(resource.birthdate, :format => :medium) if resource.birthdate)}
+    %div#tabs-2
+      = f.input :phone
+      = f.input :mail
+    %div#tabs-3
+      = f.input :student_code
+      = f.input :record
   = f.button :submit, :class => 'btn-primary'
   = link_to t(:cancel), collection_path, :class => 'btn'

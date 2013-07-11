@@ -29,6 +29,10 @@ es:
       trainercycle: "Ciclo formativo"
       trainercycletype: "Tipo de ciclo formativo"
       user: "Usuarios"
+      absence: "Ausencia"
+      incident: "Incidencia"
+      observation: "Observación"
+
     attributes:
       contentblock:
         name: "Nombre"
@@ -92,7 +96,10 @@ es:
         updated_at: "Actualizado"
         classroom: "Clase"
         profile: "Perfil"     
-        code: "Código"
+        student_code: "Código"
+        birthdate: "Fecha de nacimiento"
+        mail: "E-mail"
+        record: "Expediente"
       group:
         name: "Nombre"
         created_at: "Creado"
@@ -122,6 +129,7 @@ es:
         updated_at: "Actualizado"
         qualifyingentity: "Entidad Calificable"
         student: "Estudiante"
+        observations: "Observaciones"
       objetive:
         name: "Nombre"
         created_at: "Creado"

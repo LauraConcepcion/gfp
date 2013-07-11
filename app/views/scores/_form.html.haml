@@ -1,0 +1,3 @@
+= simple_form_for @score, :method => 'put', :remote => true, :html => {:class => 'inplace'} do |f|
+  = f.input :grade
+  = f.input :observations, :as => :text, :input_html => {:class => 'with_markitup', :cols => 40, :rows => 3}

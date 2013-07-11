@@ -19,7 +19,7 @@ class ProfilesController < InheritedResources::Base
     @students.each do |student|
       @qualifyingentities.each do |qe|
         qe.qualifyingentity_tlresults.each do |qe_tlr|
-          score = qe_tlr.scores.where(:student_id => student).first
+          score = qe_tlr.scores.find_by_student_id(student.id)
           Score.create(:qualifyingentity_tlresult_id => qe_tlr.id, :student_id => student.id) unless score
         end
       end

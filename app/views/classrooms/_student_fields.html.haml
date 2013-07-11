@@ -4,4 +4,6 @@
   %td= f.input :secondsurname, label: false
   %td= f.input :dni, label: false
   %td= f.input :phone, label: false
+  - if f.object.id
+    %td= link_to t(:edit), edit_classroom_student_path(f.object.classroom_id, f.object.id), :class => 'ui-icon ui-icon-pencil', :remote => true
   %td= link_to_remove_association t(:remove_detail), f, class: "ui-icon ui-icon-trash"

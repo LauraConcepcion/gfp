@@ -20,16 +20,23 @@ body {
 }
 
 div.blackboard{
-  width: 75%;
+  width: 90%;
+  margin-right: 0px;
+  overflow: scroll;
 }
+
 div.menu_profiles {
   display: none;
   background: url(pizarra.png) no-repeat fixed left 50px transparent;
-  width: 28%;
+  width: 25%;
   min-height: 300px;
   float: left;
   padding: 120px 0 0 20px;
   color: white;
+}
+
+div.classroom_profiles {
+  min-height: 200px;
 }
 
 div.content {
@@ -41,15 +48,18 @@ div.content {
 .icon:before {
   content: none;
 }
+
 div.content-header {
   background: url("foliosuperior.png") repeat;
   height: 70px;
 }
+
 div.content-body {
   background: none repeat scroll 0 0 white;
   padding: 5px 20px;
   min-height: 400px;
 }
+
 div.cocoon_with_chzn {
   div.nested-fields {
     clear: both;
