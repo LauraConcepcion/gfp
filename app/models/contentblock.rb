@@ -1,5 +1,5 @@
 class Contentblock < ActiveRecord::Base
-  attr_accessible :name, :quarter_id, :matter_id, :content_ids, :qualifyingentity_ids, :tlresult_id, :aacce_id
+  attr_accessible :name, :quarter_id, :matter_id, :content_ids, :qualifyingentity_ids, :tlresult_id, :aacce_id, :cb_id
   has_many :contents
   belongs_to :quarter
   belongs_to :matter
