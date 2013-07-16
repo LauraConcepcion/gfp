@@ -22,7 +22,7 @@
                 - qe_tlr = resource.qualifyingentity_tlresults.detect {|qe_tlr| qe_tlr.qualifyingentity_id == qe.id && qe_tlr.tlresult == tlr}
                 = f.simple_fields_for 'qualifyingentity_tlresults', qe_tlr do |qe_tlr_form|
                   %td
-                    = qe_tlr_form.input :percentage, :input_html => {:class => 'span3 tlresult_'+"#{tlr.id}", :onchange => 'window.calculatePercentageColumn(this);'}, :label => false
+                    = qe_tlr_form.input :percentage, :input_html => {:class => 'input-mini tlresult_'+"#{tlr.id}", :onchange => 'window.calculatePercentageColumn(this);'}, :label => false
               - else
                 %td.empty= 'N/A'
       %tr

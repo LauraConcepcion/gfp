@@ -2,19 +2,23 @@
 %table.table.table-striped
   %thead
     %tr
+      %th= sort_link @q, :firstsurname, Student.human_attribute_name(:firstsurname)
+      %th= sort_link @q, :secondsurname, Student.human_attribute_name(:secondsurname)
       %th= sort_link @q, :name, Student.human_attribute_name(:name)
       %th= sort_link @q, :dni, Student.human_attribute_name(:dni)
       %th= t(:actions)
   %tbody
     - collection.each do |item|
       %tr
+        %td= item.try(:firstsurname)
+        %td= item.try(:secondsurname)
         %td= item.try(:name)
         %td= item.try(:dni)
         %td
           - if can? :edit, item
-            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
+            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)
           - if can? :destroy, item
-            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash', :alt => t(:destroy), :title => t(:destroy)
 - if can? :create, Student
   = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
 

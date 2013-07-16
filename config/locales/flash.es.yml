@@ -2,12 +2,12 @@ es:
   flash:
     actions:
       create:
-        notice: "Se creó un nuevo %{resource_name}"
-        notice_with_link: "Se creó un nuevo %{resource_name} (%{handing_link})"
+        notice: "Se creó un nuevo registro de '%{resource_name}'"
+        notice_with_link: "Se creó un nuevo registro de '%{resource_name}' (%{handing_link})"
       update:
-        notice: "Se actualizó el %{resource_name}"
+        notice: "Se actualizó el registro de '%{resource_name}'"
       destroy:
-        notice: "Se eliminó un %{resource_name}"
+        notice: "Se eliminó un registro de '%{resource_name}'"
     general:
       no_profiles_found: "No tiene ningún perfil, por favor créelo antes de seguir."
       no_current_profile: "No ha seleccionado su perfil actual, algunas funcionalidades no no estarán disponibles."

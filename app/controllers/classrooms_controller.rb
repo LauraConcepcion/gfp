@@ -1,16 +1,16 @@
 class ClassroomsController < InheritedResources::Base
   before_filter :authenticate_teacher!
- 
+
   require 'csv'
 
   def create
-    create!(:notice => "Clase creada") { edit_classroom_path(resource) }
+    create! { classrooms_path }
   end
 
   def update
-    update!(:notice => "Clase actualizada") { edit_classroom_path(resource)}
+    update! { classrooms_path }
   end
-  
+
   def csv_import
     file_data = params[:file].read
     csv_rows  = CSV.parse(file_data, {:col_sep => ';'})
@@ -47,6 +47,5 @@ class ClassroomsController < InheritedResources::Base
     @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
     @q.sorts = "name asc" if @q.sorts.empty?
     @classrooms||= @q.result(:distintct => true).page(params[:page])
- 
   end
 end

@@ -10,6 +10,7 @@ class QualifyingentitiesController < InheritedResources::Base
 
   def create
     create! do |success, failure|
+      success.html { redirect_to qualifyingentities_path }
       failure.html do
         get_profile_data
         render :new
@@ -24,6 +25,7 @@ class QualifyingentitiesController < InheritedResources::Base
 
   def update
     update! do |success, failure|
+      success.html { redirect_to qualifyingentities_path }
       failure.html do
         get_profile_data
         render :new

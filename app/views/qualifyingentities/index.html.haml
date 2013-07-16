@@ -3,7 +3,9 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= Qualifyingentity.human_attribute_name(:name)
+      %th= sort_link @q, :name, Qualifyingentity.human_attribute_name(:name)
+      %th= sort_link @q, :created_at, Qualifyingentity.human_attribute_name(:created_at)
+      %th= sort_link @q, :date, Qualifyingentity.human_attribute_name(:date)
       %th= Matter.model_name.human
       %th= Tlresult.model_name.human.pluralize
       %th= t(:actions)
@@ -11,15 +13,17 @@
     - collection.each do |item|
       = content_tag_for(:tr, item) do
         %td= item.try(:name)
+        %td= item.created_at ? I18n.l(item.created_at, :format => :without_time) : '-'
+        %td= item.date ? I18n.l(item.date, :format => :default) : '-'
         %td= item.profile.matter.try(:name)
         %td
           - item.tlresults.each do |rea|
             = rea.try(:name)
         %td
           - if can? :edit, item
-            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
+            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)
           - if can? :destroy, item
-            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash', :alt => t(:destroy), :title => t(:destroy)
 - if can? :create, Qualifyingentity
   = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
 - if can?(:read, Qualifyingentity) && current_teacher.current_profile

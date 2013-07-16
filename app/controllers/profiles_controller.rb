@@ -5,8 +5,17 @@ class ProfilesController < InheritedResources::Base
 
   respond_to :html, :xml, :json
 
+  def create
+    create! { profiles_path }
+  end
+
+  def update
+    update! { profiles_path }
+  end
+
   def update_tlresults
     update! do |success, failure|
+      success.html { redirect_to qualifyingentities_path }
       failure.html do
         render :edit_tlresults
       end

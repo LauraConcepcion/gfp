@@ -75,11 +75,12 @@ es:
         aacce: "Comunidad Autónoma"     
       qualifyingentity:
         name: "Nombre"
-        created_at: "Creado"
+        created_at: "Creada"
         updated_at: "Actualizado"
         classroom: "Clase"
         profile: "Perfil"     
         qualifyingentity_tlresults: "REAs calificados"
+        date: "Fecha"
       qualifyingentity_tlresult:
         qualifyingentity: "Entidad Calificable"
         tlresult: "REA"
@@ -178,3 +179,4 @@ es:
         point_datetime: "Fecha"
         num: "Número"
         observations: "Observación"
+        student: "Estudiante"

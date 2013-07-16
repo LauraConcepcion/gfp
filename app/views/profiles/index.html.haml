@@ -15,12 +15,12 @@
         %td= item.matter.try(:name)
         %td
           - if can? :edit, item
-            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
-            = link_to t(:tlresult), edit_tlresults_profile_path(item), :class => 'ui-icon ui-icon-calculator'
+            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)
+            = link_to t(:tlresults), edit_tlresults_profile_path(item), :class => 'ui-icon ui-icon-calculator', :alt => t(:tlresults), :title => t(:tlresults)
             - if item.classroom && item.classroom.students
-              = link_to t(:score), edit_scores_profile_path(item), :class => 'ui-icon ui-icon-contact'
+              = link_to t(:scores), edit_scores_profile_path(item), :class => 'ui-icon ui-icon-contact', :alt => t(:scores), :title => t(:scores)
           - if can? :destroy, item
-            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash', :alt => t(:destroy), :title => t(:destroy)
 - if can? :create, Profile
   = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
 

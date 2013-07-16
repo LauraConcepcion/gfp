@@ -2,23 +2,23 @@
   %h1= Score.model_name.human
 %table.table.table-striped#qualifyingentity_tlresults_table
   %thead.qualifyingentities
-    %th.name= link_to t(:new), new_qualifyingentity_path, :remote => true
-    %th.aux
+    %th.name
+    %th.aux= link_to t(:new), new_qualifyingentity_path, :class => 'ui-icon icon-plus dialog', :remote => true
     - qe_ant_id = nil
     - resource.qualifyingentity_tlresults.each do |qualifyingentity_tlresult|
       - next if qe_ant_id && qualifyingentity_tlresult.qualifyingentity_id == qe_ant_id
       - count = resource.qualifyingentity_tlresults.where(:qualifyingentity_id => qualifyingentity_tlresult.qualifyingentity_id).count
       - qe_ant_id = qualifyingentity_tlresult.qualifyingentity_id
       %th{:colspan => count}
-        = qualifyingentity_tlresult.qualifyingentity.name
-        = link_to t(:edit), edit_qualifyingentity_path(qualifyingentity_tlresult.qualifyingentity), :class => 'dialog', :remote => true
+        = qe_title qualifyingentity_tlresult.qualifyingentity
+        = link_to t(:edit), edit_qualifyingentity_path(qualifyingentity_tlresult.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
   %thead.qualifyingentity_tlresults
     %th.name= Student.human_attribute_name(:name)
     %th.aux.span2
-      = link_to t(:points), '#', :class => 'button'
-      = link_to t(:absences), '#', :class => 'button'
-      = link_to t(:incidents), '#', :class => 'button'
-      = link_to t(:observations), '#', :class => 'button'
+      = link_to t(:points), '#', :class => 'ui-icon icon-bookmark button', :alt => t(:points), :title => t(:points)
+      = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
+      = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
+      = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
     - resource.qualifyingentity_tlresults.uniq.each do |qualifyingentity_tlresult|
       %th
         - name = qualifyingentity_tlresult.tlresult.name

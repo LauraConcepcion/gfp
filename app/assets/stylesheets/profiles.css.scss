@@ -6,3 +6,21 @@ input.percentage
   height:8px;
   width: 85px;
 }
+
+// Scores
+table#qualifyingentity_tlresults_table {
+  th, td {
+    white-space: nowrap;
+    text-align: center;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+div#qualifyingentity_new, div#qualifyingentity_edit {
+  min-width: 670px;
+}
