@@ -7,6 +7,7 @@
   = link_to t(:title), "#", :class=>"brand pjax"
   .nav-collapse
     %ul.nav.pull-right
+      %li= link_to t(:scores), edit_scores_profile_path(current_teacher.current_profile) if current_teacher.current_profile
       -# %li= link_to Qualifyingentity.model_name.human, qualifyingentities_path()
       -# - if current_teacher.profiles
       -#   %li= link_to QualifyingentityTlresult.model_name.human, assign_tlresults_profile_path(current_teacher, current_teacher.current_profile) unless current_teacher.current_profile.nil?
