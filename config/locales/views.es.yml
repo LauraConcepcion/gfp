@@ -28,6 +28,7 @@ es:
   incidents: "Incidencias"
   observations: "Observaciones"
   no_current_profile: '<sin perfil>'
+  access_denied: "Acceso denegado"
   helpers:
     links:
       edit: "Editar"

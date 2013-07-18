@@ -2,7 +2,8 @@
   %div.errors
     = f.error_notification
   = f.input :name
-  = f.input :date, :as => :string, :input_html => { :class => 'datepicker input-small', :value => (I18n.l(resource.date, :format => :default) if resource.date) }
+  - date = resource.date || Date.today
+  = f.input :date, :as => :string, :input_html => { :class => 'datepicker input-small', :value => (I18n.l(date, :format => :default)) }
   = f.association :profile, :as => :hidden
   %h3= Qualifyingentity.human_attribute_name(:qualifyingentity_tlresults)
   %table.table.table-striped

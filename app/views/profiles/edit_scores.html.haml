@@ -28,7 +28,9 @@
     - @students.each do |student|
       %tr{:id => "student_#{student.id}"}
         = show_for student do |student_show|
-          %td.name= student_show.attribute :name, :label => false
+          %td.name
+            = student_show.attribute :name, :label => false do
+              = student.full_name
         %td{:id => "aux_#{student.id}"}
           = render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
         - @profile.qualifyingentities.each do |qe|

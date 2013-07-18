@@ -17,8 +17,9 @@
         %td= item.date ? I18n.l(item.date, :format => :default) : '-'
         %td= item.profile.matter.try(:name)
         %td
-          - item.tlresults.each do |rea|
-            = rea.try(:name)
+          %ul
+            - item.tlresults.each do |rea|
+              %li= rea.try(:name)
         %td
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)

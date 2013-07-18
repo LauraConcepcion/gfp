@@ -80,7 +80,7 @@ es:
         classroom: "Clase"
         profile: "Perfil"     
         qualifyingentity_tlresults: "REAs calificados"
-        date: "Fecha"
+        date: "Entrega"
       qualifyingentity_tlresult:
         qualifyingentity: "Entidad Calificable"
         tlresult: "REA"

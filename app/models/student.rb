@@ -9,6 +9,10 @@ class Student < ActiveRecord::Base
     joins(:classrooms).where('classrooms.group_id = ? and classrooms.matter_id = ? and classrooms.trainercycle_id = ?', group_id, matter_id, trainercycle_id)
   }
 
+  def full_name
+    "#{firstsurname} #{secondsurname}, #{name}"
+  end
+
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
