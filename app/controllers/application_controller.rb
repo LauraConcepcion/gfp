@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def check_profiles
-    return true unless current_teacher
+    return true if !current_teacher || (controller_name == 'sessions' && (action_name == 'new' || action_name == 'destroy'))
 
     if current_teacher.profiles.empty?
       flash[:alert] = t(:no_profiles_found, :scope => 'flash.general')
