@@ -1,7 +1,7 @@
-es:
+﻿es:
   title: "ForProf"
   import: "Importar"
-  students_import: "Importar Alumnos desde csv"
+  students_import: "Importar Alumnado desde csv"
   wellcome: "Bienvenido, %{user}"
   are_you_sure?: "¿Está usted seguro?, esta operación no puede deshacerse"
   sign_in: "Inicie sesión"
@@ -17,9 +17,9 @@ es:
   remove: "Quitar"
   remove_detail: "Quitar detalle"
   setting: "Configuración"
-  show_menu_profiles: "Menú perfiles"
+  show_menu_profiles: "Menú Perfiles"
   tlresults: "Ponderaciones"
-  qualifyingentities: "Entidades calificables"
+  qualifyingentities: "Actividades"
   profiles: "Perfiles"
   classrooms: "Clases"
   scores: "Notas/Puntuaciones"

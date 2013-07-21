@@ -1,0 +1,24 @@
+﻿es:
+  title: "ForProf"
+  import: "Import"
+  students_import: "Import Students from csv"
+  wellcome: "Wellcome, %{user}"
+  are_you_sure?: "¿Are you sure?, this cannot be undone"
+  sign_in: "Start Session"
+  destroy: "Delete"
+  breadcrums:
+    application:
+      index: "Index"
+  edit: "Edit"
+  new: "New"
+  accept: "Accept"
+  add: "Add"
+  add_detail: "Add Data"
+  remove: "Remove"
+  remove_detail: "Remove Data"
+  setting: "Configuration"
+  show_menu_profiles: "Profile Menu"
+  tlresults: "Percentage"
+  helpers:
+    links:
+      edit: "Edit"
