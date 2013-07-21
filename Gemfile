@@ -66,3 +66,4 @@ gem 'show_for'
 
 
 gem "devise"
+gem "kaminari"

@@ -13,7 +13,7 @@
         %td= item.institute.try(:name)
         %td= item.trainercycle.try(:title)
         %td= item.matter.try(:name)
-        %td
+        %td.actions.span2
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)
             = link_to t(:tlresults), edit_tlresults_profile_path(item), :class => 'ui-icon ui-icon-calculator', :alt => t(:tlresults), :title => t(:tlresults)
@@ -21,6 +21,9 @@
               = link_to t(:scores), edit_scores_profile_path(item), :class => 'ui-icon ui-icon-contact', :alt => t(:scores), :title => t(:scores)
           - if can? :destroy, item
             = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash', :alt => t(:destroy), :title => t(:destroy)
-- if can? :create, Profile
-  = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
-
+    %tfoot
+      %tr.actions
+        %td{:colspan => 99}
+          - if can? :create, Profile
+            = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
+          = paginate collection

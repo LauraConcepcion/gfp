@@ -37,10 +37,5 @@
           - qe.qualifyingentity_tlresults.each do |qe_tlr|
             - @score = qe_tlr.scores.find_by_student_id(student.id)
             %td{:id => @score.id}
-              -# = score_form.input :grade, :input_html => {:class => 'span4'}, :label => false
-              -# Best in place
-              -# = best_in_place @score, :grade
-              -# = best_in_place @score, :observations
-              -# = best_in_place @score, :url
               = render 'scores/in_place_edit'
 

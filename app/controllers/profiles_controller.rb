@@ -1,9 +1,9 @@
 class ProfilesController < InheritedResources::Base
   before_filter :authenticate_teacher!
+  respond_to :html, :xml, :json
+
   skip_before_filter :check_profiles
   load_and_authorize_resource
-
-  respond_to :html, :xml, :json
 
   def create
     create! { profiles_path }
@@ -50,7 +50,7 @@ class ProfilesController < InheritedResources::Base
 
   def collection
     @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
-    @q.sorts = "institute_id asc" if @q.sorts.empty?
-    @profiles ||= @q.result(:distintct => true).page(params[:page])
+    @q.sorts = "institute_id" if @q.sorts.empty?
+    @profiles = @q.result(:distinct => true).page(params[:page])
   end
 end

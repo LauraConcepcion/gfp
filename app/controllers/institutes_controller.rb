@@ -17,6 +17,6 @@ class InstitutesController < InheritedResources::Base
   def collection
     @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
     @q.sorts = "name asc" if @q.sorts.empty?
-    @profiles ||= @q.result(:distintct => true).page(params[:page])
+    @profiles ||= @q.result(:distinct => true).page(params[:page])
   end
 end

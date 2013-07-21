@@ -14,14 +14,16 @@
           - item.profiles.each do |profile|
             %br= profile.name
         %td= l(item.created_at, :format => :short)
-        %td
+        %td.actions.span2
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
           - if can? :edit, item
             = link_to t(:students), classroom_students_path(item), :class => 'ui-icon ui-icon-contact'
           - if can? :destroy, item
             = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
-- if can? :create, Classroom
-  = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
-
-= paginate collection
+  %tfoot
+    %tr.actions
+      %td{:colspan => 99}
+        - if can? :create, Classroom
+          = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
+        = paginate collection

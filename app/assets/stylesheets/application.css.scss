@@ -101,6 +101,33 @@ dl {
   }
 }
 
+// Listados
+table.table-striped {
+  tbody {
+    tr {
+      td.actions {
+        a {
+          float: left;
+        }
+      }
+    }
+  }
+  tfoot {
+    tr.actions {
+      td {
+        a.btn {
+          float:left;
+        }
+        div.pagination {
+          width: 40%;
+          float: right;
+          margin: 0px;
+        }
+      }
+    }
+  }
+}
+
 // select2
 .bigdrop.select2-container .select2-results {max-height: 300px;}
 .bigdrop .select2-results {max-height: 300px;}

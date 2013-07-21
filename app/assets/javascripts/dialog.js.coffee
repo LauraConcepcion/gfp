@@ -21,6 +21,7 @@ window.build_dialog = (selector, content, dialog_title) ->
     height: "auto"
     width: "auto"
     # open: set_markitup()
+    open: window.initialize($('#'+selector))
     # buttons: but
 
 window.close_dialog = (selector) ->

@@ -1,5 +1,6 @@
 class ClassroomsController < InheritedResources::Base
   before_filter :authenticate_teacher!
+  load_and_authorize_resource
 
   require 'csv'
 
@@ -43,9 +44,10 @@ class ClassroomsController < InheritedResources::Base
   end
 
   private
+
   def collection
     @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
     @q.sorts = "name asc" if @q.sorts.empty?
-    @classrooms||= @q.result(:distintct => true).page(params[:page])
+    @classrooms = @q.result(:distinct => true).page(params[:page])
   end
 end
