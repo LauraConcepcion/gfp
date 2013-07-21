@@ -20,6 +20,9 @@ table#qualifyingentity_tlresults_table {
       display: inline-block;
     }
   }
+  td.name {
+    text-align: left;
+  }
 }
 
 div#qualifyingentity_new, div#qualifyingentity_edit {

@@ -25,6 +25,18 @@ div.blackboard{
   overflow: scroll;
 }
 
+div.navbar.navbar-fixed-top {
+  ul.nav.pull-right {
+    a {
+      img {
+        height: 20px;
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+
 div.menu_profiles {
   display: none;
   background: url(pizarra.png) no-repeat fixed left 50px transparent;
@@ -122,6 +134,9 @@ table.table-striped {
           width: 40%;
           float: right;
           margin: 0px;
+        }
+        &:first-child {
+          text-align: left;
         }
       }
     }

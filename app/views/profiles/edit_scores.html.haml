@@ -1,5 +1,5 @@
 .page-header
-  %h1= Score.model_name.human
+  %h1= t(:scores)
 %table.table.table-striped#qualifyingentity_tlresults_table
   %thead.qualifyingentities
     %th.name
@@ -21,9 +21,9 @@
       = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
     - resource.qualifyingentity_tlresults.uniq.each do |qualifyingentity_tlresult|
       %th
-        - name = qualifyingentity_tlresult.tlresult.name
-        = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => name, "title" => "Detalle" do
-          = truncate(name, :length => 20)
+        - tlr = qualifyingentity_tlresult.tlresult
+        = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
+          = tlr.number
   %tbody
     - @students.each do |student|
       %tr{:id => "student_#{student.id}"}

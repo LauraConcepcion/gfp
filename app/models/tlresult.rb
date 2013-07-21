@@ -3,4 +3,9 @@ class Tlresult < ActiveRecord::Base
   has_many :qualifyingentity_tlresults
   has_many :criterions
   belongs_to :matter
+
+  def number
+    name =~ /^(\d+).*/
+    $1
+  end
 end

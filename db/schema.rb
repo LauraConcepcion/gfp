@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130711171011) do
+ActiveRecord::Schema.define(:version => 20130721173655) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -242,7 +242,7 @@ ActiveRecord::Schema.define(:version => 20130711171011) do
   end
 
   create_table "scores", :force => true do |t|
-    t.integer  "grade"
+    t.float    "grade"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.integer  "qualifyingentity_tlresult_id"
