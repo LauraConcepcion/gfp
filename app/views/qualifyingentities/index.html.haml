@@ -6,7 +6,6 @@
       %th= sort_link @q, :name, Qualifyingentity.human_attribute_name(:name)
       %th= sort_link @q, :created_at, Qualifyingentity.human_attribute_name(:created_at)
       %th= sort_link @q, :date, Qualifyingentity.human_attribute_name(:date)
-      %th= Matter.model_name.human
       %th= Tlresult.model_name.human.pluralize
       %th= t(:actions)
     %tbody
@@ -15,7 +14,6 @@
         %td= item.try(:name)
         %td= item.created_at ? I18n.l(item.created_at, :format => :without_time) : '-'
         %td= item.date ? I18n.l(item.date, :format => :default) : '-'
-        %td= item.profile.matter.try(:name)
         %td
           %ul
             - item.tlresults.each do |rea|
