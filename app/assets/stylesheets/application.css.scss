@@ -22,7 +22,9 @@ body {
 div.blackboard{
   width: 90%;
   margin-right: 0px;
-  overflow: scroll;
+  overflow-y: auto;
+  width: 90%;
+  height: 265px;
 }
 
 div.navbar.navbar-fixed-top {
@@ -40,8 +42,8 @@ div.navbar.navbar-fixed-top {
 div.menu_profiles {
   display: none;
   background: url(pizarra.png) no-repeat fixed left 50px transparent;
-  width: 25%;
-  min-height: 300px;
+  width: 33%;
+  min-height: 320px;
   float: left;
   padding: 120px 0 0 20px;
   color: white;
@@ -70,6 +72,7 @@ div.content-body {
   background: none repeat scroll 0 0 white;
   padding: 5px 20px;
   min-height: 400px;
+  overflow-x: scroll;
 }
 
 div.cocoon_with_chzn {

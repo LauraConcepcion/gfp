@@ -7,7 +7,7 @@ class TeachersController < InheritedResources::Base
     @teacher = current_teacher
     if @teacher.change_current_profile(profile)
       flash[:notice] = t(:saved)
-      redirect_to :back
+      redirect_to root_path
     end
   end
 end

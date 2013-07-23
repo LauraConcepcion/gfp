@@ -8,7 +8,7 @@ class Teacher < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :teacher_code, :name, :surname, :classroom_ids, :department_ids
   has_and_belongs_to_many :departments
-  has_many :classrooms
+  has_many :classrooms, :through => :profiles
   has_many :profiles, :order =>  'id ASC'
 
   # Devuleve el perfil actual con el que trabaja el usuario
