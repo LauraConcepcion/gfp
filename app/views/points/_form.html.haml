@@ -4,4 +4,4 @@
   = f.input :observations, :as => :text
   = f.input :profile_id, :as => :hidden, :input_html => {:value => @profile.id}
   = f.button :submit, :class => 'btn-primary'
-  = link_to t(:cancel), profile_student_points_path(@profile, @student), :class => 'btn'
+  = link_to t(:cancel), profile_student_points_path(@profile, @student), :class => 'btn' unless request.xhr?

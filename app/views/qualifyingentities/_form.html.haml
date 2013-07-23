@@ -1,7 +1,9 @@
-= simple_form_for resource, :remote => request.xhr? do |f|
+= simple_form_for [parent, resource], :remote => request.xhr? do |f|
   %div.errors
     = f.error_notification
   = f.input :name
+  - time = resource.created_at || Time.now
+  = f.input :created_at, :as => :string, :input_html => { :class => 'datepicker input-medium', :value => (I18n.l(time, :format => :medium)) }
   - date = resource.date || Date.today
   = f.input :date, :as => :string, :input_html => { :class => 'datepicker input-small', :value => (I18n.l(date, :format => :default)) }
   = f.association :profile, :as => :hidden
@@ -17,4 +19,4 @@
       %tr.links
         %td{:colspan => 99}= link_to_add_association t(:add), f, :qualifyingentity_tlresults, "data-association-insertion-node" => ".links", :class => 'btn'
   = f.button :submit, :class => 'btn-primary'
-  = link_to t(:cancel), collection_path, :class => 'btn'
+  = link_to t(:cancel), profile_qualifyingentities_path(parent), :class => 'btn' unless request.xhr?

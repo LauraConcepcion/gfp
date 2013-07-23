@@ -3,7 +3,7 @@
 %table.table.table-striped#qualifyingentity_tlresults_table
   %thead.qualifyingentities
     %th.name
-    %th.aux= link_to t(:new), new_qualifyingentity_path, :class => 'ui-icon icon-plus dialog', :remote => true
+    %th.aux= link_to t(:new), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
     - qe_ant_id = nil
     - resource.qualifyingentity_tlresults.each do |qualifyingentity_tlresult|
       - next if qe_ant_id && qualifyingentity_tlresult.qualifyingentity_id == qe_ant_id
@@ -11,7 +11,7 @@
       - qe_ant_id = qualifyingentity_tlresult.qualifyingentity_id
       %th{:colspan => count}
         = qe_title qualifyingentity_tlresult.qualifyingentity
-        = link_to t(:edit), edit_qualifyingentity_path(qualifyingentity_tlresult.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
+        = link_to t(:edit), edit_profile_qualifyingentity_path(current_teacher.current_profile, qualifyingentity_tlresult.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
   %thead.qualifyingentity_tlresults
     %th.name= Student.human_attribute_name(:name)
     %th.aux.span2

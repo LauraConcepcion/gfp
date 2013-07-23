@@ -15,7 +15,7 @@
         %tr.sumable
           = show_for qe do |qe_show|
             %td.name
-              = link_to qe.name, edit_qualifyingentity_path(qe), :remote => true
+              = link_to qe.name, edit_profile_qualifyingentity_path(resource, qe), :remote => true
             - # Recorremos todos los qe_tlr del resource para crear los huecos N/A en la tabla
             - resource.tlresults.uniq.each do |tlr|
               - if qe.tlresults.include?(tlr)
