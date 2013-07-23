@@ -16,13 +16,12 @@ Gfp::Application.routes.draw do
     resources :students do
       resources :points
     end
+    resources :qualifyingentities
   end
 
   resources :teachers do
     post 'change_current_profile'
   end
-
-  resources :qualifyingentities
 
   # Para realizar select anidados
   resources :trainercycles do

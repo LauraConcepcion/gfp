@@ -15,7 +15,7 @@ class ProfilesController < InheritedResources::Base
 
   def update_tlresults
     update! do |success, failure|
-      success.html { redirect_to qualifyingentities_path }
+      success.html { redirect_to profile_qualifyingentities_path(resource) }
       failure.html do
         render :edit_tlresults
       end

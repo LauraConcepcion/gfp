@@ -16,7 +16,8 @@
         %td.actions.span2
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)
-            = link_to t(:tlresults), edit_tlresults_profile_path(item), :class => 'ui-icon ui-icon-calculator', :alt => t(:tlresults), :title => t(:tlresults)
+            - unless item.tlresults.empty?
+              = link_to t(:tlresults), edit_tlresults_profile_path(item), :class => 'ui-icon ui-icon-calculator', :alt => t(:tlresults), :title => t(:tlresults)
             - if item.classroom && item.classroom.students
               = link_to t(:scores), edit_scores_profile_path(item), :class => 'ui-icon ui-icon-contact', :alt => t(:scores), :title => t(:scores)
           - if can? :destroy, item

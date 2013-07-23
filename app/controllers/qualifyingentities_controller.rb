@@ -1,7 +1,7 @@
 class QualifyingentitiesController < InheritedResources::Base
   before_filter :authenticate_teacher!
-
   respond_to :html, :xml, :json, :js
+  belongs_to :profile
 
   def new
     @qualifyingentity = Qualifyingentity.new
@@ -10,7 +10,7 @@ class QualifyingentitiesController < InheritedResources::Base
 
   def create
     create! do |success, failure|
-      success.html { redirect_to qualifyingentities_path }
+      success.html { redirect_to profile_qualifyingentities_path(parent) }
       failure.html do
         get_profile_data
         render :new
@@ -25,7 +25,7 @@ class QualifyingentitiesController < InheritedResources::Base
 
   def update
     update! do |success, failure|
-      success.html { redirect_to qualifyingentities_path }
+      success.html { redirect_to profile_qualifyingentities_path(parent) }
       failure.html do
         get_profile_data
         render :new
@@ -36,7 +36,7 @@ class QualifyingentitiesController < InheritedResources::Base
   private
 
   def collection
-    @q ||= end_of_association_chain.accessible_by(current_ability).for_profile(current_teacher.current_profile).search(params[:q])
+    @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
     @q.sorts = "created_at desc" if @q.sorts.empty?
     @qualifyingentities = @q.result(:distinct => true).page(params[:page])
   end

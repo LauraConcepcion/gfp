@@ -1,5 +1,5 @@
 class Qualifyingentity < ActiveRecord::Base
-  attr_accessible :name, :date, :profile_id, :qualifyingentity_tlresults_attributes
+  attr_accessible :name, :date, :profile_id, :qualifyingentity_tlresults_attributes, :created_at
 
   #Mediante profile se determina la asignatura para la que se están creando las entidades calificables
   belongs_to :profile
@@ -7,9 +7,6 @@ class Qualifyingentity < ActiveRecord::Base
   has_many :qualifyingentity_tlresults, :include => :tlresult, :order => 'tlresults.name'
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
 
-  #FIXME: queda pendiente determinar las relaciones con los alumnos
-  belongs_to :classroom
-   #FIXME: revisar más adelante
   has_many :qualifyingentity_criterions
   has_many :criterions, :through => :qualifyingentity_criterions
   has_and_belongs_to_many :contentblocks
