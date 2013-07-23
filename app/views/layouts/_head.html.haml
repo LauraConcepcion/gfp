@@ -8,6 +8,7 @@
   .nav-collapse
     %ul.nav.pull-right
       %li= link_to image_tag('book.png', :border => 0), edit_scores_profile_path(current_teacher.current_profile), :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:scores) if current_teacher.current_profile
+      %li= link_to image_tag('home.png', :border => 0), root_path
       -# %li= link_to Qualifyingentity.model_name.human, profile_qualifyingentities_path(current_teacher.current_profile)
       -# - if current_teacher.profiles
       -#   %li= link_to QualifyingentityTlresult.model_name.human, assign_tlresults_profile_path(current_teacher, current_teacher.current_profile) unless current_teacher.current_profile.nil?
