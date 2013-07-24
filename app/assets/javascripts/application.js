@@ -20,7 +20,7 @@ $(document).ready(function(){
 
   if ((window.location.pathname == "/teachers/sign_in") || (window.location.pathname =="/")){
       $('div.menu_profiles').show(1000);
-      $("div.content").css("width", "75%");
+      $("div.content").css("width", "65%");
   }
 
   //mostrar o no la pizarra de los perfiles
@@ -30,7 +30,7 @@ $(document).ready(function(){
       $("div.content").css("width", "100%");
     }else{
       $('div.menu_profiles').show(1000);
-      $("div.content").css("width", "75%");
+      $("div.content").css("width", "65%");
     }
   });
 });

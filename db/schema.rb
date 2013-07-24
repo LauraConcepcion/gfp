@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20130723171150) do
     t.string   "name"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "institute_id"
     t.integer  "aacce_id"
     t.integer  "departmenttype_id"
   end
@@ -267,14 +268,14 @@ ActiveRecord::Schema.define(:version => 20130723171150) do
   create_table "teachers", :force => true do |t|
     t.string   "name"
     t.string   "surname"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -289,9 +290,8 @@ ActiveRecord::Schema.define(:version => 20130723171150) do
 
   create_table "tlresults", :force => true do |t|
     t.text     "name"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "contentblock_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "matter_id"
     t.string   "rayce_id"
   end
@@ -315,18 +315,18 @@ ActiveRecord::Schema.define(:version => 20130723171150) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
