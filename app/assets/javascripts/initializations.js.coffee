@@ -33,7 +33,7 @@ window.initialize = (scope) ->
     init_select2_ajax inserted_row.find('.select2-ajax')
 
   # popovers
-  scope.find(".pop-over").popover({trigger: 'hover'})
+  scope.find(".pop-over").popover({trigger: 'hover', placement: 'left'})
   scope.find(".tool-tip").tooltip()
 
   # tabs
