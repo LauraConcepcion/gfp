@@ -2,8 +2,9 @@
   activerecord:
     errors:
       messages:
-        blank: "El valor de este campo es necesario y no puede estar vacío"
+        blank: "El valor de este campo es necesario y no puede estar vacío."
         taken: "El valor para este campo debe ser único y ya está en uso."
+        one_record_must_be_selected: "Debe seleccionar al menos un valor."
     models:
       profile: "Perfil"
       qualifyingentity: "Actividad"
