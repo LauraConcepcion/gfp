@@ -26,8 +26,10 @@
   points: "Puntos +/-"
   absences: "Faltas"
   incidents: "Incidencias"
+  students: "Estudiantes"
   observations: "Observaciones"
   no_current_profile: '<sin perfil>'
+  no_classroom: '<sin estudiantes para el curso seleccionado>'
   access_denied: "Acceso denegado"
   actions: "Acciones"
   helpers:

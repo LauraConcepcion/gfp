@@ -146,6 +146,24 @@ table.table-striped {
   }
 }
 
+//Iconos de acceso directo home
+.menu_icon{
+  background: none repeat scroll 0 0 #ECEEF3;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  float: left;
+  height: auto;
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 20%;
+}  
+
+.menu_icon h3{
+  font-size: 16px;
+}
+
+
 // select2
 .bigdrop.select2-container .select2-results {max-height: 300px;}
 .bigdrop .select2-results {max-height: 300px;}
