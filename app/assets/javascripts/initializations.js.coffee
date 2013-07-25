@@ -21,7 +21,7 @@ window.initialize = (scope) ->
       yearSuffix: ''}
   $.datepicker.setDefaults $.datepicker.regional["es"]
 
-  scope.find(".datepicker").datepicker({ changeYear: true, yearRange: '-100+0' })
+  scope.find(".datepicker").datepicker({ changeYear: true, yearRange: '-10+10' })
 
   # Inicializamos los autocompletar con select2.
   scope.find('.chzn-select').select2()

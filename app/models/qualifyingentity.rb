@@ -1,8 +1,12 @@
 class Qualifyingentity < ActiveRecord::Base
-  attr_accessible :name, :date, :profile_id, :qualifyingentity_tlresults_attributes, :created_at
+  attr_accessible :name, :date, :profile_id, :qualifyingentity_tlresults_attributes, :created_at, :quarter, :quarter_id
 
   #Mediante profile se determina la asignatura para la que se están creando las entidades calificables
   belongs_to :profile
+
+  #Trimestre al que pertenece
+  belongs_to :quarter
+  
   #Relación con los tlresult y sus porcentajes
   has_many :qualifyingentity_tlresults, :include => :tlresult, :order => 'tlresults.name'
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
@@ -11,7 +15,6 @@ class Qualifyingentity < ActiveRecord::Base
   has_many :criterions, :through => :qualifyingentity_criterions
   has_and_belongs_to_many :contentblocks
 
-  #accepts_nested_attributes_for :qualifyingentity_criterions, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
 
   # before_destroy :can_be_destroyed?
@@ -22,6 +25,9 @@ class Qualifyingentity < ActiveRecord::Base
   validates :profile_id, :presence => true
 
   validates_associated :qualifyingentity_tlresults
+
+  before_save :set_quarter
+
 
   scope :for_profile, lambda {|profile|
     where("profile_id = ?", profile.id) if profile
@@ -43,4 +49,10 @@ class Qualifyingentity < ActiveRecord::Base
   #     self.save
   #   end
   # end
+  
+  def set_quarter
+    Quarter.all.each do |q|
+      self.quarter = [q.start_date, q.end_date].include?(date) ? q : nil
+    end
+  end
 end
