@@ -16,6 +16,9 @@
 $(document).ready(function(){
   window.initialize($(this))
 
+  // Fixed header tables (TODO por ahora lo ponemos aquí para que no lo ejecute en los diálogos)
+  $('table#qualifyingentity_tlresults_table').fixedHeaderTable({ fixedColumns: 2, height: 450, width: '90%' })
+
   //Si estamos en inicio sesión se debe mostrar la pizarra
 
   if ((window.location.pathname == "/teachers/sign_in") || (window.location.pathname =="/")){
