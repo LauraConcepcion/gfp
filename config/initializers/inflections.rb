@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # Be sure to restart your server when you modify this file.
 
 # Add new inflection rules using the following format
@@ -8,6 +9,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   #   inflect.irregular 'person', 'people'
   #   inflect.uncountable %w( fish sheep )
   inflect.irregular 'perfil', 'perfiles'
+  inflect.irregular 'observación', 'observaciones'
 end
 #
 # These inflection rules are supported but not enabled by default:

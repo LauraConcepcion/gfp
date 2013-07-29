@@ -13,6 +13,9 @@ class Ability
       end
       cannot :create, Classroom if user.profiles.empty?
       can :manage, Point, :profile_id => user.current_profile.try(:id)
+      can :manage, Absence, :profile_id => user.current_profile.try(:id)
+      can :manage, Observation, :profile_id => user.current_profile.try(:id)
+      can :manage, Incident, :profile_id => user.current_profile.try(:id)
     end
     
     # Define abilities for the passed in user here. For example:

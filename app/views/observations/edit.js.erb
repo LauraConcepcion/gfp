@@ -1,0 +1,3 @@
+close_dialog('observation_edit');
+build_dialog('observation_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>');
+window.initialize($('#observation_edit'));

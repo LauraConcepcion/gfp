@@ -15,6 +15,9 @@ Gfp::Application.routes.draw do
     put 'update_scores', :on => :member
     resources :students do
       resources :points
+      resources :absences
+      resources :incidents
+      resources :observations
     end
     resources :qualifyingentities
   end

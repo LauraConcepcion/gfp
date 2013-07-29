@@ -1,0 +1,3 @@
+close_dialog('absence_edit');
+build_dialog('absence_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>');
+window.initialize($('#absence_edit'));

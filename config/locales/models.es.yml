@@ -180,3 +180,16 @@
         num: "Número"
         observations: "Observación"
         student: "Estudiante"
+      absence:
+        absence_datetime: "Fecha"
+        observations: "Observación"
+        student: "Estudiante"
+        justified: "Justificada"
+      incident:
+        incident_datetime: "Fecha"
+        observations: "Observación"
+        student: "Estudiante"
+      observation:
+        observation_datetime: "Fecha"
+        text: "Observación"
+        student: "Estudiante" 

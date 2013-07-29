@@ -1,5 +1,5 @@
-class Incident < ActiveRecord::Base
-  attr_accessible :incident_datetime, :observations, :profile_id, :student_id
+class Observation < ActiveRecord::Base
+  attr_accessible :profile_id, :student_id, :text, :observation_datetime
   belongs_to :student
   belongs_to :profile
 
