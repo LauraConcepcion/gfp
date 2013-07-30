@@ -1,7 +1,6 @@
 class ClassroomsController < InheritedResources::Base
   before_filter :authenticate_teacher!
   load_and_authorize_resource
-
   require 'csv'
 
   def create

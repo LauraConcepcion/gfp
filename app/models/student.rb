@@ -4,6 +4,9 @@ class Student < ActiveRecord::Base
 
   has_many :scores, :inverse_of => :student
   has_many :points
+  has_many :absences
+  has_many :incidents
+  has_many :observations
 
   scope :student_list, lambda {|group_id, matter_id, trainercycle_id|
     joins(:classrooms).where('classrooms.group_id = ? and classrooms.matter_id = ? and classrooms.trainercycle_id = ?', group_id, matter_id, trainercycle_id)

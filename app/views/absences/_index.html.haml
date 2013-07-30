@@ -1,0 +1,23 @@
+.page-header
+  %h1= Absence.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Absence.human_attribute_name(:student)
+      %th= Absence.human_attribute_name(:absence_datetime)
+      %th= Absence.human_attribute_name(:justified)
+      %th= t(:actions)
+  %tbody
+    - collection.each do |item|
+      %tr{:id => item.id}
+        %td= item.student.try(:name)
+        %td= item.absence_datetime ? I18n.l(item.absence_datetime, :format => :without_time) : '-'
+        %td= I18n.t(item.justified)
+        %td.actions
+          - if can? :edit, item
+            = link_to t(:edit), edit_profile_student_absence_path(@profile, @student, item), :class => 'ui-icon ui-icon-pencil', :remote => true
+          - if can? :destroy, item
+            = link_to t(:destroy), profile_student_absence_path(@profile, @student, item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+- if can? :create, Absence
+  = link_to t(:new), new_profile_student_absence_path(@profile, @student), :class => 'btn btn-primary', :remote => true
+

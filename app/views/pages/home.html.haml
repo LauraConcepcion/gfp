@@ -1,14 +1,14 @@
 %h1= t(:wellcome, :user => current_teacher.full_name)
-%br
-%i.icon-tag
-Cree un perfil para un instituto, ciclo formativo y módulo. Elija el perfil en el que trabajar
-= link_to image_tag("configuracion.png", :border => 0), {:action => 'index', :controller => 'profiles'}
-%br
-%i.icon-tag
-Proceda a gestionar los alumnos de la clase relacionada con su módulo
-- classroom = current_teacher.try(:current_profile).try(:classroom)
-= link_to image_tag("cuaderno.png", :border => 0), classroom_students_path(classroom) if classroom
-%br
-%i.icon-tag
-El cuaderno de profesor le permitirá llevar un seguimiento de la clase
-= link_to image_tag("book.png", :border => 0), edit_scores_profile_path(current_teacher.current_profile) if current_teacher.current_profile
+.menu_icon
+  %h3= t(:profiles)
+  = link_to image_tag("configuracion.png", :border => 0), {:action => 'index', :controller => 'profiles'}
+.menu_icon
+  %h3= t(:students)
+  - classroom = current_teacher.try(:current_profile).try(:classroom)
+  -if classroom
+    = link_to image_tag("cuaderno.png", :border => 0), classroom_students_path(classroom)
+  -else
+    = t(:no_classroom)
+.menu_icon
+  %h3= t(:scores)
+  = link_to image_tag("book.png", :border => 0), edit_scores_profile_path(current_teacher.current_profile) if current_teacher.current_profile

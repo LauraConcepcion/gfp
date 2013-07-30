@@ -1,5 +1,6 @@
 .page-header
   %h1= t(:scores)
+= link_to t(:new), profile_classroom_diaries_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
 %table.table.table-striped#qualifyingentity_tlresults_table
   %thead.qualifyingentities
     %th.name
@@ -33,6 +34,9 @@
               = student.full_name
         %td{:id => "aux_#{student.id}"}
           = render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
+          = render :partial => 'profiles/student_absences', :locals => {:profile => resource, :student => student}
+          = render :partial => 'profiles/student_incidents', :locals => {:profile => resource, :student => student}
+          = render :partial => 'profiles/student_observations', :locals => {:profile => resource, :student => student}
         - @profile.qualifyingentities.each do |qe|
           - qe.qualifyingentity_tlresults.each do |qe_tlr|
             - @score = qe_tlr.scores.find_by_student_id(student.id)

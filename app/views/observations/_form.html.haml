@@ -1,0 +1,6 @@
+= simple_form_for [@profile, @student, resource], :html => { :class => 'form-horizontal' }, :remote => true do |f|
+  = f.input :observation_datetime, :as => :string, :input_html => { :class => 'datepicker', :value => (I18n.l(resource.observation_datetime, :format => :medium) if resource.observation_datetime) }
+  = f.input :text, :as => :text
+  = f.input :profile_id, :as => :hidden, :input_html => {:value => @profile.id}
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t(:cancel), profile_student_observations_path(@profile, @student), :class => 'btn' unless request.xhr?

@@ -6,6 +6,7 @@
   = f.input :created_at, :as => :string, :input_html => { :class => 'datepicker input-medium', :value => (I18n.l(time, :format => :medium)) }
   - date = resource.date || Date.today
   = f.input :date, :as => :string, :input_html => { :class => 'datepicker input-small', :value => (I18n.l(date, :format => :default)) }
+  = f.association :quarter
   = f.association :profile, :as => :hidden
   %h3= Qualifyingentity.human_attribute_name(:qualifyingentity_tlresults)
   %table.table.table-striped

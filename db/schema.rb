@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723171150) do
+ActiveRecord::Schema.define(:version => 20130729082514) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(:version => 20130723171150) do
     t.text     "observations"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "classroom_diaries", :force => true do |t|
+    t.text     "description"
+    t.integer  "profile_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "classrooms", :force => true do |t|
@@ -194,6 +201,7 @@ ActiveRecord::Schema.define(:version => 20130723171150) do
     t.datetime "updated_at", :null => false
     t.integer  "profile_id"
     t.date     "date"
+    t.integer  "quarter_id"
   end
 
   create_table "qualifyingentity_criterions", :force => true do |t|
@@ -218,6 +226,8 @@ ActiveRecord::Schema.define(:version => 20130723171150) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.date     "start_date"
+    t.date     "end_date"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

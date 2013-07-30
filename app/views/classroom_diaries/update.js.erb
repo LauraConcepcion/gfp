@@ -1,0 +1,3 @@
+close_dialog('classroom_diaries_edit');
+$('#classroom_diaries_index').html('<%= escape_javascript(render :partial => 'index', :locals => {:profile => @profile} ) %>');
+$('#classroom_diaries_index').find('tr#<%= resource.id %>').animate({ color: "green" });

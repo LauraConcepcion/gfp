@@ -1,0 +1,21 @@
+.page-header
+  %h1= Incident.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Incident.human_attribute_name(:student)
+      %th= Incident.human_attribute_name(:incident_datetime)
+      %th= t(:actions)
+  %tbody
+    - collection.each do |item|
+      %tr{:id => item.id}
+        %td= item.student.try(:name)
+        %td= item.incident_datetime ? I18n.l(item.incident_datetime, :format => :medium) : '-'
+        %td.actions
+          - if can? :edit, item
+            = link_to t(:edit), edit_profile_student_incident_path(@profile, @student, item), :class => 'ui-icon ui-icon-pencil', :remote => true
+          - if can? :destroy, item
+            = link_to t(:destroy), profile_student_incident_path(@profile, @student, item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+- if can? :create, Incident
+  = link_to t(:new), new_profile_student_incident_path(@profile, @student), :class => 'btn btn-primary', :remote => true
+

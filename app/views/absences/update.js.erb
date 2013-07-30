@@ -1,0 +1,4 @@
+close_dialog('absence_edit');
+$('#absences_index').html('<%= escape_javascript(render :partial => 'index', :locals => {:profile => @profile, :student => @student} ) %>');
+$('#absences_index').find('tr#<%= resource.id %>').animate({ color: "green" });
+$("#aux_<%= @student.id %>").html('<%= escape_javascript(render :partial => 'profiles/student_absences', :locals => {:profile => @profile, :student => @student} ) %>');

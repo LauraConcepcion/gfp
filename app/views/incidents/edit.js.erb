@@ -1,0 +1,3 @@
+close_dialog('incident_edit');
+build_dialog('incident_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>');
+window.initialize($('#incident_edit'));

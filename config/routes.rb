@@ -4,8 +4,6 @@ Gfp::Application.routes.draw do
 
   devise_for :teachers
 
-  resources :qualifyingentities
-
  # resources :qualifyingentity_tlresults
 
   resources :profiles do
@@ -15,9 +13,14 @@ Gfp::Application.routes.draw do
     put 'update_scores', :on => :member
     resources :students do
       resources :points
+      resources :absences
+      resources :incidents
+      resources :observations
     end
     resources :qualifyingentities
+    resources :classroom_diaries
   end
+
 
   resources :teachers do
     post 'change_current_profile'
