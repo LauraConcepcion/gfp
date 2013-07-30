@@ -82,6 +82,7 @@
         profile: "Perfil"
         qualifyingentity_tlresults: "Criterios/REAs calificados"
         date: "Entrega"
+        quarter: "Trimestre"
       qualifyingentity_tlresult:
         qualifyingentity: "Actividad"
         tlresult: "Criterio/REA"
