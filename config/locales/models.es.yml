@@ -161,7 +161,7 @@
         code: "Código"
         departments: "Departamentos"
       quarter:
-        name: "Nombre"
+        name: "Nombre primero"
         contentblocks: "Bloques de contenidos"
         created_at: "Creado"
         updated_at: "Actualizado"
