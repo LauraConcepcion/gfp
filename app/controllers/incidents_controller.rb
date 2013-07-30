@@ -10,6 +10,6 @@ class IncidentsController < InheritedResources::Base
   def collection
     @q ||= end_of_association_chain.accessible_by(current_ability).for_profile_and_student(@profile, @student).search(params[:q])
     @q.sorts = "incident_datetime asc" if @q.sorts.empty?
-    @points ||= @q.result(:distinct => true).page(params[:page])
+    @incidents ||= @q.result(:distinct => true).page(params[:page])
   end
 end

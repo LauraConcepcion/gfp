@@ -1,0 +1,3 @@
+close_dialog('classroom_diaries_edit');
+build_dialog('classroom_diaries_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>');
+window.initialize($('#classroom_diaries_edit'));

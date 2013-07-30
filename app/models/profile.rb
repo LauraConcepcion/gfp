@@ -17,6 +17,8 @@ class Profile < ActiveRecord::Base
   has_many :observations
 
   has_many :students, :through => :classroom
+  
+  has_many :classroom_diaries
 
   validates :teacher_id, :presence => true
   validates :institute_id, :presence => true

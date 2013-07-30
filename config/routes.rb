@@ -4,8 +4,6 @@ Gfp::Application.routes.draw do
 
   devise_for :teachers
 
-  resources :qualifyingentities
-
  # resources :qualifyingentity_tlresults
 
   resources :profiles do
@@ -20,7 +18,9 @@ Gfp::Application.routes.draw do
       resources :observations
     end
     resources :qualifyingentities
+    resources :classroom_diaries
   end
+
 
   resources :teachers do
     post 'change_current_profile'
