@@ -3,7 +3,7 @@ class StudentsController < InheritedResources::Base
   respond_to :html, :xml, :json, :js
   load_and_authorize_resource
 
-  belongs_to :classroom
+  belongs_to :classroom, :optional => true
 
   def create
     create! { classroom_students_path(parent) }

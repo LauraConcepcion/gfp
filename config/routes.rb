@@ -21,6 +21,7 @@ Gfp::Application.routes.draw do
     resources :classroom_diaries
   end
 
+  resources :students
 
   resources :teachers do
     post 'change_current_profile'

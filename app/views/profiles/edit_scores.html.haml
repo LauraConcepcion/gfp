@@ -18,6 +18,7 @@
       %tr.qualifyingentity_tlresults
         %th.name= Student.human_attribute_name(:name)
         %th.aux
+          .qualifyingentity= link_to t(:new), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
           = link_to t(:points), '#', :class => 'ui-icon icon-bookmark button', :alt => t(:points), :title => t(:points)
           = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
           = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
@@ -41,9 +42,12 @@
           = show_for student do |student_show|
             %td.name
               = student_show.attribute :name, :label => false do
-                = student.full_name
+                = link_to student.full_name, edit_student_path(student), :alt => t(:edit), :title => t(:edit), :remote => true
           %td.aux{:id => "aux_#{student.id}"}
-            = render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
+            %span.aux= render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
+            %span.aux= render :partial => 'profiles/student_absences', :locals => {:profile => resource, :student => student}
+            %span.aux= render :partial => 'profiles/student_incidents', :locals => {:profile => resource, :student => student}
+            %span.aux= render :partial => 'profiles/student_observations', :locals => {:profile => resource, :student => student}
           - current_qe = nil
           - @profile.qualifyingentities.each do |qe|
             - qe.qualifyingentity_tlresults.each do |qe_tlr|

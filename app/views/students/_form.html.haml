@@ -1,4 +1,4 @@
-= simple_form_for [parent, resource], :remote => request.xhr? do |f|
+= simple_form_for [parent, resource].compact, :remote => request.xhr? do |f|
   %div.errors
     = f.error_notification
   %div#tabs
@@ -22,4 +22,4 @@
       = f.input :student_code
       = f.input :record
   = f.button :submit, :class => 'btn-primary'
-  = link_to t(:cancel), collection_path, :class => 'btn'
+  = link_to t(:cancel), collection_path, :class => 'btn cancel' unless request.xhr?

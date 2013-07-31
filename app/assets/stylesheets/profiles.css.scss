@@ -41,6 +41,9 @@ table#qualifyingentity_tlresults_table, table.fht-table {
   th.name, td.name {
     text-align: left;
     padding-left: 10px;
+    p {
+      margin-bottom: 2px;
+    }
   }
   tr.odd td {
     background-color: #F4F6FD;
@@ -48,8 +51,18 @@ table#qualifyingentity_tlresults_table, table.fht-table {
   th.qualifyingentity.odd, td.qualifyingentity.odd {
     background-color: #F4F6FD;
   }
+  td.aux {
+    span.aux {
+      padding: 3px;
+    }
+  }
 }
 
 div#qualifyingentity_new, div#qualifyingentity_edit {
   min-width: 670px;
+}
+
+div#student_edit {
+  min-width: 670px;
+  min-height: 450px!important;
 }
