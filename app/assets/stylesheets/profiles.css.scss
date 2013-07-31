@@ -30,8 +30,23 @@ table#qualifyingentity_tlresults_table, table.fht-table {
     //   width: 200px!important;
     // }
   }
-  td.name {
+  th {
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    vertical-align: bottom;
+  }
+  td {
+    vertical-align: middle;
+  }
+  th.name, td.name {
     text-align: left;
+    padding-left: 10px;
+  }
+  tr.odd td {
+    background-color: #F4F6FD;
+  }
+  th.qualifyingentity.odd, td.qualifyingentity.odd {
+    background-color: #F4F6FD;
   }
 }
 
