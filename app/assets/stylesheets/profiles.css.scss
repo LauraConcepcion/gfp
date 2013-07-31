@@ -8,7 +8,7 @@ input.percentage
 }
 
 // Scores
-table#qualifyingentity_tlresults_table {
+table#qualifyingentity_tlresults_table, table.fht-table {
   border-bottom: 1px solid #DDDDDD;
   th, td {
     white-space: nowrap;
@@ -16,12 +16,37 @@ table#qualifyingentity_tlresults_table {
     border-left: 1px solid #DDDDDD;
     border-right: 1px solid #DDDDDD;
     border-top: 1px solid #DDDDDD;
+    background-color: white;
     a {
       display: inline-block;
     }
+    &.score, &.tlresult {
+      width: 40px;
+    }
+    &.aux {
+      width: 80px;
+    }
+    // &.name {
+    //   width: 200px!important;
+    // }
   }
-  td.name {
+  th {
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    vertical-align: bottom;
+  }
+  td {
+    vertical-align: middle;
+  }
+  th.name, td.name {
     text-align: left;
+    padding-left: 10px;
+  }
+  tr.odd td {
+    background-color: #F4F6FD;
+  }
+  th.qualifyingentity.odd, td.qualifyingentity.odd {
+    background-color: #F4F6FD;
   }
 }
 

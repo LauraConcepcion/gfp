@@ -1,45 +1,55 @@
 .page-header
   %h1= t(:scores)
-= link_to t(:new), profile_classroom_diaries_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
-%table.table.table-striped#qualifyingentity_tlresults_table
-  %thead.qualifyingentities
-    %th.name
-    %th.aux= link_to t(:new), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
-    - qe_ant_id = nil
-    - resource.qualifyingentity_tlresults.each do |qualifyingentity_tlresult|
-      - next if qe_ant_id && qualifyingentity_tlresult.qualifyingentity_id == qe_ant_id
-      - count = resource.qualifyingentity_tlresults.where(:qualifyingentity_id => qualifyingentity_tlresult.qualifyingentity_id).count
-      - qe_ant_id = qualifyingentity_tlresult.qualifyingentity_id
-      %th{:colspan => count}
-        = qe_title qualifyingentity_tlresult.qualifyingentity
-        = link_to t(:edit), edit_profile_qualifyingentity_path(current_teacher.current_profile, qualifyingentity_tlresult.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
-  %thead.qualifyingentity_tlresults
-    %th.name= Student.human_attribute_name(:name)
-    %th.aux.span2
-      = link_to t(:points), '#', :class => 'ui-icon icon-bookmark button', :alt => t(:points), :title => t(:points)
-      = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
-      = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
-      = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
-    - resource.qualifyingentity_tlresults.uniq.each do |qualifyingentity_tlresult|
-      %th
-        - tlr = qualifyingentity_tlresult.tlresult
-        = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
-          = tlr.number
-  %tbody
-    - @students.each do |student|
-      %tr{:id => "student_#{student.id}"}
-        = show_for student do |student_show|
-          %td.name
-            = student_show.attribute :name, :label => false do
-              = student.full_name
-        %td{:id => "aux_#{student.id}"}
-          = render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
-          = render :partial => 'profiles/student_absences', :locals => {:profile => resource, :student => student}
-          = render :partial => 'profiles/student_incidents', :locals => {:profile => resource, :student => student}
-          = render :partial => 'profiles/student_observations', :locals => {:profile => resource, :student => student}
-        - @profile.qualifyingentities.each do |qe|
-          - qe.qualifyingentity_tlresults.each do |qe_tlr|
-            - @score = qe_tlr.scores.find_by_student_id(student.id)
-            %td{:id => @score.id}
-              = render 'scores/in_place_edit'
+%div.scores
+  = link_to t(:new), profile_classroom_diaries_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
+  %table#qualifyingentity_tlresults_table
+    %thead
+      -# %tr.qualifyingentities
+      -#   %th.name
+      -#   %th.aux= link_to t(:new), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
+      -#   - qe_ant_id = nil
+      -#   - resource.qualifyingentity_tlresults.each do |qe_tlr|
+      -#     - next if qe_ant_id && qe_tlr.qualifyingentity_id == qe_ant_id
+      -#     - count = resource.qualifyingentity_tlresults.where(:qualifyingentity_id => qe_tlr.qualifyingentity_id).count
+      -#     - qe_ant_id = qe_tlr.qualifyingentity_id
+      -#     %th.qe{:colspan => count, :style => "width: #{count*40}px;"}
+      -#       = qe_title qe_tlr.qualifyingentity
+      -#       = link_to t(:edit), edit_profile_qualifyingentity_path(current_teacher.current_profile, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
+      %tr.qualifyingentity_tlresults
+        %th.name= Student.human_attribute_name(:name)
+        %th.aux
+          = link_to t(:points), '#', :class => 'ui-icon icon-bookmark button', :alt => t(:points), :title => t(:points)
+          = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
+          = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
+          = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
+        - even_odd = cycle("even", "odd")
+        - current_qe = nil
+        - resource.qualifyingentity_tlresults.uniq.each do |qe_tlr|
+          - even_odd = cycle("even", "odd") if qe_tlr.qualifyingentity != current_qe
+          - tlr = qe_tlr.tlresult
+          %th.tlresult{:class => "qualifyingentity #{even_odd}"}
+            - if qe_tlr.qualifyingentity != current_qe
+              .qualifyingentity
+                = qe_title qe_tlr.qualifyingentity
+                = link_to t(:edit), edit_profile_qualifyingentity_path(current_teacher.current_profile, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
+            = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
+              = tlr.number
+          - current_qe = qe_tlr.qualifyingentity
+    %tbody
+      - @students.each do |student|
+        %tr{:id => "student_#{student.id}"}
+          = show_for student do |student_show|
+            %td.name
+              = student_show.attribute :name, :label => false do
+                = student.full_name
+          %td.aux{:id => "aux_#{student.id}"}
+            = render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
+          - current_qe = nil
+          - @profile.qualifyingentities.each do |qe|
+            - qe.qualifyingentity_tlresults.each do |qe_tlr|
+              - even_odd = cycle("even", "odd") if qe_tlr.qualifyingentity != current_qe
+              - @score = qe_tlr.scores.find_by_student_id(student.id)
+              %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd}"}
+                = render 'scores/in_place_edit'
+                - current_qe = qe_tlr.qualifyingentity
 

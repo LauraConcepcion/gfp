@@ -14,6 +14,9 @@
 //= require cocoon
 //
 $(document).ready(function(){
+  // Fixed header tables (TODO por ahora lo ponemos aquí para que no lo ejecute en los diálogos)
+  $('table#qualifyingentity_tlresults_table').fixedHeaderTable({ fixedColumns: 2, height: 450, altClass: 'odd' })
+
   window.initialize($(this))
 
   //Si estamos en inicio sesión se debe mostrar la pizarra
