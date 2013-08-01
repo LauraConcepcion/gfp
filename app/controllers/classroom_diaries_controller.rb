@@ -2,18 +2,17 @@ class ClassroomDiariesController < InheritedResources::Base
   before_filter :authenticate_teacher!
   respond_to :html, :xml, :json, :js
   belongs_to :profile
-  
+
   def new
     @classroom_diary = ClassroomDiary.new
     get_profile_data
   end
 
-
   def edit
     @classroom_diary = ClassroomDiary.find(params[:id])
     get_profile_data
   end
-  
+
   def create
     create!
   end

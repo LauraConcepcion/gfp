@@ -14,6 +14,7 @@
 //= require cocoon
 //
 $(document).ready(function(){
+  jQuery.ajaxSetup({cache: false})
   // Fixed header tables (TODO por ahora lo ponemos aquí para que no lo ejecute en los diálogos)
   $('table#qualifyingentity_tlresults_table').fixedHeaderTable({ fixedColumns: 2, height: 450, altClass: 'odd' })
 

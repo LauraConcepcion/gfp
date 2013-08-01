@@ -23,7 +23,9 @@ class ProfilesController < InheritedResources::Base
   end
 
   def edit_scores
-    @qualifyingentities = resource.qualifyingentities
+    @quarters = Quarter.for_this_year
+    @qualifyingentities = resource.qualifyingentities.where(:quarter_id => params[:quarter_id] || @quarters.map(&:id))
+    @qualifyingentity_tlresults = @qualifyingentities.map(&:qualifyingentity_tlresults).flatten.uniq.sort
     @students = resource.classroom ? resource.classroom.students : []
     @students.each do |student|
       @qualifyingentities.each do |qe|

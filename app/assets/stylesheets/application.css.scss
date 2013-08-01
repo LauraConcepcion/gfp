@@ -27,6 +27,10 @@ div.blackboard{
   height: 265px;
 }
 
+div.popover {
+  z-index: 9999!important;
+}
+
 div.navbar.navbar-fixed-top {
   ul.nav.pull-right {
     a {

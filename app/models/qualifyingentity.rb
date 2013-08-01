@@ -26,7 +26,7 @@ class Qualifyingentity < ActiveRecord::Base
 
   validates_associated :qualifyingentity_tlresults
 
-  before_save :set_quarter
+  before_save :set_quarter, :unless => :quarter
 
 
   scope :for_profile, lambda {|profile|
@@ -51,8 +51,8 @@ class Qualifyingentity < ActiveRecord::Base
   # end
   
   def set_quarter
-    Quarter.all.each do |q|
-      self.quarter = [q.start_date, q.end_date].include?(date) ? q : nil
+    Quarter.all.sort.each do |q|
+      self.quarter = (q.start_date..q.end_date).include?(date) ? q : nil
     end
   end
 end
