@@ -14,50 +14,54 @@ input.percentage
   }
   table#qualifyingentity_tlresults_table, table.fht-table {
     border-bottom: 1px solid #DDDDDD;
-    th, td {
-      white-space: nowrap;
-      text-align: center;
-      border-left: 1px solid #DDDDDD;
-      border-right: 1px solid #DDDDDD;
-      border-top: 1px solid #DDDDDD;
-      background-color: white;
-      a {
-        display: inline-block;
+    tr {
+      th, td {
+        white-space: nowrap;
+        text-align: center;
+        border-left: 1px solid #BBBBBB;
+        border-right: 1px solid #BBBBBB;
+        border-top: 1px solid #BBBBBB;
+        background-color: white;
+        a {
+          display: inline-block;
+        }
+        &.score, &.tlresult {
+          width: 40px;
+        }
+        &.aux {
+          width: 80px;
+        }
+        // &.name {
+        //   width: 200px!important;
+        // }
       }
-      &.score, &.tlresult {
-        width: 40px;
+      th {
+        border-top: 1px solid #DDDDDD;
+        border-bottom: 1px solid #DDDDDD;
+        vertical-align: bottom;
       }
-      &.aux {
-        width: 80px;
+      td {
+        vertical-align: middle;
       }
-      // &.name {
-      //   width: 200px!important;
-      // }
-    }
-    th {
-      border-top: 1px solid #DDDDDD;
-      border-bottom: 1px solid #DDDDDD;
-      vertical-align: bottom;
-    }
-    td {
-      vertical-align: middle;
-    }
-    th.name, td.name {
-      text-align: left;
-      padding-left: 10px;
-      p {
-        margin-bottom: 2px;
+      th.name, td.name {
+        text-align: left;
+        padding-left: 10px;
+        p {
+          margin-bottom: 2px;
+        }
       }
-    }
-    tr.odd td {
-      background-color: #F4F6FD;
-    }
-    th.qualifyingentity.odd, td.qualifyingentity.odd {
-      background-color: #F4F6FD;
-    }
-    td.aux {
-      span.aux {
-        padding: 3px;
+      th.qualifyingentity.odd {
+        background-color: #F4F6FD;
+      }
+      td.qualifyingentity.odd {
+        background-color: #F4F6FD;
+      }
+      td.aux {
+        span.aux {
+          a {
+            margin: 0px 3px;
+          }
+        }
       }
     }
   }

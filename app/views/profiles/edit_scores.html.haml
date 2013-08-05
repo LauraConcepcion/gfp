@@ -7,17 +7,6 @@
       = link_to quarter.name, edit_scores_profile_path(current_teacher.current_profile, :quarter_id => quarter.id), :class => 'btn btn-primary'
   %table#qualifyingentity_tlresults_table
     %thead
-      -# %tr.qualifyingentities
-      -#   %th.name
-      -#   %th.aux= link_to t(:new), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
-      -#   - qe_ant_id = nil
-      -#   - resource.qualifyingentity_tlresults.each do |qe_tlr|
-      -#     - next if qe_ant_id && qe_tlr.qualifyingentity_id == qe_ant_id
-      -#     - count = resource.qualifyingentity_tlresults.where(:qualifyingentity_id => qe_tlr.qualifyingentity_id).count
-      -#     - qe_ant_id = qe_tlr.qualifyingentity_id
-      -#     %th.qe{:colspan => count, :style => "width: #{count*40}px;"}
-      -#       = qe_title qe_tlr.qualifyingentity
-      -#       = link_to t(:edit), edit_profile_qualifyingentity_path(current_teacher.current_profile, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
       %tr.qualifyingentity_tlresults
         %th.name= Student.human_attribute_name(:name)
         %th.aux
@@ -35,9 +24,10 @@
             - if qe_tlr.qualifyingentity != current_qe
               .qualifyingentity
                 -# = qe_title qe_tlr.qualifyingentity
-                = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => qe_title(qe_tlr.qualifyingentity), "title" => "Detalle" do
-                  = link_to t(:edit), edit_profile_qualifyingentity_path(current_teacher.current_profile, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
-            = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
+                = link_to t(:edit), edit_profile_qualifyingentity_path(current_teacher.current_profile, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
+                = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => qe_title(qe_tlr.qualifyingentity), "title" => Qualifyingentity.model_name.human do
+                  %i.icon-info-sign
+            = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
               = tlr.number
           - current_qe = qe_tlr.qualifyingentity
     %tbody
@@ -52,6 +42,7 @@
             %span.aux= render :partial => 'profiles/student_absences', :locals => {:profile => resource, :student => student}
             %span.aux= render :partial => 'profiles/student_incidents', :locals => {:profile => resource, :student => student}
             %span.aux= render :partial => 'profiles/student_observations', :locals => {:profile => resource, :student => student}
+          - even_odd = cycle("even", "odd")
           - current_qe = nil
           - @qualifyingentities.each do |qe|
             - qe.qualifyingentity_tlresults.each do |qe_tlr|
