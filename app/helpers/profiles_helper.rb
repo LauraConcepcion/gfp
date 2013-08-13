@@ -4,4 +4,9 @@ module ProfilesHelper
     title += " (#{I18n.l(qualifyingentity.date, :format => :default)})" if qualifyingentity.date
     title
   end
+
+  def average_for(student, tlr, quarter_id)
+    average_score = AverageScore.where(:student_id => student.id, :tlresult_id => tlr.id, :quarter_id => quarter_id).first
+    average_score ? number_with_precision(average_score.grade, :precision => 2) : '-'
+  end
 end

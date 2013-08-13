@@ -44,6 +44,7 @@ Gfp::Application.routes.draw do
   end
 
   resources :scores
+  resources :average_scores
 
   root :to => "pages#home"
   match ':controller(/:action(/:id(.:format)))'

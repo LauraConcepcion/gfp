@@ -1,1 +1,3 @@
-= link_to @score.grade || '-', edit_score_path(@score), :title => @score.observations, :alt => @score.observations, :remote => true
+- value = @score.grade ? number_with_precision(@score.grade, :precision => 2) : '-'
+- value = value.gsub(/[,.]00$/, '').gsub(/(\d+[,.]\d)0$/, '\1')
+= link_to value, edit_score_path(@score), :title => @score.observations, :alt => @score.observations, :remote => true

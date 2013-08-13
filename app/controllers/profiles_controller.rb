@@ -26,6 +26,7 @@ class ProfilesController < InheritedResources::Base
     @quarters = Quarter.for_this_year
     @qualifyingentities = resource.qualifyingentities.where(:quarter_id => params[:quarter_id] || @quarters.map(&:id)).order(:created_at, :date)
     @qualifyingentity_tlresults = @qualifyingentities.map(&:qualifyingentity_tlresults).flatten
+    @ordered_unique_tlrs = @qualifyingentity_tlresults.map(&:tlresult).sort_by {|tlr| tlr.name}.uniq
     @students = resource.classroom ? resource.classroom.students : []
     @students.each do |student|
       @qualifyingentities.each do |qe|
@@ -34,6 +35,8 @@ class ProfilesController < InheritedResources::Base
           Score.create(:qualifyingentity_tlresult_id => qe_tlr.id, :student_id => student.id) unless score
         end
       end
+      average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => params[:quarter_id]).first
+      AverageScore.create(:student_id => student.id, :tlresult_id => nil, :quarter_id => params[:quarter_id]) unless average_score
     end
   end
 
