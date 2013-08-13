@@ -5,7 +5,8 @@ class Profile < ActiveRecord::Base
   belongs_to :matter
   belongs_to :teacher
   belongs_to :group
-  belongs_to :classroom
+  
+  has_one :classroom
 
   has_many :qualifyingentities, :dependent => :destroy, :order => 'date ASC'
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'qualifyingentities.date ASC, tlresults.name ASC'

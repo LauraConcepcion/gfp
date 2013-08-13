@@ -1,4 +1,4 @@
 close_dialog('incident_edit');
 $('#incidents_index').html('<%= escape_javascript(render :partial => 'index', :locals => {:profile => @profile, :student => @student} ) %>');
 $('#incidents_index').find('tr#<%= resource.id %>').animate({ color: "green" });
-$("#aux_<%= @student.id %>").html('<%= escape_javascript(render :partial => 'profiles/student_incidents', :locals => {:profile => @profile, :student => @student} ) %>');
+$("#aux_<%= @student.id %> span.aux3).html('<%= escape_javascript(render :partial => 'profiles/student_incidents', :locals => {:profile => @profile, :student => @student} ) %>');

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729082514) do
+ActiveRecord::Schema.define(:version => 20130807095130) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(:version => 20130729082514) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "code_import"
+    t.integer  "profile_id"
+  end
+
+  create_table "classrooms_students", :id => false, :force => true do |t|
+    t.integer "classroom_id", :null => false
+    t.integer "student_id",   :null => false
   end
 
   create_table "contentblocks", :force => true do |t|
@@ -188,7 +194,6 @@ ActiveRecord::Schema.define(:version => 20130729082514) do
     t.integer  "teacher_id"
     t.integer  "group_id"
     t.boolean  "default"
-    t.integer  "classroom_id"
   end
 
   add_index "profiles", ["institute_id"], :name => "index_profiles_on_institute_id"
@@ -270,7 +275,6 @@ ActiveRecord::Schema.define(:version => 20130729082514) do
     t.string   "dni"
     t.string   "mail"
     t.string   "phone"
-    t.integer  "classroom_id"
     t.string   "record"
     t.datetime "birthdate"
   end

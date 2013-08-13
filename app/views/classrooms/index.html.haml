@@ -3,24 +3,20 @@
   %thead
     %tr
       %th= sort_link @q, :name, Classroom.human_attribute_name(:name)
-      %th= t(:profiles)
+      %th= t(:profile)
       %th= sort_link @q, :created_at, Classroom.human_attribute_name(:created_at)
       %th= t(:actions)
   %tbody
     - collection.each do |item|
       %tr
         %td= item.try(:name)
-        %td
-          - item.profiles.each do |profile|
-            %br= profile.name
+        %td= item.profile.try(:name)
         %td= l(item.created_at, :format => :short)
         %td.actions.span2
           - if can? :edit, item
-            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil'
-          - if can? :edit, item
-            = link_to t(:students), classroom_students_path(item), :class => 'ui-icon ui-icon-contact'
+            = link_to t(:edit), edit_resource_path(item), :class => 'icon edit'
           - if can? :destroy, item
-            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete'
   %tfoot
     %tr.actions
       %td{:colspan => 99}
