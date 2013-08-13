@@ -20,7 +20,7 @@
         - @qualifyingentity_tlresults.uniq.each do |qe_tlr|
           - even_odd = cycle("even", "odd") if qe_tlr.qualifyingentity != current_qe
           - tlr = qe_tlr.tlresult
-          %th.tlresult{:class => "qualifyingentity #{even_odd}"}
+          %th.tlresult{:class => "qualifyingentity #{even_odd} #{'qe_actions' if qe_tlr.qualifyingentity != current_qe}"}
             - if qe_tlr.qualifyingentity != current_qe
               .qualifyingentity
                 -# = qe_title qe_tlr.qualifyingentity
@@ -30,6 +30,11 @@
             = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
               = tlr.number
           - current_qe = qe_tlr.qualifyingentity
+        - @ordered_unique_tlrs.each do |tlr|
+          %th.score.average
+            = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
+              = tlr.number
+        %th.score.average.student
     %tbody
       - @students.each do |student|
         %tr{:id => "student_#{student.id}"}
@@ -48,7 +53,13 @@
             - qe.qualifyingentity_tlresults.each do |qe_tlr|
               - even_odd = cycle("even", "odd") if qe_tlr.qualifyingentity != current_qe
               - @score = qe_tlr.scores.find_by_student_id(student.id)
-              %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd}"}
+              %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd} #{'qe_actions' if qe_tlr.qualifyingentity != current_qe}"}
                 = render 'scores/in_place_edit'
                 - current_qe = qe_tlr.qualifyingentity
+          - @ordered_unique_tlrs.each do |tlr|
+            %td{:class => "score average", :id => "average_score_#{student.id}_#{tlr.id}"}
+              = average_for(student, tlr, params[:quarter_id])
+          - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => params[:quarter_id]).first
+          %td{:class => "score average student", :id => "average_#{@average_score.id}"}
+            = render 'average_scores/in_place_edit'
 

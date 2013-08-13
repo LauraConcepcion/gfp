@@ -3,6 +3,7 @@ class Student < ActiveRecord::Base
   belongs_to :classroom, :inverse_of => :students
 
   has_many :scores, :inverse_of => :student
+  has_many :average_scores, :inverse_of => :student
   has_many :points
   has_many :absences
   has_many :incidents

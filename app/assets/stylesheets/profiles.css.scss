@@ -13,14 +13,13 @@ input.percentage
     padding: 1em;
   }
   table#qualifyingentity_tlresults_table, table.fht-table {
-    border-bottom: 1px solid #DDDDDD;
     tr {
       th, td {
         white-space: nowrap;
         text-align: center;
-        border-left: 1px solid #BBBBBB;
-        border-right: 1px solid #BBBBBB;
-        border-top: 1px solid #BBBBBB;
+        border-left: 1px solid #CCCCCC;
+        border-right: 1px solid #CCCCCC;
+        border-top: 1px solid #CCCCCC;
         background-color: white;
         a {
           display: inline-block;
@@ -36,32 +35,50 @@ input.percentage
         // }
       }
       th {
-        border-top: 1px solid #DDDDDD;
-        border-bottom: 1px solid #DDDDDD;
+        border-bottom: 1px solid #CCCCCC;
         vertical-align: bottom;
+        min-width: 40px;
+        &.qualifyingentity.odd {
+          background-color: #F4F6FD;
+        }
+        &.qe_actions {
+          border-left: 1px solid #CCCCCC;
+        }
       }
       td {
         vertical-align: middle;
+        min-width: 40px;
+        &.qualifyingentity.odd {
+          background-color: #F4F6FD;
+        }
+        &.qe_actions {
+          border-left: 1px solid #CCCCCC;
+        }
       }
       th.name, td.name {
         text-align: left;
         padding-left: 10px;
+        min-width: 300px;
         p {
           margin-bottom: 2px;
         }
       }
-      th.qualifyingentity.odd {
-        background-color: #F4F6FD;
-      }
-      td.qualifyingentity.odd {
-        background-color: #F4F6FD;
-      }
-      td.aux {
+      th.aux, td.aux {
+        border-right: 1px solid #CCCCCC;
+        border-left: 1px solid #CCCCCC;
         span.aux {
           a {
             margin: 0px 3px;
           }
         }
+      }
+      th.score.average, td.score.average {
+        background-color: #FAFAFA;
+        border-left: 1px solid #CCCCCC;
+      }
+      th.score.average.student, td.score.average.student {
+        background-color: #F4F4F4;
+        border-left: 1px solid black;
       }
     }
   }

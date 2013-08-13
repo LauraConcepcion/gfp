@@ -1,0 +1,3 @@
+- value = @average_score.grade ? number_with_precision(@average_score.grade, :precision => 2) : '-'
+- value = value.gsub(/[,.]00$/, '').gsub(/(\d+[,.]\d)0$/, '\1')
+= link_to value, edit_average_score_path(@average_score), :title => @average_score.observations, :alt => @average_score.observations, :remote => true

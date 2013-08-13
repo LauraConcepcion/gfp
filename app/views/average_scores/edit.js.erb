@@ -1,0 +1,4 @@
+close_dialog('average_score_edit');
+build_dialog('average_score_edit', '<%= escape_javascript(render :partial => "form") %>', '<%= "#{t(:edit)}  #{resource_class.model_name.human}" %>');
+$('.ui-widget-overlay').click(function() { $('#average_score_edit form').submit();})
+window.initialize($('#average_score_edit'));

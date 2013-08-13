@@ -34,6 +34,7 @@
       absence: "Ausencia"
       incident: "Incidencia"
       observation: "Observación"
+      average_score: "Media"
 
     attributes:
       contentblock:
@@ -132,6 +133,12 @@
         created_at: "Creado"
         updated_at: "Actualizado"
         qualifyingentity: "Actividad"
+        student: "Estudiante"
+        observations: "Observaciones"
+      average_score:
+        grade: "Nota media"
+        created_at: "Creado"
+        updated_at: "Actualizado"
         student: "Estudiante"
         observations: "Observaciones"
       objetive:
