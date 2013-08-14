@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :qualifyingentity_tlresult do
-    association qualifyingentity
-    association tlresult
+    association :qualifyingentity
+    association :tlresult
   end
 end

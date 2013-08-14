@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :institute do
-    name          { Faker::Name.first_name }
-    institut_code { Faker::Code.isbn }
+    name           { Faker::Name.first_name }
+    institute_code { Faker::Code.isbn }
   end
 end
 

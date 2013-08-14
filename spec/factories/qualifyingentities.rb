@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :qualifyingentity do
     name {Faker::Lorem.word }
     association :profile
+    association :quarter
   end
 end
 

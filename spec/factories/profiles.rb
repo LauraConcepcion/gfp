@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :profile do
-    association teacher
-    association institute
-    association trainercycle
-    association matter
-    association group
+    association :teacher
+    association :institute
+    association :trainercycle
+    association :matter
+    association :group
   end
 end
