@@ -2,6 +2,7 @@
 %table.table.table-striped
   %thead
     %tr
+      %th
       %th= sort_link @q, :firstsurname, Student.human_attribute_name(:firstsurname)
       %th= sort_link @q, :secondsurname, Student.human_attribute_name(:secondsurname)
       %th= sort_link @q, :name, Student.human_attribute_name(:name)
@@ -10,15 +11,16 @@
   %tbody
     - collection.each do |item|
       %tr
+        %td= image_tag("student1.jpg")
         %td= item.try(:firstsurname)
         %td= item.try(:secondsurname)
         %td= item.try(:name)
         %td= item.try(:dni)
         %td.actions.span2
           - if can? :edit, item
-            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)
+            = link_to t(:edit), edit_resource_path(item), :class => 'icon edit', :alt => t(:edit), :title => t(:edit)
           - if can? :destroy, item
-            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash', :alt => t(:destroy), :title => t(:destroy)
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete', :alt => t(:destroy), :title => t(:destroy)
     %tfoot
       %tr.actions
         %td{:colspan => 99}

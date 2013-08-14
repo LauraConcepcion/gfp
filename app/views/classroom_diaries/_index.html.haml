@@ -9,11 +9,11 @@
   %tbody
     - collection.each do |resource|
       = content_tag_for(:tr, resource) do
-        %td= resource.try(:created_at)
+        %td= resource.created_at ? I18n.l(resource.created_at, :format => :day) : '-'
         %td= resource.try(:description)
         %td.actions
-          = link_to t(:edit),edit_profile_classroom_diary_path(resource.profile,resource), :class => 'ui-icon ui-icon-pencil', :remote => true
-          = link_to t(:destroy), profile_classroom_diary_path(resource.profile,resource), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+          = link_to t(:edit),edit_profile_classroom_diary_path(resource.profile,resource), :class => 'icon edit', :remote => true
+          = link_to t(:destroy), profile_classroom_diary_path(resource.profile,resource), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete'
 = link_to t(:new), new_profile_classroom_diary_path(@profile), :class => 'btn btn-primary', :remote => true
 
 

@@ -13,15 +13,15 @@
         %td= item.institute.try(:name)
         %td= item.trainercycle.try(:title)
         %td= item.matter.try(:name)
-        %td.actions.span2
+        %td.actions.span3
           - if can? :edit, item
-            = link_to t(:edit), edit_resource_path(item), :class => 'ui-icon ui-icon-pencil', :alt => t(:edit), :title => t(:edit)
+            = link_to t(:edit), edit_resource_path(item), :class => 'icon edit', :alt => t(:edit), :title => t(:edit)
             - unless item.tlresults.empty?
-              = link_to t(:tlresults), edit_tlresults_profile_path(item), :class => 'ui-icon ui-icon-calculator', :alt => t(:tlresults), :title => t(:tlresults)
+              = link_to t(:tlresults), edit_tlresults_profile_path(item), :class => 'icon tlresult', :alt => t(:tlresults), :title => t(:tlresults)
             - if item.classroom && item.classroom.students
-              = link_to t(:scores), edit_scores_profile_path(item), :class => 'ui-icon ui-icon-contact', :alt => t(:scores), :title => t(:scores)
+              = link_to t(:scores), edit_scores_profile_path(item), :class => 'icon score', :alt => t(:scores), :title => t(:scores)
           - if can? :destroy, item
-            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash', :alt => t(:destroy), :title => t(:destroy)
+            = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete', :alt => t(:destroy), :title => t(:destroy)
     %tfoot
       %tr.actions
         %td{:colspan => 99}

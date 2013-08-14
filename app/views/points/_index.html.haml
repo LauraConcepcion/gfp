@@ -15,9 +15,9 @@
         %td= item.num
         %td.actions
           - if can? :edit, item
-            = link_to t(:edit), edit_profile_student_point_path(@profile, @student, item), :class => 'ui-icon ui-icon-pencil', :remote => true
+            = link_to t(:edit), edit_profile_student_point_path(@profile, @student, item), :class => 'icon edit', :remote => true
           - if can? :destroy, item
-            = link_to t(:destroy), profile_student_point_path(@profile, @student, item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'ui-icon ui-icon-trash'
+            = link_to t(:destroy), profile_student_point_path(@profile, @student, item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete'
 - if can? :create, Point
   = link_to t(:new), new_profile_student_point_path(@profile, @student), :class => 'btn btn-primary', :remote => true
 

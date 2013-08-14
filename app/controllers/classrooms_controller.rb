@@ -13,7 +13,7 @@ class ClassroomsController < InheritedResources::Base
 
   def csv_import
     file_data = params[:file].read
-    csv_rows  = CSV.parse(file_data, {:col_sep => ';'})
+    csv_rows  = CSV.parse(file_data, header=TRUE, {:col_sep => ';'})
     n = 0
     e = nil
     csv_rows.each do |row|

@@ -16,6 +16,7 @@
       long: "%d de %B de %Y"
       longer: "%A, %e de %B de %Y"
 
+
     day_names:
       - domingo
       - lunes
@@ -73,6 +74,7 @@
       long: "%d de %B de %Y %H:%M"
       medium: "%d/%m/%Y %H:%M"
       without_time: "%d/%m/%Y"
+      day: "%a, %d/%m/%y"
     am: "am"
     pm: "pm"
 

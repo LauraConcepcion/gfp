@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
   attr_accessible :name, :firstsurname, :secondsurname, :dni, :phone, :student_code, :birthdate, :mail, :record, :score_ids, :classroom_id
-  belongs_to :classroom, :inverse_of => :students
+  # belongs_to :classroom, :inverse_of => :students
+  has_and_belongs_to_many :classrooms
 
   has_many :scores, :inverse_of => :student
   has_many :average_scores, :inverse_of => :student

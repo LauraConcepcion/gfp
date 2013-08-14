@@ -2,7 +2,7 @@
   %div.errors
     = f.error_notification
   - time = resource.created_at || Time.now
-  = f.input :created_at, :as => :string, :input_html => { :class => 'datepicker input-medium', :value => (I18n.l(time, :format => :medium)) }
+  = f.input :created_at, :as => :string, :input_html => { :class => 'datepicker input-medium', :value => (I18n.l(time, :format => :short)) }
   = f.input :description
   = f.button :submit, :class => 'btn-primary'
   = link_to t(:cancel), profile_classroom_daylies_path(@profile), :class => 'btn' unless request.xhr?

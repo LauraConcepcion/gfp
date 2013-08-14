@@ -6,13 +6,18 @@ class Ability
       can :manage, Profile, :teacher_id => user.id
       can :manage, Qualifyingentity, :profile_id => user.current_profile.try(:id)
       can :manage, ClassroomDiary, :profile_id => user.current_profile.try(:id)
-      can :manage, Classroom, Classroom.where(:id => user.profiles.map(&:classroom_id)) do |object|
-        user.profiles.map(&:classroom_id).include?(object.id)
+      can :manage, Classroom, Classroom.where(:profile_id => user.profiles.map(&:id)) do |object|
+        user.profiles.map(&:id).include?(object.profile_id)
       end
-      can :manage, Student, Student.where(:classroom_id => user.profiles.map(&:classroom_id)) do |object|
-        user.profiles.map(&:classroom_id).include?(object.classroom_id)
-      end
-      cannot :create, Classroom if user.profiles.empty?
+      can :create, Classroom if !user.profiles.empty?
+   
+      can :manage, Student
+      # can :manage, Student, Student.all.each do |object|
+      #   object.classrooms.include?(user.classrooms.map(&:id))
+      # end
+      # can :manage, Student, Student.where(:classrooms => user.classrooms.map(&:id)) do |object|
+      #   user.classrooms.map(&:id).include?(object.classroom_id)
+      # end
       can :manage, Point, :profile_id => user.current_profile.try(:id)
       can :manage, Absence, :profile_id => user.current_profile.try(:id)
       can :manage, Observation, :profile_id => user.current_profile.try(:id)

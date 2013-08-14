@@ -203,3 +203,6 @@
         observation_datetime: "Fecha"
         text: "Observación"
         student: "Estudiante" 
+      classroom_diary:
+        description: "Descripción"
+        created_at: "Fecha de creación"
