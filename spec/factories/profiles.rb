@@ -2,8 +2,10 @@
 
 FactoryGirl.define do
   factory :profile do
-    institute nil
-    trainercycle nil
-    matter nil
+    association teacher
+    association institute
+    association trainercycle
+    association matter
+    association group
   end
 end
