@@ -8,6 +8,7 @@ class QualifyingentityTlresult < ActiveRecord::Base
 
   validates :tlresult_id, :presence => true
   validates_uniqueness_of :tlresult_id, :scope => :qualifyingentity_id
+  validates :percentage, :numericality => {:less_than_or_equal_to => 100, :greater_than => 0}, :allow_nil => true
   #validates_associated :scores
 
   # FIXME Es necesario si hago el fields_for desde profile
