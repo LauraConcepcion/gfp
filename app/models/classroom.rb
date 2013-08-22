@@ -8,7 +8,6 @@ class Classroom < ActiveRecord::Base
   validates_uniqueness_of :profile_id
 
   has_many :schedule
-  has_many :qualifyingentities
   has_many :objetive_averages
 
   validates_presence_of :name, :profile
