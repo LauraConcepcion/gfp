@@ -32,6 +32,8 @@
   no_classroom: '<sin estudiantes para el curso seleccionado>'
   access_denied: "Acceso denegado"
   actions: "Acciones"
+  example: "Descargar ejemplo de fichero csv"
+  new_qualifyingentity: "Nueva actividad"
   helpers:
     links:
       edit: "Editar"

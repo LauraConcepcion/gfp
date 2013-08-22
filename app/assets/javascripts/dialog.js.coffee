@@ -19,7 +19,7 @@ window.build_dialog = (selector, content, dialog_title) ->
     modal: true
     title: dialog_title
     height: "auto"
-    width: "auto"
+    width: "60%"
     # open: set_markitup()
     open: window.initialize($('#'+selector))
     # buttons: but
