@@ -1,6 +1,12 @@
 class ScoresController < InheritedResources::Base
   respond_to :html, :json, :js
 
+  def update
+    update! do |success, failure|
+      failure.js { render :edit }
+    end
+  end
+
   # def update
   #   @score = Score.find params[:id]
 

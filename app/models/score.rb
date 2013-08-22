@@ -5,7 +5,7 @@ class Score < ActiveRecord::Base
 
   # FIXME Desactivada porque no funciona creando objetos temporales al editar los scores en el cuaderno del alumno
   #validates :grade, :presence => true
-  validates :grade, :numericality => true, :unless => :new_record?
+  validates :grade, :numericality => {:greater_than_or_equal_to => 0, :less_than_or_equal_to => 10}, :unless => :new_record?
 
   after_save :set_average_score
 
@@ -17,10 +17,10 @@ class Score < ActiveRecord::Base
       attrs = {:student_id => student_id, :tlresult_id => qualifyingentity_tlresult.tlresult_id, :quarter_id => quarter.id}
       average_score = AverageScore.where(attrs).first
       average_score ||= AverageScore.new(attrs)
-      qualifyingentity_tlresults = Qualifyingentity.where(:quarter_id => quarter.id).map(&:qualifyingentity_tlresults).flatten.select {|qe_tlr| qe_tlr.tlresult == qualifyingentity_tlresult.tlresult}
+      qualifyingentity_tlresults = Qualifyingentity.where(:quarter_id => quarter.id).map(&:qualifyingentity_tlresults).flatten.select {|qe_tlr| qe_tlr.percentage && qe_tlr.tlresult == qualifyingentity_tlresult.tlresult}
       scores = qualifyingentity_tlresults.map(&:scores).flatten.select {|score| score.student_id == student.id}
-      grades_sum = scores.inject(0) {|sum, score| sum+(score.grade*score.qualifyingentity_tlresult.percentage/100.0 rescue 0)}
-      num_activities = qualifyingentity_tlresults.size
+      grades_sum = scores.inject(0) {|sum, score| sum+(score.grade*score.qualifyingentity_tlresult.percentage/100.0)}
+      num_activities = qualifyingentity_tlresults.inject(0) {|sum, qe_tlr| sum+(qe_tlr.percentage/100.0)}
       average_score.grade = grades_sum/num_activities
       average_score.save!
     end
