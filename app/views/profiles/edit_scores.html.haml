@@ -12,7 +12,6 @@
         %th.name
           = Student.human_attribute_name(:name)
         %th.aux
-          .qualifyingentity= link_to t(:new), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'ui-icon icon-plus dialog', :remote => true
           = link_to t(:points), '#', :class => 'ui-icon icon-bookmark button', :alt => t(:points), :title => t(:points)
           = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
           = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
