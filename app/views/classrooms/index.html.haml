@@ -2,6 +2,7 @@
 %table.table.table-striped
   %thead
     %tr
+      %th= t(:code_import) 
       %th= sort_link @q, :name, Classroom.human_attribute_name(:name)
       %th= t(:profile)
       %th= sort_link @q, :created_at, Classroom.human_attribute_name(:created_at)
@@ -9,6 +10,7 @@
   %tbody
     - collection.each do |item|
       %tr
+        %td= item.try(:code_import)
         %td= item.try(:name)
         %td= item.profile.try(:name)
         %td= l(item.created_at, :format => :short)

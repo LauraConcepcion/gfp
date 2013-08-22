@@ -1,5 +1,6 @@
 = simple_form_for [parent, resource].compact, :remote => request.xhr? do |f|
   %div.errors
+    - debugger
     = f.error_notification
   %div#tabs
     %ul
@@ -11,11 +12,12 @@
         %a{:href => '#tabs-3'}= t(:school)
     %div#tabs-1
       = image_tag("student1.jpg")
+      = f.association :classrooms, :collection => Classroom.all, :input_html => { :class => 'span4 chzn-select multiple'} 
       = f.input :name
       = f.input :firstsurname
       = f.input :secondsurname
       = f.input :dni
-      = f.input :birthdate, :as => :string, :input_html => {:class => 'datepicker', :value => (I18n.l(resource.birthdate, :format => :medium) if resource.birthdate)}
+      = f.input :birthdate, :as => :string, :input_html => {:class => 'datepicker', :value => (I18n.l(resource.birthdate) if resource.birthdate)}
     %div#tabs-2
       = f.input :phone
       = f.input :mail

@@ -4,13 +4,38 @@ class StudentsController < InheritedResources::Base
   load_and_authorize_resource
 
   belongs_to :classroom, :optional => true
-
   def create
-    create! { classroom_students_path(parent) }
+    create! { students_path }
   end
 
   def update
-    update! { classroom_students_path(parent) }
+    update! { students_path }
+  end
+
+  def import
+    errors = Student.import(params[:file], current_teacher)
+    case errors
+      when nil?
+        flash[:notice]= I18n.t(:all_students_added, :scope => 'flash.general')
+        redirect_to students_path
+      when 1 
+        flash[:alert]=I18n.t(:no_file, :scope => 'flash.general')
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general')
+        redirect_to students_path
+      when 2
+        flash[:alert]=I18n.t(:fields_blanks, :scope => 'flash.general')
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general')
+        redirect_to students_path
+      when 3
+        flash[:alert]=I18n.t(:classroom_code_import_fail, :scope => 'flash.general')
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general')
+        redirect_to students_path
+    end
+  end
+
+  def search_by_dni
+    student = Student.for_profiles(current_teacher.profiles).find_by_dni(params["dni"])
+    render :json => student.to_json
   end
 
   private

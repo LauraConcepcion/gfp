@@ -1,4 +1,8 @@
 - content_for :title, Student.model_name.human.pluralize
+= form_tag import_students_path, multipart: true do 
+  = file_field_tag :file
+  = submit_tag t(:import), :class => 'btn'
+= link_to t(:example), 'alumnos_ejemplo.csv'
 %table.table.table-striped
   %thead
     %tr
@@ -7,6 +11,7 @@
       %th= sort_link @q, :secondsurname, Student.human_attribute_name(:secondsurname)
       %th= sort_link @q, :name, Student.human_attribute_name(:name)
       %th= sort_link @q, :dni, Student.human_attribute_name(:dni)
+      %th= Classroom.model_name + " / " + Profile.model_name.human.pluralize 
       %th= t(:actions)
   %tbody
     - collection.each do |item|
@@ -16,6 +21,10 @@
         %td= item.try(:secondsurname)
         %td= item.try(:name)
         %td= item.try(:dni)
+        %td
+          %ul
+            - item.classrooms.each do |classroom|
+              %li= classroom.name + " / " + classroom.profile.name
         %td.actions.span2
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'icon edit', :alt => t(:edit), :title => t(:edit)

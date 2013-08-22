@@ -1,6 +1,7 @@
 = simple_form_for resource do |f|
   %div.errors
     = f.error_notification
+  = t(:code_import) + ": " + resource.try(:code_import)
   = f.input :name
   = f.association :profile, collection: current_teacher.profiles, :input_html => { :class => 'span5 chzn-select'}
 
@@ -13,6 +14,10 @@
         %th= Student.human_attribute_name(:secondsurname)
         %th= Student.human_attribute_name(:dni)
         %th= Student.human_attribute_name(:phone)
+        %th= Student.human_attribute_name(:student_code)
+        %th= Student.human_attribute_name(:birthdate)
+        %th= Student.human_attribute_name(:mail)
+        %th= Student.human_attribute_name(:record)
     %tbody#students.cocoon_with_chzn
       = f.simple_fields_for :students do |student|
         = render 'student_fields', :f => student
@@ -22,11 +27,11 @@
     = f.button :submit
     = link_to t(:cancel), collection_path, :class => 'btn'
 
-- unless resource.new_record?
-  %h3= t(:students_import)
-  = link_to t(:example), "alumnos_ejemplo.csv"
-  = form_tag csv_import_classroom_path(resource), :multipart => true do
-    = file_field_tag :file, :accept => "text/csv"
-    = submit_tag t(:import), :class => 'btn'
-
+-# - unless resource.new_record?
+-#   %h3= t(:students_import)
+-#   = link_to t(:example), "alumnos_ejemplo.csv"
+-#   = form_tag csv_import_classroom_path(resource), :multipart => true do
+-#     = file_field_tag :file, :accept => "text/csv"
+-#     = submit_tag t(:import), :class => 'btn'
+-# 
 
