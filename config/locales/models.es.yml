@@ -185,6 +185,7 @@
         name: "Nombre"
         updated_at: "Actualizado"
         created_at: "Creado"
+        tlresults: "REAs"
       point:
         point_datetime: "Fecha"
         num: "Número"

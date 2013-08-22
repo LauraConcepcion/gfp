@@ -19,6 +19,7 @@ Gfp::Application.routes.draw do
     end
     resources :qualifyingentities
     resources :classroom_diaries
+    resources :own_tlresults
   end
 
   resources :students do

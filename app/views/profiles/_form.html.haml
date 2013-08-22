@@ -1,10 +1,33 @@
 = simple_form_for resource, :html => { :class => 'form-horizontal' } do |f|
-  = f.input :institute_id, :input_html => {:class => 'select2-ajax span3', 'data-autocomplete-url' => search_institutes_path, "data-show-url" => (institute_path(resource.institute_id) unless resource.new_record?)}
-  = f.association :trainercycle, :input_html => {:class => 'chzn-select span3'}
-  - matters = resource.trainercycle.try(:matters) || []
-  = f.association :matter, :collection => matters, :input_html => {:class => 'chzn-select span3'}
-  = f.association :group, :input_html => {:class => 'chzn-select span3'}
-  = f.input :created_at do
-    = l(resource.created_at, :format => :medium) if resource.created_at
-  = f.button :submit, :class => 'btn-primary'
-  = link_to t(:cancel), collection_path, :class => 'btn'
+  %div.errors
+    = f.error_notification
+  %div#tabs
+    %ul
+      %li
+        %a{:href => '#tabs-1'}= t(:main_data)
+      %li
+        %a{:href => '#tabs-2'}= t(:tlresults)
+    %div#tabs-1
+      = f.input :institute_id, :input_html => {:class => 'select2-ajax span3', 'data-autocomplete-url' => search_institutes_path, "data-show-url" => (institute_path(resource.institute_id) unless resource.new_record?)}
+      = f.association :trainercycle, :input_html => {:class => 'chzn-select span3'}
+      - matters = resource.trainercycle.try(:matters) || []
+      = f.association :matter, :collection => matters, :input_html => {:class => 'chzn-select span3'}
+      = f.association :group, :input_html => {:class => 'chzn-select span3'}
+      = f.input :created_at do
+        = l(resource.created_at, :format => :medium) if resource.created_at
+      = f.button :submit, :class => 'btn-primary'
+      = link_to t(:cancel), collection_path, :class => 'btn'
+    %div#tabs-2
+      %h3= Profile.human_attribute_name(:tlresults)
+      %table.table.table-striped
+        %thead
+          %tr
+            %th= Tlresult.human_attribute_name(:name)
+        %tbody#tlresults.cocoon_with_chzn
+          = f.simple_fields_for :own_tlresults do |own_tlresult|
+            = render 'own_tlresult_fields', :f => own_tlresult
+          %tr.links
+            %td{:colspan => 99}= link_to_add_association t(:add), f, :own_tlresults, "data-association-insertion-node" => ".links", :class => 'btn'
+      = f.button :submit, :class => 'btn-primary'
+      = link_to t(:cancel), profile_own_tlresults_path(resource), :class => 'btn' unless request.xhr?
+      

@@ -19,10 +19,12 @@ class Score < ActiveRecord::Base
       average_score ||= AverageScore.new(attrs)
       qualifyingentity_tlresults = Qualifyingentity.where(:quarter_id => quarter.id).map(&:qualifyingentity_tlresults).flatten.select {|qe_tlr| qe_tlr.percentage && qe_tlr.tlresult == qualifyingentity_tlresult.tlresult}
       scores = qualifyingentity_tlresults.map(&:scores).flatten.select {|score| score.student_id == student.id}
-      grades_sum = scores.inject(0) {|sum, score| sum+(score.grade*score.qualifyingentity_tlresult.percentage/100.0)}
+      grades_sum = scores.inject(0) {|sum, score| sum+(score.grade*score.qualifyingentity_tlresult.percentage/100.0) if score.grade}
       num_activities = qualifyingentity_tlresults.inject(0) {|sum, qe_tlr| sum+(qe_tlr.percentage/100.0)}
-      average_score.grade = grades_sum/num_activities
-      average_score.save!
+      if num_activities > 0
+        average_score.grade = grades_sum/num_activities
+        average_score.save!
+      end
     end
   end
 end

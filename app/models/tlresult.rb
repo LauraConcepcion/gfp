@@ -5,8 +5,22 @@ class Tlresult < ActiveRecord::Base
   has_many :criterions
   belongs_to :matter
 
+
+  scope :for_matter_and_profile, lambda { |matter, profile|
+    conds = ['matter_id = ?', matter.id]
+    if profile
+      conds[0] += ' and (profile_id is null or profile_id = ?)'
+      conds << profile.id
+    end
+    where(conds)
+  }
+
+
   def number
-    name =~ /^(\d+).*/
-    $1
+    if name =~ /^(\d+).*/
+      $1.to_i
+    else
+      name[0]
+    end
   end
 end

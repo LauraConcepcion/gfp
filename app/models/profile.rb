@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes
+  attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes, :own_tlresults_attributes
   belongs_to :institute
   belongs_to :trainercycle
   belongs_to :matter
@@ -11,6 +11,7 @@ class Profile < ActiveRecord::Base
   has_many :qualifyingentities, :dependent => :destroy, :order => 'date ASC'
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'qualifyingentities.date ASC, tlresults.name ASC'
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
+  has_many :own_tlresults, :class_name => Tlresult
   has_many :scores, :through => :qualifyingentity_tlresults
   has_many :points
   has_many :absences
@@ -33,6 +34,7 @@ class Profile < ActiveRecord::Base
   accepts_nested_attributes_for :qualifyingentities, :reject_if => :all_blank, :allow_destroy => true
   # NOTE La edición de poneraciones está hecha mediante el has_many through
   accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :own_tlresults, :reject_if => :all_blank
 
   scope :active, lambda {|teacher_id|
     where(:default => true, :teacher_id => teacher_id) unless teacher_id.nil?

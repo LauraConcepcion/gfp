@@ -53,6 +53,6 @@ class QualifyingentitiesController < InheritedResources::Base
     end
     @qualifyingentity.profile ||= @current_profile
     @matter = @current_profile.matter
-    @tlresults = @matter.tlresults if @matter
+    @tlresults = Tlresult.for_matter_and_profile(@matter, @current_profile) if @matter
   end
 end

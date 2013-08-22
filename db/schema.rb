@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130820203202) do
+ActiveRecord::Schema.define(:version => 20130821171600) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -318,6 +318,7 @@ ActiveRecord::Schema.define(:version => 20130820203202) do
     t.datetime "updated_at", :null => false
     t.integer  "matter_id"
     t.string   "rayce_id"
+    t.integer  "profile_id"
   end
 
   create_table "trainercycles", :force => true do |t|
