@@ -81,6 +81,6 @@ class Student < ActiveRecord::Base
   end
 
   def must_have_classroom
-    self.errors[:base] << "Msg" 
+    self.errors[:base] << "Msg" if self.classrooms.empty?
   end
 end
