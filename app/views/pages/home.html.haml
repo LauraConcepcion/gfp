@@ -6,7 +6,7 @@
   %h3= t(:students)
   - classroom = current_teacher.try(:current_profile).try(:classroom)
   -if classroom
-    = link_to image_tag("cuaderno.png", :border => 0), classroom_students_path(classroom)
+    = link_to image_tag("student1.jpg", :border => 0), classroom_students_path(classroom)
   -else
     = t(:no_classroom)
 .menu_icon

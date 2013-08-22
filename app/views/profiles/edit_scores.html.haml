@@ -3,6 +3,7 @@
 %div.scores
   .actions
     = link_to ClassroomDiary.model_name.human, profile_classroom_diaries_path(current_teacher.current_profile), :class => 'btn btn-default', :remote => true
+    = link_to t(:new_qualifyingentity), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'dialog btn btn-default', :remote => true
     - @quarters.each do |quarter|
       = link_to quarter.name, edit_scores_profile_path(current_teacher.current_profile, :quarter_id => quarter.id), :class => 'btn btn-primary'
   %table#qualifyingentity_tlresults_table

@@ -1,8 +1,4 @@
 - content_for :title, Student.model_name.human.pluralize
-= form_tag import_students_path, multipart: true do 
-  = file_field_tag :file
-  = submit_tag t(:import), :class => 'btn'
-= link_to t(:example), 'alumnos_ejemplo.csv'
 %table.table.table-striped
   %thead
     %tr
@@ -32,8 +28,13 @@
             = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete', :alt => t(:destroy), :title => t(:destroy)
     %tfoot
       %tr.actions
-        %td{:colspan => 99}
+        %td
           - if can? :create, Student
             = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
           = paginate collection
+        %td{:colspan => 4}
+          = form_tag import_students_path, multipart: true do 
+            = file_field_tag :file
+            = submit_tag t(:import), :class => 'btn'
+          = link_to t(:example), 'alumnos_ejemplo.csv'
 
