@@ -14,8 +14,9 @@ class StudentsController < InheritedResources::Base
 
   def import
     errors = Student.import(params[:file], current_teacher)
+    debugger
     case errors
-      when nil?
+      when 0 
         flash[:notice]= I18n.t(:all_students_added, :scope => 'flash.general')
         redirect_to students_path
       when 1 

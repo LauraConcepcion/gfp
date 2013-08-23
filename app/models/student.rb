@@ -50,7 +50,7 @@ class Student < ActiveRecord::Base
   # end
 
   def self.import(file, teacher)
-    errors = nil
+    errors = 0
     if file.blank?
       errors = 1
     else
