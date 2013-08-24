@@ -15,8 +15,6 @@
       = f.association :group, :input_html => {:class => 'chzn-select span3'}
       = f.input :created_at do
         = l(resource.created_at, :format => :medium) if resource.created_at
-      = f.button :submit, :class => 'btn-primary'
-      = link_to t(:cancel), collection_path, :class => 'btn'
     %div#tabs-2
       %h3= Profile.human_attribute_name(:tlresults)
       %table.table.table-striped
@@ -28,6 +26,6 @@
             = render 'own_tlresult_fields', :f => own_tlresult
           %tr.links
             %td{:colspan => 99}= link_to_add_association t(:add), f, :own_tlresults, "data-association-insertion-node" => ".links", :class => 'btn'
-      = f.button :submit, :class => 'btn-primary'
-      = link_to t(:cancel), profile_own_tlresults_path(resource), :class => 'btn' unless request.xhr?
-      
+
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t(:cancel), collection_path, :class => 'btn'
