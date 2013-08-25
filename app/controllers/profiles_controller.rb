@@ -5,6 +5,8 @@ class ProfilesController < InheritedResources::Base
   skip_before_filter :check_profiles
   load_and_authorize_resource
 
+  before_filter :set_quarter, :only => [:edit_scores, :update_scores]
+
   def create
     create! { profiles_path }
   end
@@ -24,7 +26,7 @@ class ProfilesController < InheritedResources::Base
 
   def edit_scores
     @quarters = Quarter.for_this_year
-    @qualifyingentities = resource.qualifyingentities.where(:quarter_id => params[:quarter_id] || @quarters.map(&:id)).order(:created_at, :date)
+    @qualifyingentities = resource.qualifyingentities.where(:quarter_id => @quarter.try(:id) || @quarters.map(&:id)).order(:created_at, :date)
     @qualifyingentity_tlresults = @qualifyingentities.map(&:qualifyingentity_tlresults).flatten
     @ordered_unique_tlrs = @qualifyingentity_tlresults.map(&:tlresult).sort_by {|tlr| tlr.name}.uniq
     @students = resource.classroom ? resource.classroom.students : []
@@ -35,8 +37,12 @@ class ProfilesController < InheritedResources::Base
           Score.create(:qualifyingentity_tlresult_id => qe_tlr.id, :student_id => student.id) unless score
         end
       end
-      average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => params[:quarter_id]).first
-      AverageScore.create(:student_id => student.id, :tlresult_id => nil, :quarter_id => params[:quarter_id]) unless average_score
+      # Creamos la media del trimestre para el alumno si no existe
+      # TODO cómo creamos la nota del curso? Añadimos un campo curso? y no rellenamos el quarter_id?
+      if @quarter
+        average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id).first
+        AverageScore.create(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id) unless average_score
+      end
     end
   end
 
@@ -57,5 +63,17 @@ class ProfilesController < InheritedResources::Base
     @q ||= end_of_association_chain.accessible_by(current_ability).search(params[:q])
     @q.sorts = "institute_id" if @q.sorts.empty?
     @profiles = @q.result(:distinct => true).page(params[:page])
+  end
+
+  def set_quarter
+    if params[:quarter_id]
+      @quarter = Quarter.find(params[:quarter_id])
+      session[:quarter] = @quarter
+    elsif session[:quarter]
+      @quarter = session[:quarter]
+    else
+      @quarter = Quarter.for_today
+      session[:quarter] = @quarter
+    end
   end
 end
