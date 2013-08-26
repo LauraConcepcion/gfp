@@ -54,6 +54,7 @@
         created_at: "Creado"
         updated_at: "Actualizado"
         editon: "Edición"
+        code_import: "Código de agrupamiento"
       aacce:
         name: "Nombre"
         created_at: "Creado"
