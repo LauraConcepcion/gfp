@@ -11,7 +11,7 @@
       %li= link_to image_tag('configuracion.png'), profiles_path
       %li= link_to image_tag('student1.png'), students_path
       %li= link_to image_tag('book.png', :border => 0), edit_scores_profile_path(current_teacher.current_profile), :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:scores) if current_teacher.current_profile
-      %li= link_to image_tag('estadistica.png'), edit_tlresults_profile_path(current_teacher.current_profile)
+      %li= link_to image_tag('estadistica.png'), edit_tlresults_profile_path(current_teacher.current_profile)  if current_teacher.current_profile
       %li=link_to image_tag('pdf.png'), '#'
       -# %li= link_to Qualifyingentity.model_name.human, profile_qualifyingentities_path(current_teacher.current_profile)
       -# - if current_teacher.profiles
