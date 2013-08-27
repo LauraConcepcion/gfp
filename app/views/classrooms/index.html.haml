@@ -2,9 +2,9 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= t(:code_import) 
+      %th= Classroom.human_attribute_name(:code_import) 
       %th= sort_link @q, :name, Classroom.human_attribute_name(:name)
-      %th= t(:profile)
+      %th= Classroom.human_attribute_name(:profile)
       %th= sort_link @q, :created_at, Classroom.human_attribute_name(:created_at)
       %th= t(:actions)
   %tbody

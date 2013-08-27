@@ -1,7 +1,9 @@
 = simple_form_for resource do |f|
   %div.errors
     = f.error_notification
-  = t(:code_import) + ": " + resource.try(:code_import)
+  -if !resource.code_import.nil?
+    = Classroom.human_attribute_name(:code_import) + ": " 
+    = resource.try(:code_import)
   = f.input :name
   = f.association :profile, collection: current_teacher.profiles, :input_html => { :class => 'span5 chzn-select'}
 

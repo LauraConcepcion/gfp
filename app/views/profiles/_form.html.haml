@@ -12,7 +12,7 @@
       = f.association :trainercycle, :input_html => {:class => 'chzn-select span3'}
       - matters = resource.trainercycle.try(:matters) || []
       = f.association :matter, :collection => matters, :input_html => {:class => 'chzn-select span3'}
-      = f.association :group, :input_html => {:class => 'chzn-select span3'}
+      = f.association :group, :collecton => Group.all(:order => :name), :input_html => {:class => 'chzn-select span3'}
       = f.input :created_at do
         = l(resource.created_at, :format => :medium) if resource.created_at
     %div#tabs-2

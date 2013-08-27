@@ -54,6 +54,8 @@
         created_at: "Creado"
         updated_at: "Actualizado"
         editon: "Edición"
+        code_import: "Código de agrupamiento"
+        profile: "Curso"
       aacce:
         name: "Nombre"
         created_at: "Creado"
@@ -151,6 +153,9 @@
         code: "Codigo"
         created_at: "Creado"
         updated_at: "Actualizado"
+        email: "Email"
+        password: "Contraseña"
+        remember_me: "Recordar contraseña"
       tlresult:
         name: "Nombre"
         contentblock: "Bloque de contenido"

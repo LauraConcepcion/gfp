@@ -20,7 +20,8 @@
         - else
           .bs-docs-sidebar.menu_profiles.affix
             .blackboard
-              = t(:welcome)
+              %h1= t(:noticia_titulo)
+              = t(:noticia)
         .content
           .content-header
           .content-body
@@ -33,7 +34,14 @@
             %h1= yield :title
             = yield
   %footer
-    = t(:version_x, :version => '0')
-
-
+    %div.centro
+      = link_to image_tag('youtube.png', :border => 0), "http://www.youtube.com/channel/UC_vT0VPwUcbUYJo4ILMekfA"
+      = link_to image_tag('youtube_rojo.png', :border => 0), "http://www.youtube.com/channel/UCzkHxkjknyGKbKFn_PilW4w"
+      = render "layouts/paypal"
+    %div.derecha
+      = link_to image_tag('teidalia.png', :border => 0), "http://www.teidalia.com/"
+    %div.izquierda
+      = t(:version_x)
+      = t(:company)
+      %br= link_to t(:web), "http://www.teidalia.com/"
 

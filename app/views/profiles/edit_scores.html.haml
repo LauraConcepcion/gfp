@@ -43,7 +43,7 @@
           = show_for student do |student_show|
             %td.name
               = student_show.attribute :name, :label => false do
-                = image_tag("student1.jpg")
+                = image_tag("student1.png")
                 = link_to student.full_name, edit_student_path(student), :alt => t(:edit), :title => t(:edit), :remote => true
           %td.aux{:id => "aux_#{student.id}"}
             %span.aux1= render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
