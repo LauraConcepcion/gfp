@@ -15,6 +15,17 @@ class Tlresult < ActiveRecord::Base
     where(conds)
   }
 
+  scope :unique_for_profile_and_quarter, lambda { |profile, quarter|
+    joins(:qualifyingentity_tlresults => :qualifyingentity).
+    where('qualifyingentities.profile_id = ? and qualifyingentities.quarter_id = ?', profile.id, quarter.id).
+    select('distinct tlresults.*')
+  }
+
+  scope :unique_for_profile, lambda { |profile|
+    joins(:qualifyingentity_tlresults => :qualifyingentity).
+    where('qualifyingentities.profile_id = ?', profile.id).
+    select('distinct tlresults.*')
+  }
 
   def number
     if name =~ /^(\d+).*/

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821171600) do
+ActiveRecord::Schema.define(:version => 20130827165633) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -311,6 +311,17 @@ ActiveRecord::Schema.define(:version => 20130821171600) do
 
   add_index "teachers", ["email"], :name => "index_teachers_on_email", :unique => true
   add_index "teachers", ["reset_password_token"], :name => "index_teachers_on_reset_password_token", :unique => true
+
+  create_table "tlresult_percentages", :force => true do |t|
+    t.float    "quarter_1"
+    t.float    "quarter_2"
+    t.float    "quarter_3"
+    t.float    "global"
+    t.integer  "profile_id"
+    t.integer  "tlresult_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "tlresults", :force => true do |t|
     t.text     "name"

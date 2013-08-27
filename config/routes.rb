@@ -11,6 +11,7 @@ Gfp::Application.routes.draw do
     put 'update_tlresults', :on => :member
     get 'edit_scores', :on => :member
     put 'update_scores', :on => :member
+    get 'edit_tlresult_percentages', :on => :member
     resources :students do
       resources :points
       resources :absences
