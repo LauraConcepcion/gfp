@@ -2,7 +2,7 @@ class Teacher < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, :registerable
   devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
