@@ -25,6 +25,7 @@ div.blackboard{
   overflow-y: auto;
   width: 90%;
   height: 265px;
+  color: #333363;
 }
 
 div.popover {
@@ -153,14 +154,19 @@ table.table-striped {
 
 //Iconos de acceso directo home
 .menu_icon{
-  border: 1px solid;
+  border: 1px solid #CCCCCC;
   border-radius: 10px 10px 10px 10px;
   float: left;
   height: auto;
   margin: 0 5px;
+  min-height: 230px;
   padding: 5px;
   text-align: center;
   width: 17%;
+
+}
+.menu_icon:hover{
+  background-color: #eee;
 }
 
 .menu_icon h3{
@@ -206,4 +212,17 @@ td img{
 
 td img:hover{
   width: 60px;
+}
+
+footer{
+  font-size: 11px;
+  div.derecha{
+    margin-right: 20px;
+    float: right;
+  }
+  div.centro{
+    width: 30%;
+    position: absolute;
+    left: 40%;
+  }
 }

@@ -10,7 +10,7 @@
       %li
         %a{:href => '#tabs-3'}= t(:school)
     %div#tabs-1
-      = image_tag("student1.jpg")
+      = image_tag("student1.png")
       = f.association :classrooms, :collection => Classroom.all, :input_html => { :class => 'span4 chzn-select multiple'} 
       = f.input :name
       = f.input :firstsurname

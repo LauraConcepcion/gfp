@@ -4,13 +4,13 @@
   = link_to image_tag("configuracion.png", :border => 0), {:action => 'index', :controller => 'profiles'}
 .menu_icon
   %h3= t(:students)
-  = link_to image_tag("student1.jpg", :border => 0), students_path()
+  = link_to image_tag("student1.png", :border => 0), students_path()
 .menu_icon
   %h3= t(:scores)
   = link_to image_tag("book.png", :border => 0), edit_scores_profile_path(current_teacher.current_profile) if current_teacher.current_profile
 .menu_icon
-  %h3= t(:tlresult_percentage)
-  = link_to image_tag("book.png", :border => 0), edit_tlresults_profile_path(current_teacher.current_profile) if current_teacher.current_profile 
+  %h3= t(:tlresults_percentage)
+  = link_to image_tag("estadistica.png", :border => 0), edit_tlresults_profile_path(current_teacher.current_profile) if current_teacher.current_profile 
 .menu_icon
   %h3= t(:reports)
-  = link_to image_tag("book.png", :border => 0), edit_scores_profile_path(current_teacher.current_profile) if current_teacher.current_profile
+  = link_to image_tag("pdf.png", :border => 0), '#' 
