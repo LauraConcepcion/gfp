@@ -5,7 +5,8 @@
     = link_to ClassroomDiary.model_name.human, profile_classroom_diaries_path(current_teacher.current_profile), :class => 'btn btn-default', :remote => true
     = link_to t(:new_qualifyingentity), new_profile_qualifyingentity_path(current_teacher.current_profile), :class => 'dialog btn btn-default', :remote => true
     - @quarters.each do |quarter|
-      = link_to quarter.name, edit_scores_profile_path(current_teacher.current_profile, :quarter_id => quarter.id), :class => 'btn btn-primary'
+      = link_to quarter.name, edit_scores_profile_path(current_teacher.current_profile, :quarter_id => quarter.id), :class => "btn #{quarter.id == @quarter.try(:id) ? 'btn-success' : 'btn-primary'}"
+    = @quarter.boundaries if @quarter
   %table#qualifyingentity_tlresults_table
     %thead
       %tr.qualifyingentity_tlresults
@@ -58,10 +59,11 @@
               %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd} #{'qe_actions' if qe_tlr.qualifyingentity != current_qe}"}
                 = render 'scores/in_place_edit'
                 - current_qe = qe_tlr.qualifyingentity
-          - @ordered_unique_tlrs.each do |tlr|
-            %td{:class => "score average", :id => "average_score_#{student.id}_#{tlr.id}"}
-              = average_for(student, tlr, params[:quarter_id])
-          - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => params[:quarter_id]).first
-          %td{:class => "score average student", :id => "average_#{@average_score.id}"}
-            = render 'average_scores/in_place_edit'
+          - if @quarter.id
+            - @ordered_unique_tlrs.each do |tlr|
+              %td{:class => "score average", :id => "average_score_#{student.id}_#{tlr.id}"}
+                = average_for(student, tlr, @quarter.id)
+            - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id).first
+            %td{:class => "score average student", :id => "average_#{@average_score.id}"}
+              = render 'average_scores/in_place_edit'
 

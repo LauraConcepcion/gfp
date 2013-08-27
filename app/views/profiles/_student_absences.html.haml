@@ -1,1 +1,1 @@
-= link_to profile.absences.where(:student_id => student.id).size, profile_student_absences_path(profile, student), :remote => true
+= link_to Absence.for_profile_and_student_and_quarter(profile, student, @quarter).count, profile_student_absences_path(profile, student), :remote => true

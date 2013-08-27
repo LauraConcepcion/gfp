@@ -19,7 +19,7 @@ es:
       locked: 'Tu cuenta esta bloqueada.'
       invalid: 'Email o password invalido.'
       invalid_token: 'Token de autnentiacion invalido.'
-      timeout: 'Tu sesión ha expriado, por favor validate de nuevo y continua.'
+      timeout: 'Tu sesión ha expirado, por favor valídate de nuevo y continua.'
       inactive: 'Tu cuenta no ha sido activada todavia.'
       teacher:
         not_found_in_database: 'Usuario no registrado'

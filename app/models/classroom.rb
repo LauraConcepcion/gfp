@@ -5,16 +5,16 @@ class Classroom < ActiveRecord::Base
   # has_many :students, :inverse_of => :classroom, :order => 'firstsurname ASC, secondsurname ASC, name ASC'
   # # has_many :profiles
   belongs_to :profile
-  validates_uniqueness_of :profile_id
 
   has_many :schedule
   has_many :objetive_averages
 
-  validates_presence_of :name, :profile
   # before_validation :check_profiles
   after_save :set_code_import
   accepts_nested_attributes_for :students, :allow_destroy => true, :reject_if => :all_blank
 
+  validates_presence_of :name, :profile_id
+  validates_uniqueness_of :profile_id
 
   private
 

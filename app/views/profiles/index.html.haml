@@ -6,6 +6,7 @@
       %th= Profile.human_attribute_name(:institute)
       %th= Profile.human_attribute_name(:trainercycle)
       %th= Profile.human_attribute_name(:matter)
+      %th= Profile.human_attribute_name(:group)
       %th= t(:actions)
   %tbody
     - collection.each do |item|
@@ -13,6 +14,7 @@
         %td= item.institute.try(:name)
         %td= item.trainercycle.try(:title)
         %td= item.matter.try(:name)
+        %td= item.group.try(:name)
         %td.actions.span3
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'icon edit', :alt => t(:edit), :title => t(:edit)

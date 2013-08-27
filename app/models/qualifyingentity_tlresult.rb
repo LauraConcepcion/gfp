@@ -13,4 +13,12 @@ class QualifyingentityTlresult < ActiveRecord::Base
 
   # FIXME Es necesario si hago el fields_for desde profile
   accepts_nested_attributes_for :scores, :allow_destroy => true
+
+  after_save :update_average_scores
+
+  def update_average_scores
+    if percentage_changed?
+      scores.each {|score| score.set_average_score }
+    end
+  end
 end
