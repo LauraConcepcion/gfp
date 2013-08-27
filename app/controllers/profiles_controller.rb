@@ -5,7 +5,7 @@ class ProfilesController < InheritedResources::Base
   skip_before_filter :check_profiles
   load_and_authorize_resource
 
-  before_filter :set_quarter, :only => [:edit_scores, :update_scores]
+  before_filter :set_quarter, :only => [:edit_scores, :update_scores, :edit_tlresults, :update_tlresults]
 
   def create
     create! { profiles_path }
@@ -24,8 +24,15 @@ class ProfilesController < InheritedResources::Base
     end
   end
 
-  def edit_scores
+  def edit_tlresult_percentages
     @quarters = Quarter.for_this_year
+    Tlresult.unique_for_profile(resource).each do |tlr|
+      tlr_perc = resource.tlresult_percentages.where(:tlresult_id => tlr.id).first
+      resource.tlresult_percentages.build(:tlresult_id => tlr.id) unless tlr_perc
+    end
+  end
+
+  def edit_scores
     @qualifyingentities = resource.qualifyingentities.where(:quarter_id => @quarter.try(:id) || @quarters.map(&:id)).order(:created_at, :date)
     @qualifyingentity_tlresults = @qualifyingentities.map(&:qualifyingentity_tlresults).flatten
     @ordered_unique_tlrs = @qualifyingentity_tlresults.map(&:tlresult).sort_by {|tlr| tlr.name}.uniq
@@ -66,6 +73,7 @@ class ProfilesController < InheritedResources::Base
   end
 
   def set_quarter
+    @quarters = Quarter.for_this_year
     if params[:quarter_id]
       @quarter = Quarter.find(params[:quarter_id])
       session[:quarter] = @quarter

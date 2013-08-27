@@ -11,6 +11,7 @@ class Profile < ActiveRecord::Base
   has_many :qualifyingentities, :dependent => :destroy, :order => 'date ASC'
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'qualifyingentities.date ASC, tlresults.name ASC'
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
+  has_many :tlresult_percentages
   has_many :own_tlresults, :class_name => Tlresult
   has_many :scores, :through => :qualifyingentity_tlresults
   has_many :points

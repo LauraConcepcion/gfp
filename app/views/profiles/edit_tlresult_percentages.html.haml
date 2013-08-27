@@ -1,0 +1,36 @@
+.page-header
+  %h1= t(:global_tlresult_percentages)
+  = link_to t(:global), edit_tlresult_percentages_profile_path(current_teacher.current_profile), :class => "btn btn-success"
+  - @quarters.each do |quarter|
+    = link_to quarter.name, edit_tlresults_profile_path(current_teacher.current_profile, :quarter_id => quarter.id), :class => "btn btn-primary"
+= simple_form_for resource, :url => update_tlresults_profile_path(resource), :html => {:method => 'put'} do |f|
+  %div.errors
+    = f.error_notification
+  %table.table.table-striped#qualifyingentities_table
+    %thead
+      %th.name= I18n.t(:tlresult, :scope => 'activerecord.models')
+      - Tlresult.unique_for_profile(resource).each do |tlr|
+        %th{:class => "tlresult_"+"#{tlr.id}"}
+          = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name , "title" => "Detalle" do
+            = truncate(tlr.name)
+    %tbody
+      - fields = [:quarter_1, :quarter_2, :quarter_3, :global]
+      - fields.each_with_index do |quarter, idx|
+        - quarter = @quarters[idx] if idx < fields.size
+        %tr.sumable.quarter_1
+          %td= quarter ? quarter.name : t(:global)
+          - # Recorremos todos los qe_tlr del resource para crear los huecos N/A en la tabla
+          - Tlresult.unique_for_profile(resource).each do |tlr|
+            - if !quarter || Tlresult.unique_for_profile_and_quarter(resource, quarter).include?(tlr)
+              - tlr_perc = resource.tlresult_percentages.detect {|tlr_perc| tlr_perc.tlresult == tlr}
+              = f.simple_fields_for 'tlresult_percentages', tlr_perc do |tlr_perc_form|
+                %td
+                  = tlr_perc_form.input fields[idx], :input_html => {:class => 'input-mini tlresult_'+"#{tlr.id}", :onchange => 'window.calculatePercentageColumn(this);'}, :label => false
+            - else
+              %td.empty= 'N/A'
+      %tr
+        %td
+        - Tlresult.unique_for_profile(resource).each do |tlr|
+          %td.tlresult
+            %span{:id => "total_tlresult_"+"#{tlr.id}"}
+  = f.submit
