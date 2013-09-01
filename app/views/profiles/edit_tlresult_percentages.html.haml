@@ -26,6 +26,7 @@
               = f.simple_fields_for 'tlresult_percentages', tlr_perc do |tlr_perc_form|
                 %td
                   = tlr_perc_form.input fields[idx], :input_html => {:class => 'input-mini tlresult_'+"#{tlr.id}", :onchange => 'window.calculatePercentageColumn(this);'}, :label => false
+                  = tlr_perc_form.input :tlresult_id, :as => :hidden, :input_html => {:value => tlr.id}
             - else
               %td.empty= 'N/A'
       %tr
