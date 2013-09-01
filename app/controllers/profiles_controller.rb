@@ -32,10 +32,19 @@ class ProfilesController < InheritedResources::Base
     end
   end
 
+  def update_tlresult_percentages
+    update! do |success, failure|
+      success.html { redirect_to profile_qualifyingentities_path(resource) }
+      failure.html do
+        render :edit_tlresult_percentages
+      end
+    end
+  end
+
   def edit_scores
     @qualifyingentities = resource.qualifyingentities.where(:quarter_id => @quarter.try(:id) || @quarters.map(&:id)).order(:created_at, :date)
     @qualifyingentity_tlresults = @qualifyingentities.map(&:qualifyingentity_tlresults).flatten
-    @ordered_unique_tlrs = @qualifyingentity_tlresults.map(&:tlresult).sort_by {|tlr| tlr.name}.uniq
+    @unique_tlrs = @qualifyingentity_tlresults.map(&:tlresult).uniq
     @students = resource.classroom ? resource.classroom.students : []
     @students.each do |student|
       @qualifyingentities.each do |qe|
