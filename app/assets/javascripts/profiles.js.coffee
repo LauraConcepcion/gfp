@@ -10,10 +10,16 @@ window.calculatePercentageColumn = (input) ->
   )
   total
   $("#total_tlresult_"+tlresult_id).html(total + '%')
+
+  but = $('input[type="submit"]')
   if total > 100.0
     $("#total_tlresult_"+tlresult_id).css('color', 'red')
+    but.attr('disabled', 'disabled')
+    but.next('span.msg').show()
   else
     $("#total_tlresult_"+tlresult_id).css('color', 'black')
+    but.attr('disabled', null)
+    but.next('span.msg').hide()
 
 
 $(document).ready ->
@@ -27,6 +33,9 @@ $(document).ready ->
     $("#total_tlresult_"+tlresult_id).html(total + '%')
     if total > 100
       $("#total_tlresult_"+tlresult_id).css('color', 'red')
+      but = $('input[type="submit"]')
+      but.attr('disabled', 'disabled')
+      but.next('span.msg').show()
   )
 
   # Profile linked inputs
