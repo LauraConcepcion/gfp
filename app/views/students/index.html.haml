@@ -20,7 +20,7 @@
         %td
           %ul
             - item.classrooms.each do |classroom|
-              %li= classroom.name + " / " + classroom.profile.name
+              %li= classroom_name_and_profile(classroom)
         %td.actions.span2
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'icon edit', :alt => t(:edit), :title => t(:edit)

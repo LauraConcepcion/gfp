@@ -41,6 +41,9 @@
   actions: "Acciones"
   example: "Descargar ejemplo de fichero csv"
   new_qualifyingentity: "Nueva actividad"
+  help: "Ayuda"
+  manual: "Manual"
+  home: "Inicio"
   helpers:
     links:
       edit: "Editar"
