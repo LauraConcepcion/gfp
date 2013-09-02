@@ -6,7 +6,7 @@ window.calculatePercentageColumn = (input) ->
   total = 0.0
   tlresult_id = input.className.split("tlresult_").pop()
   $.map($("input.tlresult_"+ tlresult_id), (v, k) ->
-     total += parseFloat($(v).val())
+     total += parseFloat($(v).val()) if $(v).val()
   )
   total
   $("#total_tlresult_"+tlresult_id).html(total + '%')
@@ -28,7 +28,7 @@ $(document).ready ->
     tlresult_id = v.className.split("tlresult_").pop()
     total = 0.0
     $.map($("input.tlresult_"+ tlresult_id), (v, k) ->
-      total += parseFloat($(v).val())
+      total += parseFloat($(v).val()) if $(v).val()
     )
     $("#total_tlresult_"+tlresult_id).html(total + '%')
     if total > 100
