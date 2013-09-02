@@ -21,12 +21,12 @@ class Qualifyingentity < ActiveRecord::Base
   #FIXME Necesario?
   # after_save :create_qualifyingentity_tlresults
 
-  validates :name, :presence => true
+  validates :name, :quarter_id, :presence => true
   validates :profile_id, :presence => true
 
   validates_associated :qualifyingentity_tlresults
 
-  before_save :set_quarter, :unless => :quarter
+  #before_save :set_quarter, :unless => :quarter
 
 
   scope :for_profile, lambda {|profile|
