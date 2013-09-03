@@ -23,15 +23,10 @@ class Teacher < ActiveRecord::Base
 
   # Cambia le perfil actual de la aplicación
   def change_current_profile(new_profile)
-    if self.current_profile
-      current_profile = self.current_profile
-      current_profile.default = false
-      current_profile.save!
-    end
-    profile = Profile.find(new_profile.id)
-    profile.default = true
-    profile.save!
-    self.save!
+    # FIXME es un poco dar vueltas porque current_profile
+    # ya pone el primero a current si no hay ninguno.
+    current_profile.update_attribute(:default, false)
+    new_profile.update_attribute(:default, true)
   end
 
   def full_name
