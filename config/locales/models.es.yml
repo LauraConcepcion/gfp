@@ -191,6 +191,7 @@
         updated_at: "Actualizado"
         created_at: "Creado"
         tlresults: "REAs"
+        group: "Grupo"
       point:
         point_datetime: "Fecha"
         num: "Número"
