@@ -1,7 +1,7 @@
 class Classroom < ActiveRecord::Base
   attr_accessible  :code_import, :name, :student_ids, :profile_id, :students_attributes
 
-  has_and_belongs_to_many :students
+  has_and_belongs_to_many :students, :order => 'students.firstsurname, students.secondsurname, students.name'
   # has_many :students, :inverse_of => :classroom, :order => 'firstsurname ASC, secondsurname ASC, name ASC'
   # # has_many :profiles
   belongs_to :profile
