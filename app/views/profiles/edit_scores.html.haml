@@ -19,12 +19,12 @@
           = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
           = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
           = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
-        - even_odd = cycle('even', 'odd', :name => 'qe_cycle')
+        - qe_count = 1
         - @qualifyingentities.each do |qe|
           - qe_change = true
           - sort_by(qe.qualifyingentity_tlresults, :tlresult_number).each do |qe_tlr|
             - tlr = qe_tlr.tlresult
-            %th.tlresult{:class => "qualifyingentity #{even_odd} #{'qe_actions' if qe_change}"}
+            %th.tlresult{:class => "qualifyingentity #{even_odd(qe_count)} #{'qe_actions' if qe_change}"}
               - if qe_change
                 .qualifyingentity
                   = link_to t(:edit), edit_profile_qualifyingentity_path(resource, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
@@ -33,7 +33,7 @@
               = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
                 = tlr.number
             - qe_change = false
-          - even_odd = cycle('even', 'odd')
+          - qe_count += 1
         - sort_by(@unique_tlrs, :number).each do |tlr|
           %th.score.average
             = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
@@ -52,13 +52,13 @@
             %span.aux2= render :partial => 'profiles/student_absences', :locals => {:profile => resource, :student => student}
             %span.aux3= render :partial => 'profiles/student_incidents', :locals => {:profile => resource, :student => student}
             %span.aux4= render :partial => 'profiles/student_observations', :locals => {:profile => resource, :student => student}
-          - even_odd = reset_cycle('qe_cycle')
+          - qe_count = 1
           - @qualifyingentities.each do |qe|
             - sort_by(qe.qualifyingentity_tlresults, :tlresult_number).each do |qe_tlr|
               - @score = qe_tlr.scores.find_by_student_id(student.id)
-              %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd}"}
+              %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd(qe_count)}"}
                 = render 'scores/in_place_edit'
-            - even_odd = cycle('even', 'odd')
+            - qe_count += 1
           - sort_by(@unique_tlrs, :number).each do |tlr|
             %td{:class => "score average", :id => "average_score_#{student.id}_#{tlr.id}"}
               = average_for(student, tlr, @quarter.id)
