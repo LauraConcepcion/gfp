@@ -107,6 +107,7 @@
         birthdate: "Fecha de nacimiento"
         mail: "E-mail"
         record: "Expediente"
+        classrooms: "Clases"
       group:
         name: "Nombre"
         created_at: "Creado"

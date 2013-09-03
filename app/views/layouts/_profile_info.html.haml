@@ -5,3 +5,5 @@
   %dd= current_teacher.current_profile ? current_teacher.current_profile.trainercycle.try(:title) : t(:no_current_profile)
   %dt= Matter.model_name.human+':'
   %dd= current_teacher.current_profile ? current_teacher.current_profile.matter.try(:name) : '-'
+  %dt= Group.model_name.human+':'
+  %dd= current_teacher.current_profile ? current_teacher.current_profile.group.try(:name) : '-'

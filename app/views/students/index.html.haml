@@ -7,7 +7,7 @@
       %th= sort_link @q, :secondsurname, Student.human_attribute_name(:secondsurname)
       %th= sort_link @q, :name, Student.human_attribute_name(:name)
       %th= sort_link @q, :dni, Student.human_attribute_name(:dni)
-      %th= Classroom.model_name + " / " + Profile.model_name.human.pluralize 
+      %th= Classroom.model_name.human + " / " + Profile.model_name.human
       %th= t(:actions)
   %tbody
     - collection.each do |item|
