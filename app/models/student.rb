@@ -1,7 +1,8 @@
 class Student < ActiveRecord::Base
-  attr_accessible :name, :firstsurname, :secondsurname, :dni, :phone, :student_code, :birthdate, :mail, :record, :score_ids, :classroom_ids
+  attr_accessible :name, :firstsurname, :secondsurname, :dni, :phone, :student_code, :birthdate, :mail, :record, :score_ids, :classroom_ids, :teacher
   # belongs_to :classroom, :inverse_of => :students
   has_and_belongs_to_many :classrooms
+  belongs_to :teacher
 
   has_many :scores, :inverse_of => :student
   has_many :average_scores, :inverse_of => :student
@@ -9,8 +10,7 @@ class Student < ActiveRecord::Base
   has_many :absences
   has_many :incidents
   has_many :observations
-  validates_presence_of :name, :dni
-  validate :must_have_classroom
+  validates_presence_of :name, :dni, :teacher_id
 
   scope :student_list, lambda {|group_id, matter_id, trainercycle_id|
     joins(:classrooms).where('classrooms.group_id = ? and classrooms.matter_id = ? and classrooms.trainercycle_id = ?', group_id, matter_id, trainercycle_id)
@@ -58,7 +58,9 @@ class Student < ActiveRecord::Base
         if row["clase"].blank? || row["dni"].blank?
           errors = 2
         else
+          debugger
           student = Student.find_by_dni_and_teacher(row["dni"], teacher) || new
+          student.teacher = teacher if student.teacher.blank?
           student.attributes = row.to_hash.slice(*accessible_attributes)
           clase = Classroom.find_by_code_import(row["clase"])
           if clase
@@ -80,7 +82,4 @@ class Student < ActiveRecord::Base
     student
   end
 
-  def must_have_classroom
-    self.errors[:base] << "Msg" if self.classrooms.empty?
-  end
 end
