@@ -7,7 +7,7 @@
   = link_to t(:title), "#", :class=>"brand pjax"
   .nav-collapse
     %ul.nav.pull-right
-      %li= link_to image_tag('home.png', :border => 0), root_path
+      %li= link_to image_tag('home.png', :border => 0), root_path, :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:home)
       %li.dropdown
         = link_to '#', :class => "dropdown-toggle", "data-toggle" => "dropdown" do
           = image_tag('configuracion.png', :border => 0)
@@ -15,9 +15,9 @@
         %ul.dropdown-menu
           %li= link_to t(:profiles), profiles_path
           %li= link_to t(:classrooms), classrooms_path
-      %li= link_to image_tag('student1.png'), students_path
+      %li= link_to image_tag('student1.png'), students_path, :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:students)
       %li= link_to image_tag('book.png', :border => 0), edit_scores_profile_path(current_teacher.current_profile), :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:scores) if current_teacher.current_profile
-      %li= link_to image_tag('estadistica.png'), edit_tlresults_profile_path(current_teacher.current_profile)  if current_teacher.current_profile
+      %li= link_to image_tag('estadistica.png'), edit_tlresults_profile_path(current_teacher.current_profile), :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:tlresults_percentage) if current_teacher.current_profile
       %li=link_to image_tag('pdf.png'), '#'
       -# %li= link_to Qualifyingentity.model_name.human, profile_qualifyingentities_path(current_teacher.current_profile)
       -# - if current_teacher.profiles
@@ -27,8 +27,8 @@
             -#     %li= link_to t(:students), students_path
       -#     -# %li= link_to QualifyingentityTlresult.model_name.human.pluralize, qualifyingentity_tlresult_path
 
-      %li= link_to image_tag('help.png', :border => 0), "https://docs.google.com/document/d/15URTGYpol2vjizwqbggQAwb8fTEBQUAZ4OwbHPmBBZI/edit?usp=sharing"
-      %li= link_to image_tag('manual.png', :border => 0), "https://docs.google.com/document/d/1yWfBOiDxVpoXv4rSmAbP_r-7lzDVYB4eUC671KFt_90/edit?usp=sharing"
+      %li= link_to image_tag('help.png', :border => 0), "https://docs.google.com/document/d/15URTGYpol2vjizwqbggQAwb8fTEBQUAZ4OwbHPmBBZI/edit?usp=sharing", :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:help)
+      %li= link_to image_tag('manual.png', :border => 0), "https://docs.google.com/document/d/1yWfBOiDxVpoXv4rSmAbP_r-7lzDVYB4eUC671KFt_90/edit?usp=sharing", :class => 'pop-over', 'data-toggle' => 'tooltip', 'data-content' => t(:manual)
  
 
     %ul.nav

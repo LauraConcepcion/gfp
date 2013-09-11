@@ -20,9 +20,9 @@ $(document).ready(function(){
   // Fixed header tables (TODO por ahora lo ponemos aquí para que no lo ejecute en los diálogos)
   var scores_table = $('table#qualifyingentity_tlresults_table');
   if (scores_table.find('tr:first-child th').size() > 22 && scores_table.find('tr').size() > 16) {
-    scores_table.fixedHeaderTable({ fixedColumns: 2, height: 450, altClass: 'odd', autoResize: true });
+    scores_table.fixedHeaderTable({ fixedColumns: 2, height: 450, autoResize: true });
   } else if (scores_table.find('tr').size() > 16) {
-    scores_table.fixedHeaderTable({ height: 450, altClass: 'odd', autoResize: true });
+    scores_table.fixedHeaderTable({ height: 450, autoResize: true });
   }
 
   window.initialize($(this));

@@ -6,14 +6,20 @@ window.calculatePercentageColumn = (input) ->
   total = 0.0
   tlresult_id = input.className.split("tlresult_").pop()
   $.map($("input.tlresult_"+ tlresult_id), (v, k) ->
-     total += parseFloat($(v).val())
+     total += parseFloat($(v).val()) if $(v).val()
   )
   total
   $("#total_tlresult_"+tlresult_id).html(total + '%')
+
+  but = $('input[type="submit"]')
   if total > 100.0
     $("#total_tlresult_"+tlresult_id).css('color', 'red')
+    but.attr('disabled', 'disabled')
+    but.next('span.msg').show()
   else
     $("#total_tlresult_"+tlresult_id).css('color', 'black')
+    but.attr('disabled', null)
+    but.next('span.msg').hide()
 
 
 $(document).ready ->
@@ -22,11 +28,14 @@ $(document).ready ->
     tlresult_id = v.className.split("tlresult_").pop()
     total = 0.0
     $.map($("input.tlresult_"+ tlresult_id), (v, k) ->
-      total += parseFloat($(v).val())
+      total += parseFloat($(v).val()) if $(v).val()
     )
     $("#total_tlresult_"+tlresult_id).html(total + '%')
     if total > 100
       $("#total_tlresult_"+tlresult_id).css('color', 'red')
+      but = $('input[type="submit"]')
+      but.attr('disabled', 'disabled')
+      but.next('span.msg').show()
   )
 
   # Profile linked inputs

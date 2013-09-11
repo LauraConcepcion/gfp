@@ -1,10 +1,27 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div#tabs{
+   margin-top: 20px;
+}
+li.ui-tabs-active{
+  background: linear-gradient(to bottom, #62C462, #51A351) !important
+}
+.ui-tabs .ui-tabs-nav li a{
+  color: white !important;
+  text-shadow: 0 0 0 !important;
+  font-weight: normal !important;
+}
+
 input.percentage
 {
   height:8px;
   width: 85px;
+}
+
+span.msg {
+  display: none;
+  color: red;
 }
 
 // Scores

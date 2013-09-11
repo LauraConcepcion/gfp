@@ -9,4 +9,8 @@ module ProfilesHelper
     average_score = AverageScore.where(:student_id => student.id, :tlresult_id => tlr.id, :quarter_id => quarter_id).first
     average_score ? number_with_precision(average_score.grade, :precision => 2) : '-'
   end
+
+  def even_odd(count)
+    count % 2 == 0 ? 'even' : 'odd'
+  end
 end

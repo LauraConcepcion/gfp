@@ -15,6 +15,10 @@ class QualifyingentitiesController < InheritedResources::Base
         get_profile_data
         render :new
       end
+      failure.js do
+        get_profile_data
+        render :new
+      end
     end
   end
 
@@ -27,6 +31,10 @@ class QualifyingentitiesController < InheritedResources::Base
     update! do |success, failure|
       success.html { redirect_to profile_qualifyingentities_path(parent) }
       failure.html do
+        get_profile_data
+        render :new
+      end
+      failure.js do
         get_profile_data
         render :new
       end

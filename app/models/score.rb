@@ -15,7 +15,7 @@ class Score < ActiveRecord::Base
       attrs = {:student_id => student_id, :tlresult_id => qualifyingentity_tlresult.tlresult_id, :quarter_id => quarter.id}
       average_score = AverageScore.where(attrs).first
       average_score ||= AverageScore.new(attrs)
-      qualifyingentity_tlresults = Qualifyingentity.where(:quarter_id => quarter.id).map(&:qualifyingentity_tlresults).flatten.select {|qe_tlr| qe_tlr.percentage && qe_tlr.tlresult == qualifyingentity_tlresult.tlresult}
+      qualifyingentity_tlresults = Qualifyingentity.where(:quarter_id => quarter.id, :profile_id => qualifyingentity_tlresult.qualifyingentity.profile.id).map(&:qualifyingentity_tlresults).flatten.select {|qe_tlr| qe_tlr.percentage && qe_tlr.tlresult == qualifyingentity_tlresult.tlresult}
       scores = qualifyingentity_tlresults.map(&:scores).flatten.select {|score| student && score.student_id && score.student_id == student.id}
       grades_sum = scores.inject(0) {|sum, score| sum+((score.grade || 0)*score.qualifyingentity_tlresult.percentage/100.0)}
       num_activities = qualifyingentity_tlresults.inject(0) {|sum, qe_tlr| sum+(qe_tlr.percentage/100.0)}

@@ -1,5 +1,5 @@
 .page-header
-  %h1= t(:global_tlresult_percentages)
+  %h1= QualifyingentityTlresult.model_name.human.pluralize
   = link_to t(:global), edit_tlresult_percentages_profile_path(resource), :class => "btn btn-success"
   - @quarters.each do |quarter|
     = link_to quarter.name, edit_tlresults_profile_path(resource, :quarter_id => quarter.id), :class => "btn btn-primary"
@@ -26,6 +26,7 @@
               = f.simple_fields_for 'tlresult_percentages', tlr_perc do |tlr_perc_form|
                 %td
                   = tlr_perc_form.input fields[idx], :input_html => {:class => 'input-mini tlresult_'+"#{tlr.id}", :onchange => 'window.calculatePercentageColumn(this);'}, :label => false
+                  = tlr_perc_form.input :tlresult_id, :as => :hidden, :input_html => {:value => tlr.id}
             - else
               %td.empty= 'N/A'
       %tr
@@ -34,3 +35,4 @@
           %td.tlresult
             %span{:id => "total_tlresult_"+"#{tlr.id}"}
   = f.submit
+  %span.msg= t(:check_values, :scope => 'errors.messages')

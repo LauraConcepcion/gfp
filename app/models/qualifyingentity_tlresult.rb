@@ -6,6 +6,8 @@ class QualifyingentityTlresult < ActiveRecord::Base
   has_many :scores, :inverse_of => :qualifyingentity_tlresult
   has_many :students, :through => :scores
 
+  delegate :number, :to => :tlresult, :prefix => true
+
   validates :tlresult_id, :presence => true
   validates_uniqueness_of :tlresult_id, :scope => :qualifyingentity_id
   validates :percentage, :numericality => {:less_than_or_equal_to => 100, :greater_than => 0}, :allow_nil => true

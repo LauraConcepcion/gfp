@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes, :own_tlresults_attributes
+  attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes, :own_tlresults_attributes, :tlresult_percentages_attributes
   belongs_to :institute
   belongs_to :trainercycle
   belongs_to :matter
@@ -36,6 +36,7 @@ class Profile < ActiveRecord::Base
   # NOTE La edición de poneraciones está hecha mediante el has_many through
   accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :own_tlresults, :reject_if => :all_blank
+  accepts_nested_attributes_for :tlresult_percentages, :reject_if => :all_blank
 
   scope :active, lambda {|teacher_id|
     where(:default => true, :teacher_id => teacher_id) unless teacher_id.nil?

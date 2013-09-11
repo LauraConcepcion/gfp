@@ -1,5 +1,6 @@
+# encoding: UTF-8
 class Student < ActiveRecord::Base
-  attr_accessible :name, :firstsurname, :secondsurname, :dni, :phone, :student_code, :birthdate, :mail, :record, :score_ids, :classroom_ids, :teacher
+  attr_accessible :name, :firstsurname, :secondsurname, :dni, :phone, :student_code, :birthdate, :mail, :record, :score_ids, :classroom_ids, :teacher, :teacher_id
   # belongs_to :classroom, :inverse_of => :students
   has_and_belongs_to_many :classrooms
   belongs_to :teacher
@@ -54,15 +55,18 @@ class Student < ActiveRecord::Base
     if file.blank?
       errors = 1
     else
-      CSV.foreach(file.path, headers: true, :col_sep => ';') do |row|
+      imported = 0
+      str = File.open(file.path).read
+      # Quitamos el BOM de utf8 que mete el win7
+      str.sub!(/^\xEF\xBB\xBF/, '')
+      CSV.parse(str, headers: true, :col_sep => ';') do |row|
         if row["clase"].blank? || row["dni"].blank?
           errors = 2
         else
-          debugger
           student = Student.find_by_dni_and_teacher(row["dni"], teacher) || new
           student.teacher = teacher if student.teacher.blank?
           student.attributes = row.to_hash.slice(*accessible_attributes)
-          clase = Classroom.find_by_code_import(row["clase"])
+          clase = teacher.classrooms.detect {|classroom| classroom.code_import == row["clase"].to_s}
           if clase
             if !student.classrooms.include?(clase)
               student.classrooms << clase
@@ -70,11 +74,11 @@ class Student < ActiveRecord::Base
           else
             errors = 3
           end
-          student.save
+          imported += 1 if student.save
         end
       end
     end
-    errors
+    [imported, errors]
   end
   
   def self.find_by_dni_and_teacher(dni,teacher)

@@ -10,9 +10,11 @@ class Ability
         user.profiles.map(&:id).include?(object.profile_id)
       end
       can :create, Classroom if !user.profiles.empty?
-      can :manage, Student, Student.joins(:classrooms).where('profile_id in (?)', user.profiles) do |object|
-        object.classrooms.map(&:profile_id).all?{|p| user.profile_ids.include?(p)}
-      end
+      # can :manage, Student, Student.joins(:classrooms).where('profile_id in (?)', user.profiles) do |object|
+      #   object.classrooms.map(&:profile_id).all?{|p| user.profile_ids.include?(p)}
+      # end
+      
+      can :manage, Student, :teacher_id => user.id
 
       # can :manage, Student, Student.all.each do |object|
       #   object.classrooms.include?(user.classrooms.map(&:id))

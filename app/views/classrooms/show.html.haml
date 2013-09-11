@@ -1,16 +1,5 @@
 = show_for resource do |item|
-  #adjustment_data
+  #classroom_data
     = item.attribute :name
-    = item.attribute  :centre_name
     = item.attribute :created_at, :format => :long
-    #input_line_list
-      %table.list
-        %thead
-          %th.name= Product.human_attribute_name(:name)
-          %th.qty= AdjustmentLine.human_attribute_name(:qty)
-        %tbody.items.adjustments
-          - resource.adjustment_lines.each do |adjustment_line|
-            = content_tag_for(:tr, resource, :class => cycle(:odd, :even)) do
-              %td= adjustment_line.product.try :name
-              %td= adjustment_line.try :qty
   = link_to t(:back), collection_path

@@ -6,7 +6,7 @@
         taken: "El valor para este campo debe ser único y ya está en uso."
         one_record_must_be_selected: "Debe seleccionar al menos un valor."
     models:
-      profile: "Perfil"
+      profile: "Curso"
       qualifyingentity: "Actividad"
       criterion: "Criterio"
       qualifyingentity_tlresult: "Actividades-Criterios/REA"
@@ -107,6 +107,7 @@
         birthdate: "Fecha de nacimiento"
         mail: "E-mail"
         record: "Expediente"
+        classrooms: "Clases"
       group:
         name: "Nombre"
         created_at: "Creado"
@@ -186,11 +187,13 @@
         tlresult: "Criterio/REA"
         teacher: "Profesor"
         institute: "Instituto"
+        institute_id: "Instituto"
         trainercycle: "Enseñanza"
         name: "Nombre"
         updated_at: "Actualizado"
         created_at: "Creado"
         tlresults: "REAs"
+        group: "Grupo"
       point:
         point_datetime: "Fecha"
         num: "Número"

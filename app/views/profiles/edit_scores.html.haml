@@ -1,5 +1,7 @@
 .page-header
   %h1= t(:scores)
+  = "#{resource.trainercycle.try(:title)} - #{resource.matter.try(:name)} - #{resource.group.try(:name)}"
+
 %div.scores
   .actions
     = link_to ClassroomDiary.model_name.human, profile_classroom_diaries_path(resource), :class => 'btn btn-default', :remote => true
@@ -17,22 +19,22 @@
           = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
           = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
           = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
-        - even_odd = cycle("even", "odd")
-        - current_qe = nil
-        - @qualifyingentity_tlresults.uniq.each do |qe_tlr|
-          - even_odd = cycle("even", "odd") if qe_tlr.qualifyingentity != current_qe
-          - tlr = qe_tlr.tlresult
-          %th.tlresult{:class => "qualifyingentity #{even_odd} #{'qe_actions' if qe_tlr.qualifyingentity != current_qe}"}
-            - if qe_tlr.qualifyingentity != current_qe
-              .qualifyingentity
-                -# = qe_title qe_tlr.qualifyingentity
-                = link_to t(:edit), edit_profile_qualifyingentity_path(resource, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
-                = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => qe_title(qe_tlr.qualifyingentity), "title" => Qualifyingentity.model_name.human do
-                  %i.icon-info-sign
-            = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
-              = tlr.number
-          - current_qe = qe_tlr.qualifyingentity
-        - @ordered_unique_tlrs.each do |tlr|
+        - qe_count = 1
+        - @qualifyingentities.each do |qe|
+          - qe_change = true
+          - sort_by(qe.qualifyingentity_tlresults, :tlresult_number).each do |qe_tlr|
+            - tlr = qe_tlr.tlresult
+            %th.tlresult{:class => "qualifyingentity #{even_odd(qe_count)} #{'qe_actions' if qe_change}"}
+              - if qe_change
+                .qualifyingentity
+                  = link_to t(:edit), edit_profile_qualifyingentity_path(resource, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
+                  = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => qe_title(qe_tlr.qualifyingentity), "title" => Qualifyingentity.model_name.human do
+                    %i.icon-info-sign
+              = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
+                = tlr.number
+            - qe_change = false
+          - qe_count += 1
+        - sort_by(@unique_tlrs, :number).each do |tlr|
           %th.score.average
             = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
               = tlr.number
@@ -50,20 +52,17 @@
             %span.aux2= render :partial => 'profiles/student_absences', :locals => {:profile => resource, :student => student}
             %span.aux3= render :partial => 'profiles/student_incidents', :locals => {:profile => resource, :student => student}
             %span.aux4= render :partial => 'profiles/student_observations', :locals => {:profile => resource, :student => student}
-          - even_odd = cycle("even", "odd")
-          - current_qe = nil
+          - qe_count = 1
           - @qualifyingentities.each do |qe|
-            - qe.qualifyingentity_tlresults.each do |qe_tlr|
-              - even_odd = cycle("even", "odd") if qe_tlr.qualifyingentity != current_qe
+            - sort_by(qe.qualifyingentity_tlresults, :tlresult_number).each do |qe_tlr|
               - @score = qe_tlr.scores.find_by_student_id(student.id)
-              %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd} #{'qe_actions' if qe_tlr.qualifyingentity != current_qe}"}
+              %td.score{:id => @score.id, :class => "score qualifyingentity #{even_odd(qe_count)}"}
                 = render 'scores/in_place_edit'
-                - current_qe = qe_tlr.qualifyingentity
-          - if @quarter.id
-            - @ordered_unique_tlrs.each do |tlr|
-              %td{:class => "score average", :id => "average_score_#{student.id}_#{tlr.id}"}
-                = average_for(student, tlr, @quarter.id)
-            - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id).first
-            %td{:class => "score average student", :id => "average_#{@average_score.id}"}
-              = render 'average_scores/in_place_edit'
+            - qe_count += 1
+          - sort_by(@unique_tlrs, :number).each do |tlr|
+            %td{:class => "score average", :id => "average_score_#{student.id}_#{tlr.id}"}
+              = average_for(student, tlr, @quarter.id)
+          - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id).first
+          %td{:class => "score average student", :id => "average_#{@average_score.id}"}
+            = render 'average_scores/in_place_edit'
 

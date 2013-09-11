@@ -27,6 +27,7 @@ Gfp::Application.routes.draw do
     collection do
       post :import 
       get :search_by_dni
+      get :all_students
     end
   end
 
