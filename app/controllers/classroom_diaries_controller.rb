@@ -32,7 +32,8 @@ class ClassroomDiariesController < InheritedResources::Base
   def collection
     @q ||= end_of_association_chain.accessible_by(current_ability).for_profile(parent).search(params[:q])
     @q.sorts = "created_at desc" if @q.sorts.empty?
-    @classroom_diaries = @q.result(:distinct => true).page(params[:page])
+    @classroom_diaries = @q.result(:distinct => true)
+  #   .page(params[:page])
   end
 
   # El problema es que la asignación de profile al resource peta si no se inicializa antes y en el before_filter no lo está

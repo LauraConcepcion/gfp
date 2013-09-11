@@ -1,6 +1,4 @@
 = simple_form_for resource, :html => { :class => 'form-horizontal' } do |f|
-  = f.button :submit, :class => 'btn-primary'
-  = link_to t(:cancel), collection_path, :class => 'btn'
   %div.errors
     = f.error_notification
   %div#tabs
@@ -28,5 +26,6 @@
             = render 'own_tlresult_fields', :f => own_tlresult
           %tr.links
             %td{:colspan => 99}= link_to_add_association t(:add), f, :own_tlresults, "data-association-insertion-node" => ".links", :class => 'btn'
-
-
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t(:cancel), collection_path, :class => 'btn'
+ 

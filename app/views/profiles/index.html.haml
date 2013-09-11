@@ -19,6 +19,7 @@
         %td.actions.span3
           - if can? :edit, item
             = link_to t(:edit), edit_resource_path(item), :class => 'icon edit', :alt => t(:edit), :title => t(:edit)
+            = link_to t(:qualifyingentities), profile_qualifyingentities_path(item), :class => 'icon task', :alt => t(:qualifyingentities), :title => t(:qualifyingentities)
             - unless item.tlresults.empty?
               = link_to t(:tlresults), edit_tlresults_profile_path(item), :class => 'icon tlresult', :alt => t(:tlresults), :title => t(:tlresults)
             - if item.classroom && item.classroom.students
