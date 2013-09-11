@@ -1,5 +1,10 @@
 .page-header
   %h1= t(:qualifyingentities)
+  - if can? :create, Qualifyingentity
+    = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
+  - if can?(:read, Qualifyingentity) && current_teacher.current_profile
+    = link_to t(:tlresults), edit_tlresults_profile_path(current_teacher.current_profile), :class => 'btn'
+
 %table.table.table-striped
   %thead
     %tr
@@ -25,11 +30,5 @@
             = link_to t(:edit), edit_resource_path(item), :class => 'icon edit', :alt => t(:edit), :title => t(:edit)
           - if can? :destroy, item
             = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete', :alt => t(:destroy), :title => t(:destroy)
-  %tfoot
-    %tr.actions
-      %td{:colspan => 99}
-        - if can? :create, Qualifyingentity
-          = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
-        - if can?(:read, Qualifyingentity) && current_teacher.current_profile
-          = link_to t(:tlresults), edit_tlresults_profile_path(current_teacher.current_profile), :class => 'btn'
-        = paginate collection
+
+  = paginate collection

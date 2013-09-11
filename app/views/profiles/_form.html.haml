@@ -6,7 +6,7 @@
       %li
         %a{:href => '#tabs-1'}= t(:main_data)
       %li
-        %a{:href => '#tabs-2'}= t(:tlresults)
+        %a{:href => '#tabs-2'}= t(:custom_tlresults)
     %div#tabs-1
       = f.input :institute_id, :input_html => {:class => 'select2-ajax span3', 'data-autocomplete-url' => search_institutes_path, "data-show-url" => (institute_path(resource.institute_id) unless resource.new_record?)}
       = f.association :trainercycle, :input_html => {:class => 'chzn-select span3'}
@@ -26,6 +26,6 @@
             = render 'own_tlresult_fields', :f => own_tlresult
           %tr.links
             %td{:colspan => 99}= link_to_add_association t(:add), f, :own_tlresults, "data-association-insertion-node" => ".links", :class => 'btn'
-
   = f.button :submit, :class => 'btn-primary'
   = link_to t(:cancel), collection_path, :class => 'btn'
+ 

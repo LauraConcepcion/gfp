@@ -9,6 +9,7 @@
   %td= f.input :birthdate, label: false, :as => :string, :input_html => { :class => 'datepicker input-small'}
   %td= f.input :mail, label: false
   %td= f.input :record, label: false
+  %td= f.input :teacher_id, :as => :hidden, :input_html => {:value => current_teacher.id}
   %td.actions
     - if f.object.id
       = link_to t(:edit), edit_student_path(f.object.id), :class => 'icon edit', :remote => true

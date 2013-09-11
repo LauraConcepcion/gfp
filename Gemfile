@@ -40,7 +40,7 @@ group :development, :test do
   gem "railroady"
   gem "faker", :git => "https://github.com/stympy/faker.git"
   gem 'factory_girl_rails'
-  gem 'pg', '=0.13.2'
+  #gem 'pg', '=0.13.2'
 end
 
 group :test do

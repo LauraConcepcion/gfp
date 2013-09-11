@@ -5,24 +5,26 @@
   = link_to t(:all), all_students_students_path, :class => 'btn'
   = link_to t(:for_profile), collection_path, :class => 'btn'
 %br
+%br
 %h4= t(:import_students)
 = link_to t(:example), 'alumnos_ejemplo.csv'
 = form_tag import_students_path, multipart: true do 
   = file_field_tag :file
   = submit_tag t(:import), :class => 'btn'
 
+
 %table.table.table-striped
   %thead
     %tr
       %th
-      %th= sort_link @q, :firstsurname, Student.human_attribute_name(:firstsurname)
-      %th= sort_link @q, :secondsurname, Student.human_attribute_name(:secondsurname)
-      %th= sort_link @q, :name, Student.human_attribute_name(:name)
-      %th= sort_link @q, :dni, Student.human_attribute_name(:dni)
+      %th=  Student.human_attribute_name(:firstsurname)
+      %th=  Student.human_attribute_name(:secondsurname)
+      %th=  Student.human_attribute_name(:name)
+      %th=  Student.human_attribute_name(:dni)
       %th= Classroom.model_name.human + " / " + Profile.model_name.human
       %th= t(:actions)
   %tbody
-    - collection.each do |item|
+    - @students.each do |item|
       %tr
         %td= image_tag("student1.png")
         %td= item.try(:firstsurname)
@@ -39,3 +41,4 @@
           - if can? :destroy, item
             = link_to t(:destroy), resource_path(item), :data => {:confirm => t(:are_you_sure?)}, :method => :delete, :class => 'icon delete', :alt => t(:destroy), :title => t(:destroy)
 = paginate collection
+

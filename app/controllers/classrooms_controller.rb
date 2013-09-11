@@ -34,7 +34,7 @@ class ClassroomsController < InheritedResources::Base
           student.record = row[8]
           student.save
         else
-          new_student = Student.create(:name => row[0], :firstsurname => row[1], :secondsurname => row[2], :birthdate => row[4], :phone => row[5], :mail => row[6], :student_code => row[7], :record => row[8])
+          new_student = Student.create(:name => row[0], :firstsurname => row[1], :secondsurname => row[2], :birthdate => row[4], :phone => row[5], :mail => row[6], :student_code => row[7], :record => row[8], :teacher => current_teacher)
           resource.students << new_student
           resource.save
         end

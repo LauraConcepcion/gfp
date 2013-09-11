@@ -1,5 +1,7 @@
 <p>Bienvenido <%= @resource.email %>!</p>
 
-<p>Puedes confirmar tu cuenta mediante el enlace de siguiente:</p>
+<p>Puedes confirmar tu cuenta mediante el enlace siguiente:</p>
 
 <p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>Atentamente el equipo de ForProf.</p>

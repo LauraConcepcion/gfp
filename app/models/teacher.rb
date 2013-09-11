@@ -2,7 +2,7 @@ class Teacher < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable, :registerable
   devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :registerable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -10,6 +10,7 @@ class Teacher < ActiveRecord::Base
   has_and_belongs_to_many :departments
   has_many :classrooms, :through => :profiles
   has_many :profiles, :order =>  'id ASC'
+  has_many :students, :order => 'name ASC'
 
   # Devuleve el perfil actual con el que trabaja el usuario
   def current_profile

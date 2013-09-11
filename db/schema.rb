@@ -286,6 +286,7 @@ ActiveRecord::Schema.define(:version => 20130902193643) do
     t.string   "phone"
     t.string   "record"
     t.date     "birthdate"
+    t.integer  "teacher_id"
   end
 
   create_table "teachers", :force => true do |t|
@@ -306,8 +307,11 @@ ActiveRecord::Schema.define(:version => 20130902193643) do
     t.string   "teacher_code"
     t.string   "dni"
     t.string   "phone"
+<<<<<<< HEAD
     t.string   "confirmation_token"
     t.datetime "confirmation_sent_at"
+=======
+>>>>>>> 4c6f4a1c249f8f97d22f0f5a163d8919b240688d
     t.datetime "confirmed_at"
   end
 

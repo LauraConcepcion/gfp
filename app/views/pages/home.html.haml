@@ -1,4 +1,4 @@
-%h1= t(:wellcome, :user => current_teacher.full_name)
+%h1= t(:wellcome, :user => current_teacher.email)
 .menu_icon
   %h3= t(:profiles)
   = link_to image_tag("configuracion.png", :border => 0), {:action => 'index', :controller => 'profiles'}

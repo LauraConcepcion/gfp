@@ -50,6 +50,26 @@ Gfp::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+   :address => "forprof.es",
+   :port => 25,
+   :domain => "forprof.es" ,
+   :authentication => :login,
+   :user_name => "forprofe" ,
+   :password => "rtscesE5Vb",
+   :enable_starttls_auto => false
+  }
+
+  #config.action_mailer.delivery_method = :sendmail
+  #config.action_mailer.sendmail_settings = {
+    #:location	  => '/usr/sbin/sendmail',
+    #:arguments	  => '-i -t'
+  #}
+  config.action_mailer.default_url_options = {
+   :host => 'forprof.es',
+   :from => 'soporte@forprof.es'
+  }
 
   # Enable threaded mode
   # config.threadsafe!
