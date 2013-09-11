@@ -51,6 +51,7 @@ end
 
 group :production do
   gem 'mysql2'
+  gem "faker", :git => "https://github.com/stympy/faker.git"
 end
 
 # Gems used only for assets and not required
