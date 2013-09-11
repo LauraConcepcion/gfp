@@ -20,15 +20,15 @@ class StudentsController < InheritedResources::Base
         redirect_to students_path
       when 1 
         flash[:alert]=I18n.t(:no_file, :scope => 'flash.general')
-        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported > 0
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported && imported > 0
         redirect_to students_path
       when 2
         flash[:alert]=I18n.t(:fields_blanks, :scope => 'flash.general')
-        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported > 0
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported && imported > 0
         redirect_to students_path
       when 3
         flash[:alert]=I18n.t(:classroom_code_import_fail, :scope => 'flash.general')
-        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported > 0
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported && imported > 0
         redirect_to students_path
     end
   end

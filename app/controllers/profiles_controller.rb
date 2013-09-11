@@ -2,7 +2,7 @@ class ProfilesController < InheritedResources::Base
   before_filter :authenticate_teacher!
   respond_to :html, :xml, :json
 
-  skip_before_filter :check_profiles
+  #skip_before_filter :check_profiles
   load_and_authorize_resource
 
   before_filter :set_quarter, :only => [:edit_scores, :update_scores, :edit_tlresults, :update_tlresults]
