@@ -59,7 +59,7 @@ class Student < ActiveRecord::Base
       str = File.open(file.path).read
       # Quitamos el BOM de utf8 que mete el win7
       str.sub!(/^\xEF\xBB\xBF/, '')
-      CSV.parse(str, headers: true, :col_sep => ';') do |row|
+      CSV.parse(str, headers: true, :col_sep => ',') do |row|
         if row["clase"].blank? || row["dni"].blank?
           errors = 2
         else
