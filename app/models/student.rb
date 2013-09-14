@@ -52,10 +52,13 @@ class Student < ActiveRecord::Base
 
   def self.import(file, teacher)
     errors = 0
+    imported = nil
+    updated = nil
     if file.blank?
       errors = 1
     else
       imported = 0
+      updated = 0
       str = File.open(file.path).read
       # Quitamos el BOM de utf8 que mete el win7
       str.sub!(/^\xEF\xBB\xBF/, '')
@@ -74,11 +77,15 @@ class Student < ActiveRecord::Base
           else
             errors = 3
           end
-          imported += 1 if student.save
+          new_record = student.new_record?
+          if student.save
+            imported += 1 if new_record
+            updated += 1 if !new_record
+          end
         end
       end
     end
-    [imported, errors]
+    [imported, updated, errors]
   end
   
   def self.find_by_dni_and_teacher(dni,teacher)

@@ -15,22 +15,21 @@ class StudentsController < InheritedResources::Base
   end
 
   def import
-    imported, errors = Student.import(params[:file], current_teacher)
+    imported, updated, errors = Student.import(params[:file], current_teacher)
     case errors
-      when 0 
-        flash[:notice]= I18n.t(:all_students_added, :scope => 'flash.general', :imported => imported)
+      when 0
+        flash[:notice]= I18n.t(:all_students_added, :scope => 'flash.general', :imported => imported, :updated => updated)
         redirect_to students_path
-      when 1 
+      when 1
         flash[:alert]=I18n.t(:no_file, :scope => 'flash.general')
-        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported && imported > 0
         redirect_to students_path
       when 2
         flash[:alert]=I18n.t(:fields_blanks, :scope => 'flash.general')
-        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported && imported > 0
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported, :updated => updated) if imported && imported > 0 || updated && updated > 0
         redirect_to students_path
       when 3
         flash[:alert]=I18n.t(:classroom_code_import_fail, :scope => 'flash.general')
-        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported) if imported && imported > 0
+        flash[:notice]= I18n.t(:students_added, :scope => 'flash.general', :imported => imported, :updated => updated) if imported && imported > 0 || updated && updated > 0
         redirect_to students_path
     end
   end
