@@ -15,4 +15,4 @@ es:
       fields_blanks: "Las columnas DNI y Clase son obligatorios, revise su fichero csv y rellene la información necesaria."
       classroom_code_import_fail: "El código de la clase es incorrecto para algunas filas, revíselo por favor."
       all_students_added: "Todos los alumnos del fichero han sido creados/actualizados (%{imported})."
-      students_added: "Los alumnos con la información correcta del fichero se han creado/actualizado (%{imported})."
+      students_added: "Los alumnos con la información correcta del fichero se han importado (%{imported}) / actualizado (%{updated}). Es posible que algún alumno no esté asociado al perfil actual, intente la opción de 'todos' para verlo."
