@@ -2,17 +2,17 @@ es:
   flash:
     actions:
       create:
-        notice: "Se creó un nuevo registro de '%{resource_name}'"
-        notice_with_link: "Se creó un nuevo registro de '%{resource_name}' (%{handing_link})"
+        notice: "Se creó un nuevo registro de '%{resource_name}'."
+        notice_with_link: "Se creó un nuevo registro de '%{resource_name}' (%{handing_link})."
       update:
-        notice: "Se actualizó el registro de '%{resource_name}'"
+        notice: "Se actualizó el registro de '%{resource_name}'."
       destroy:
-        notice: "Se eliminó un registro de '%{resource_name}'"
+        notice: "Se eliminó un registro de '%{resource_name}'."
     general:
       no_profiles_found: "No tiene ningún perfil, por favor créelo antes de seguir."
-      no_current_profile: "No ha seleccionado su perfil actual, algunas funcionalidades no no estarán disponibles."
+      no_current_profile: "No ha seleccionado su perfil actual, algunas funcionalidades no estarán disponibles."
       no_file: "No ha seleccionado ningún fichero para cargar"
-      fields_blanks: "Las columnas DNI y Clase son obligatorios, revise su fichero csv y rellene la información necesaria"
-      classroom_code_import_fail: "El código de la clase es incorrecto para algunas filas, revíselo por favor"
-      all_students_added: "Todos los alumnos del fichero han sido creados/actualizados (%{imported})"
-      students_added: "Los alumnos con la información correcta del fichero se han creado/actualizado (%{imported})"
+      fields_blanks: "Las columnas DNI y Clase son obligatorios, revise su fichero csv y rellene la información necesaria."
+      classroom_code_import_fail: "El código de la clase es incorrecto para algunas filas, revíselo por favor."
+      all_students_added: "Todos los alumnos del fichero han sido creados/actualizados (%{imported})."
+      students_added: "Los alumnos con la información correcta del fichero se han creado/actualizado (%{imported})."
