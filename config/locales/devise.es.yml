@@ -3,12 +3,12 @@
 es:
   errors:
     messages:
-      expired: "ha expirado, por favor entre de nuevo"
+      expired: "Su sesión ha expirado, por favor entre de nuevo."
       not_found: "no encontrado"
       already_confirmed: "fue confirmado, por favor intente validarse"
       not_locked: "no estaba bloqueado"
       not_saved:
-        one: "e1 error no permite que este %{resource} sea salvado:"
+        one: "el error no permite que este %{resource} sea salvado:"
         other: "%{count} errores no permiten que %{resource} sea salvado:"
 
   devise:
@@ -30,14 +30,14 @@ es:
       send_instructions: 'Recibirás un email con las instrucciones sobre cómo resetear tu contraseña en unos minutos.'
       updated: 'Tu password fue cambiado correctamente. Ya puedes validarte.'
       updated_not_active: 'Tu password fue cambiado correctamente.'
-      send_paranoid_instructions: "Si tu email existe en nuestra base de datos, recibirás un link para recuperar el password"
+      send_paranoid_instructions: "Si tu email existe en nuestra base de datos, recibirás un email con un link para recuperar tu password."
     confirmations:
       send_instructions: 'Recibirás un email con instrucciones sobre cómo confirmar tu cuenta en unos minutos.'
       send_paranoid_instructions: 'Si tu email existe en nuestra base de datos, recibirás un mail con instrucciones sobre cómo confirmar tu cuenta.'
       confirmed: 'Tu cuenta ha sido confirmada correctamente. Estás dado de alta.'
     registrations:
       signed_up: 'Bienvenido! Has sido registrado correctamente.'
-      inactive_signed_up: 'Has registrado correctamente. Así que, podriamos no registrarte porque tu cuenta está %{reason}.'
+      inactive_signed_up: 'Te has registrado correctamente. Así que, podriamos no registrarte porque tu cuenta está %{reason}.'
       updated: 'Has actualizado correctamente tu cuenta.'
       destroyed: 'Adios! Tu cuenta fue cancelada correctamente. Esperamos verte de nuevo.'
       reasons:
@@ -47,14 +47,14 @@ es:
     unlocks:
       send_instructions: 'Recibirás un email con instrucciones sobre cómo desbloquear tu cuenta en unos minutos.'
       unlocked: 'Tu cuenta fue desbloqueada. Estás registrado.'
-      send_paranoid_instructions: 'Si tu cuenta existe, recibirás un mail con instrucciones en unos minutos.'
+      send_paranoid_instructions: 'Si tu cuenta existe, recibirás un email con instrucciones en unos minutos.'
     omniauth_callbacks:
       success: 'Correctamente autorizado desde la cuenta %{kind}.'
-      failure: 'Podria no autorizarse desde %{kind} porque "%{reason}".'
+      failure: 'Podría no autorizarse desde %{kind} porque "%{reason}".'
     mailer:
       confirmation_instructions:
         subject: 'Confirmación de instrucciones'
       reset_password_instructions:
-        subject: 'Reset password'
+        subject: 'Resetear el password'
       unlock_instructions:
         subject: 'Desbloquear Instrucciones'
