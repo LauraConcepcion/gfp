@@ -1,6 +1,5 @@
 .page-header
   %h1= t(:scores)
-  = "#{resource.trainercycle.try(:title)} - #{resource.matter.try(:name)} - #{resource.group.try(:name)}"
 
 %div.scores
   .actions
@@ -38,6 +37,7 @@
           %th.score.average
             = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do
               = tlr.number
+        %th.score.average.quarter.student
         %th.score.average.student
     %tbody
       - @students.each do |student|
@@ -61,8 +61,10 @@
             - qe_count += 1
           - sort_by_tlresult_name(@unique_tlrs).each do |tlr|
             %td{:class => "score average", :id => "average_score_#{student.id}_#{tlr.id}"}
-              = average_for(student, tlr, @quarter.id)
-          - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id).first
-          %td{:class => "score average student", :id => "average_#{@average_score.id}"}
-            = render 'average_scores/in_place_edit'
+              = average_for(student, tlr, @quarter.id, resource.id)
+          - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id, :profile_id => resource.id, :teacher_revised => false).first
+          %td{:class => "score average student", :id => "quarter_average_#{student.id}"}= number_with_precision(@average_score.try(:grade), :precision => 2)
+          - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id, :profile_id => resource.id, :teacher_revised => true).first
+          %td{:class => "score average student", :id => "average_#{student.id}"}
+            = render 'average_scores/in_place_edit' if @average_score
 

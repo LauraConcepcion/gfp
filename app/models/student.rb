@@ -21,6 +21,8 @@ class Student < ActiveRecord::Base
     joins(:classrooms).where('profile_id in (?)', profile_ids)
   }
 
+  scope :for_teacher, lambda {|teacher_id| where(:teacher_id => teacher_id)}
+
   def full_name
     "#{firstsurname} #{secondsurname}, #{name}"
   end
