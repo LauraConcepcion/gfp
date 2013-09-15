@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def sort_by(collection, field)
+  def sort_by_tlresult_name(collection)
     collection.sort do |record1, record2|
       sortable1 = record1.sortable_item
       sortable2 = record2.sortable_item
