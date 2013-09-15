@@ -15,6 +15,10 @@ class ProfilesController < InheritedResources::Base
     update! { profiles_path }
   end
 
+  def edit_tlresults
+    @unique_tlrs = Tlresult.unique_for_profile_and_quarter(resource, @quarter)
+  end
+
   def update_tlresults
     update! do |success, failure|
       success.html { redirect_to profile_qualifyingentities_path(resource) }
@@ -26,7 +30,8 @@ class ProfilesController < InheritedResources::Base
 
   def edit_tlresult_percentages
     @quarters = Quarter.for_this_year
-    Tlresult.unique_for_profile(resource).each do |tlr|
+    @unique_tlrs = Tlresult.unique_for_profile(resource)
+    @unique_tlrs.each do |tlr|
       tlr_perc = resource.tlresult_percentages.where(:tlresult_id => tlr.id).first
       resource.tlresult_percentages.build(:tlresult_id => tlr.id) unless tlr_perc
     end

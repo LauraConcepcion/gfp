@@ -27,6 +27,11 @@ class Tlresult < ActiveRecord::Base
     select('distinct tlresults.*')
   }
 
+  def sortable_item
+    name =~ /((\d+)\.)?(.*?)$/
+    [$2.try(:to_i), $3.try(:strip)].compact
+  end
+
   def number
     if name =~ /^(\d+).*/
       $1.to_i
