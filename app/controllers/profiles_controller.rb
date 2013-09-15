@@ -58,12 +58,6 @@ class ProfilesController < InheritedResources::Base
           Score.create(:qualifyingentity_tlresult_id => qe_tlr.id, :student_id => student.id) unless score
         end
       end
-      # Creamos la media del trimestre para el alumno si no existe
-      # TODO cómo creamos la nota del curso? Añadimos un campo curso? y no rellenamos el quarter_id?
-      if @quarter
-        average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id).first
-        AverageScore.create(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id) unless average_score
-      end
     end
   end
 

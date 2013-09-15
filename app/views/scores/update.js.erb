@@ -1,4 +1,5 @@
 close_dialog('score_edit');
 $('td#<%= @score.id %>').html('<%= escape_javascript(render :partial => 'in_place_edit') %>');
-$('td#average_score_<%= @score.student_id %>_<%= @score.qualifyingentity_tlresult.tlresult_id %>').html('<%= escape_javascript(average_for(@score.student, @score.qualifyingentity_tlresult.tlresult, @score.qualifyingentity_tlresult.qualifyingentity.quarter_id)) %>');
+$('td#average_score_<%= @score.student_id %>_<%= @score.qualifyingentity_tlresult.tlresult_id %>').html('<%= escape_javascript(average_for(@score.student, @score.qualifyingentity_tlresult.tlresult, @score.qualifyingentity_tlresult.qualifyingentity.quarter_id, @score.qualifyingentity_tlresult.qualifyingentity.profile_id)) %>');
+$('td#quarter_average_<%= @score.student_id %>').html('<%= escape_javascript(average_for(@score.student, nil, @score.qualifyingentity_tlresult.qualifyingentity.quarter_id, @score.qualifyingentity_tlresult.qualifyingentity.profile_id)) %>');
 $('td#<%= @score.id %>').animate({ color: "green" });

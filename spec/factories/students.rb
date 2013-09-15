@@ -7,5 +7,10 @@ FactoryGirl.define do
     name          { Faker::Name.first_name }
     dni           { Faker::Code.isbn }
     mail          { Faker::Internet.email }
+    association   :teacher
+
+    after(:build) do |student|
+      student.classrooms << FactoryGirl.create(:classroom)
+    end
   end
 end

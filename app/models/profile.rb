@@ -14,6 +14,7 @@ class Profile < ActiveRecord::Base
   has_many :tlresult_percentages
   has_many :own_tlresults, :class_name => Tlresult
   has_many :scores, :through => :qualifyingentity_tlresults
+  has_many :average_scores
   has_many :points
   has_many :absences
   has_many :incidents

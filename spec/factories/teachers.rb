@@ -6,7 +6,10 @@ FactoryGirl.define do
     surname  { Faker::Name.last_name }
     email    { Faker::Internet.email }
     dni      { Faker::Code.isbn }
-    password "123456"
+    password "password"
+    password_confirmation "password"
+    confirmed_at { Date.today }
+    sign_in_count 1
   end
 end
 

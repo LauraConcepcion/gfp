@@ -3,6 +3,7 @@ class Tlresult < ActiveRecord::Base
   has_many :qualifyingentity_tlresults
   has_many :average_scores, :inverse_of => :qualifyingentity_tlresult
   has_many :criterions
+  has_many :tlresult_percentages
   belongs_to :matter
 
 
