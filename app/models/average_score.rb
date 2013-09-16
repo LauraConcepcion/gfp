@@ -26,6 +26,7 @@ class AverageScore < ActiveRecord::Base
       quarter_pos = Quarter.for_this_year.index(quarter) + 1
       percs_sum = nil
       grades_sum = quarter_averages.inject(0) do |sum, avg|
+        sum ||= 0
         tlr_perc = TlresultPercentage.where(:profile_id => profile_id, :tlresult_id => avg.tlresult_id).first
         # TODO revisar qué hacer con los que no están ponderados (se puede calcular la ponderación que falte hasta 100% o hacer media aritmética)
         next unless tlr_perc
