@@ -52,12 +52,12 @@ Gfp::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-   :address => "forprof.es",
+   :address => "",
    :port => 25,
-   :domain => "forprof.es" ,
+   :domain => "" ,
    :authentication => :login,
-   :user_name => "forprofe" ,
-   :password => "rtscesE5Vb",
+   :user_name => "" ,
+   :password => "",
    :enable_starttls_auto => false
   }
 
@@ -67,8 +67,8 @@ Gfp::Application.configure do
     #:arguments	  => '-i -t'
   #}
   config.action_mailer.default_url_options = {
-   :host => 'forprof.es',
-   :from => 'soporte@forprof.es'
+   :host => '',
+   :from => ''
   }
 
   # Enable threaded mode
