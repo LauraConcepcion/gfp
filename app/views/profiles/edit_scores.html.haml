@@ -64,7 +64,8 @@
               = average_for(student, tlr, @quarter.id, resource.id)
           - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id, :profile_id => resource.id, :teacher_revised => false).first
           %td{:class => "score average student", :id => "quarter_average_#{student.id}"}= number_with_precision(@average_score.try(:grade), :precision => 2)
-          - @average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id, :profile_id => resource.id, :teacher_revised => true).first
-          %td{:class => "score average student", :id => "average_#{student.id}"}
+          - attrs = {:quarter_id => @quarter.id, :student_id => student.id, :profile_id => resource.id, :teacher_revised => true, :tlresult_id => nil}
+          - @average_score = AverageScore.where(attrs).first_or_create(attrs)
+          %td{:class => "score average student", :id => @average_score.id }
             = render 'average_scores/in_place_edit' if @average_score
 
