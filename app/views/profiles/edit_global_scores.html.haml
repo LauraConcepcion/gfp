@@ -20,7 +20,7 @@
           = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
           = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
         - @quarters.each do |q|
-          %td= q.name
+          %td.quarter{:colspan => 2}= q.name
         %th.score.average.student
     %tbody
       - @students.each do |student|
@@ -39,6 +39,10 @@
           - @quarters.each do |q|
             %td{:class => "score average", :id => "average_score_#{student.id}"}
               = average_for(student, nil, q.id, resource.id)
+            - attrs = {:quarter_id => q.id, :student_id => student.id, :profile_id => resource.id, :teacher_revised => true, :tlresult_id => nil}
+            - @average_score = AverageScore.where(attrs).first_or_create(attrs)
+            %td{:class => "score average student", :id => @average_score.id }
+              = render 'average_scores/in_place_edit' if @average_score
           - attrs = {:student_id => student.id, :profile_id => resource.id, :tlresult_id => nil, :teacher_revised => true, :quarter_id => nil}
           - @average_score = AverageScore.where(attrs).first_or_create(attrs)
           %td{:class => "score average student", :id => @average_score.id }
