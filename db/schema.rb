@@ -232,7 +232,7 @@ ActiveRecord::Schema.define(:version => 20130912174506) do
   create_table "qualifyingentity_tlresults", :force => true do |t|
     t.integer  "qualifyingentity_id"
     t.integer  "tlresult_id"
-    t.float    "percentage"
+    t.integer  "percentage"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.integer  "profile_id"
@@ -311,6 +311,7 @@ ActiveRecord::Schema.define(:version => 20130912174506) do
     t.string   "phone"
     t.string   "confirmation_token"
     t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at"
   end
 
   add_index "teachers", ["confirmation_token"], :name => "index_teachers_on_confirmation_token", :unique => true
