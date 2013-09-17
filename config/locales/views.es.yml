@@ -33,6 +33,8 @@
   web: "www.teidalia.com"
   company: "Es un producto Teidalia."
   noticia_titulo: "Noticias"
+  noticia_titulo2: "Semana de pruebas!"
+  noticia_negrita: "Texto en negrita"
   noticia: "Este septiembre de 2013 arrancaremos con la beta de nuestra aplicación en abierto y esta semana la aplicación estará en pruebas.
   Todas las materias del Bachillerato de Canarias están actualizadas. 
   ¿Quién se anima a probarla?"
