@@ -26,7 +26,7 @@
             %th.tlresult{:class => "qualifyingentity #{even_odd(qe_count)} #{'qe_actions' if qe_change}"}
               - if qe_change
                 .qualifyingentity
-                  = link_to t(:edit), edit_profile_qualifyingentity_path(resource, qe_tlr.qualifyingentity), :class => 'ui-icon ui-icon-pencil dialog', :remote => true
+                  = link_to t(:edit), edit_profile_qualifyingentity_path(resource, qe_tlr.qualifyingentity), :class => 'icon edit dialog', :remote => true
                   = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => qe_title(qe_tlr.qualifyingentity), "title" => Qualifyingentity.model_name.human do
                     %i.icon-info-sign
               = link_to '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name, "title" => "Detalle" do

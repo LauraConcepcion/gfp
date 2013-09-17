@@ -2,7 +2,7 @@
   %h1= QualifyingentityTlresult.model_name.human.pluralize
   = link_to t(:global), edit_tlresult_percentages_profile_path(resource), :class => "btn btn-success"
   - @quarters.each do |quarter|
-    = link_to quarter.name, edit_tlresults_profile_path(resource, :quarter_id => quarter.id), :class => "btn btn-primary"
+    = link_to "Global #{quarter.name}", edit_tlresults_profile_path(resource, :quarter_id => quarter.id), :class => "btn btn-primary"
 = simple_form_for resource, :url => update_tlresults_profile_path(resource), :html => {:method => 'put'} do |f|
   %div.errors
     = f.error_notification
