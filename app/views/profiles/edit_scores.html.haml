@@ -5,6 +5,7 @@
   .actions
     = link_to ClassroomDiary.model_name.human, profile_classroom_diaries_path(resource), :class => 'btn btn-default', :remote => true
     = link_to t(:new_qualifyingentity), new_profile_qualifyingentity_path(resource), :class => 'dialog btn btn-default', :remote => true
+    = link_to t(:global), edit_global_scores_profile_path(resource), :class => "btn btn-primary"
     - @quarters.each do |quarter|
       = link_to quarter.name, edit_scores_profile_path(resource, :quarter_id => quarter.id), :class => "btn #{quarter.id == @quarter.try(:id) ? 'btn-success' : 'btn-primary'}"
     = @quarter.boundaries if @quarter

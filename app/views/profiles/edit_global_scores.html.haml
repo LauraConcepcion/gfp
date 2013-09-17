@@ -1,0 +1,46 @@
+.page-header
+  %h1= t(:scores)
+
+%div.scores
+  .actions
+    = link_to ClassroomDiary.model_name.human, profile_classroom_diaries_path(resource), :class => 'btn btn-default', :remote => true
+    = link_to t(:new_qualifyingentity), new_profile_qualifyingentity_path(resource), :class => 'dialog btn btn-default', :remote => true
+    = link_to t(:global), edit_global_scores_profile_path(resource), :class => "btn btn-success"
+    - @quarters.each do |quarter|
+      = link_to quarter.name, edit_scores_profile_path(resource, :quarter_id => quarter.id), :class => "btn btn-primary"
+    = @quarter.boundaries if @quarter
+  %table#qualifyingentity_tlresults_table
+    %thead
+      %tr.qualifyingentity_tlresults
+        %th.name
+          = Student.human_attribute_name(:name)
+        %th.aux
+          = link_to t(:points), '#', :class => 'ui-icon icon-bookmark button', :alt => t(:points), :title => t(:points)
+          = link_to t(:absences), '#', :class => 'ui-icon icon-exclamation-sign button', :alt => t(:absences), :title => t(:absences)
+          = link_to t(:incidents), '#', :class => 'ui-icon icon-warning-sign button', :alt => t(:incidents), :title => t(:incidents)
+          = link_to t(:observations), '#', :class => 'ui-icon icon-info-sign button', :alt => t(:observations), :title => t(:observations)
+        - @quarters.each do |q|
+          %td= q.name
+        %th.score.average.student
+    %tbody
+      - @students.each do |student|
+        %tr{:id => "student_#{student.id}"}
+          = show_for student do |student_show|
+            %td.name
+              = student_show.attribute :name, :label => false do
+                = image_tag("student1.png")
+                = link_to student.full_name, edit_student_path(student), :alt => t(:edit), :title => t(:edit), :remote => true
+          %td.aux{:id => "aux_#{student.id}"}
+            %span.aux1= render :partial => 'profiles/student_points', :locals => {:profile => resource, :student => student}
+            %span.aux2= render :partial => 'profiles/student_absences', :locals => {:profile => resource, :student => student}
+            %span.aux3= render :partial => 'profiles/student_incidents', :locals => {:profile => resource, :student => student}
+            %span.aux4= render :partial => 'profiles/student_observations', :locals => {:profile => resource, :student => student}
+          - qe_count = 1
+          - @quarters.each do |q|
+            %td{:class => "score average", :id => "average_score_#{student.id}"}
+              = average_for(student, nil, q.id, resource.id)
+          - attrs = {:student_id => student.id, :profile_id => resource.id, :tlresult_id => nil, :teacher_revised => true, :quarter_id => nil}
+          - @average_score = AverageScore.where(attrs).first_or_create(attrs)
+          %td{:class => "score average student", :id => @average_score.id }
+            = render 'average_scores/in_place_edit' if @average_score
+

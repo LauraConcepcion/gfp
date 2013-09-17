@@ -6,7 +6,7 @@ class AverageScore < ActiveRecord::Base
   belongs_to :profile, :inverse_of => :average_scores
 
   validates :grade, :numericality => true, :unless => :new_record?
-  validates :quarter, :presence => true
+  validates :quarter, :presence => true, :if => :tlresult
   validates :student, :presence => true
   validates :profile, :presence => true
 

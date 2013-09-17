@@ -5,7 +5,7 @@ class ProfilesController < InheritedResources::Base
   #skip_before_filter :check_profiles
   load_and_authorize_resource
 
-  before_filter :set_quarter, :only => [:edit_scores, :update_scores, :edit_tlresults, :update_tlresults]
+  before_filter :set_quarter, :only => [:edit_scores, :update_scores, :edit_tlresults, :update_tlresults, :edit_global_scores, :update_global_scores]
 
   def create
     create! { profiles_path }
@@ -59,6 +59,10 @@ class ProfilesController < InheritedResources::Base
         end
       end
     end
+  end
+
+  def edit_global_scores
+    @students = resource.classroom ? resource.classroom.students : []
   end
 
   def update_scores
