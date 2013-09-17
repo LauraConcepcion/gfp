@@ -10,7 +10,7 @@
   %table.table.table-striped#qualifyingentities_table
     %thead
       %th.name= "#{I18n.t(:qualifyingentity, :scope => 'activerecord.models')} / #{I18n.t(:tlresult, :scope => 'activerecord.models')}"
-      - Tlresult.unique_for_profile_and_quarter(resource, @quarter).each do |tlr|
+      - sort_by_tlresult_name(@unique_tlrs).each do |tlr|
         %th{:class => "tlresult_"+"#{tlr.id}"}
           = link_to  '#', :class => 'pop-over', "data-toogle" => "tooltip" , "data-content" => tlr.name , "title" => "Detalle" do
             = truncate(tlr.name)
@@ -21,7 +21,7 @@
             %td.name
               = link_to qe.name, edit_profile_qualifyingentity_path(resource, qe), :remote => true
           - # Recorremos todos los qe_tlr del resource para crear los huecos N/A en la tabla
-          - Tlresult.unique_for_profile_and_quarter(resource, @quarter).each do |tlr|
+          - sort_by_tlresult_name(@unique_tlrs).each do |tlr|
             - if qe.tlresults.include?(tlr)
               - qe_tlr = resource.qualifyingentity_tlresults.detect {|qe_tlr| qe_tlr.qualifyingentity_id == qe.id && qe_tlr.tlresult == tlr}
               = f.simple_fields_for 'qualifyingentity_tlresults', qe_tlr do |qe_tlr_form|
@@ -31,7 +31,7 @@
               %td.empty= 'N/A'
       %tr
         %td
-        - Tlresult.unique_for_profile_and_quarter(resource, @quarter).each do |tlr|
+        - sort_by_tlresult_name(@unique_tlrs).each do |tlr|
           %td.tlresult
             %span{:id => "total_tlresult_"+"#{tlr.id}"}
   = f.submit

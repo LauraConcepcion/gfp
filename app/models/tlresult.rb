@@ -3,6 +3,7 @@ class Tlresult < ActiveRecord::Base
   has_many :qualifyingentity_tlresults
   has_many :average_scores, :inverse_of => :qualifyingentity_tlresult
   has_many :criterions
+  has_many :tlresult_percentages
   belongs_to :matter
 
 
@@ -26,6 +27,11 @@ class Tlresult < ActiveRecord::Base
     where('qualifyingentities.profile_id = ?', profile.id).
     select('distinct tlresults.*')
   }
+
+  def sortable_item
+    name =~ /((\d+)\.)?(.*?)$/
+    [$2.try(:to_i), $3.try(:strip)].compact
+  end
 
   def number
     if name =~ /^(\d+).*/

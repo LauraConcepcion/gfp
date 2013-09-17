@@ -40,7 +40,7 @@ group :development, :test do
   gem "railroady"
   gem "faker", :git => "https://github.com/stympy/faker.git"
   gem 'factory_girl_rails'
-  gem 'pg', '=0.13.2'
+  #gem 'pg', '=0.13.2'
 end
 
 group :test do
@@ -50,7 +50,8 @@ group :test do
 end  
 
 group :production do
-#  gem 'mysql2'
+  gem 'mysql2'
+  gem "faker", :git => "https://github.com/stympy/faker.git"
 end
 
 # Gems used only for assets and not required

@@ -23,9 +23,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
+  adapter: mysql2
   host: localhost
-  database: gfp_production
-  username: postgres
+  database: forprofe_gfp_production
+  username: forprofe_gfp_pro
+  port: 3306
   password: 
   timeout: 5000

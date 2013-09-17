@@ -1,8 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :tlresult_percentage do
-    association :tlresult
+  factory :classroom do
+    name { Faker::Name.first_name }
     association :profile
   end
 end

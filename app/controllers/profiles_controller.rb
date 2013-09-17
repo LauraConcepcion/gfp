@@ -2,7 +2,7 @@ class ProfilesController < InheritedResources::Base
   before_filter :authenticate_teacher!
   respond_to :html, :xml, :json
 
-  skip_before_filter :check_profiles
+  #skip_before_filter :check_profiles
   load_and_authorize_resource
 
   before_filter :set_quarter, :only => [:edit_scores, :update_scores, :edit_tlresults, :update_tlresults]
@@ -13,6 +13,10 @@ class ProfilesController < InheritedResources::Base
 
   def update
     update! { profiles_path }
+  end
+
+  def edit_tlresults
+    @unique_tlrs = Tlresult.unique_for_profile_and_quarter(resource, @quarter)
   end
 
   def update_tlresults
@@ -26,7 +30,8 @@ class ProfilesController < InheritedResources::Base
 
   def edit_tlresult_percentages
     @quarters = Quarter.for_this_year
-    Tlresult.unique_for_profile(resource).each do |tlr|
+    @unique_tlrs = Tlresult.unique_for_profile(resource)
+    @unique_tlrs.each do |tlr|
       tlr_perc = resource.tlresult_percentages.where(:tlresult_id => tlr.id).first
       resource.tlresult_percentages.build(:tlresult_id => tlr.id) unless tlr_perc
     end
@@ -52,12 +57,6 @@ class ProfilesController < InheritedResources::Base
           score = qe_tlr.scores.find_by_student_id(student.id)
           Score.create(:qualifyingentity_tlresult_id => qe_tlr.id, :student_id => student.id) unless score
         end
-      end
-      # Creamos la media del trimestre para el alumno si no existe
-      # TODO cómo creamos la nota del curso? Añadimos un campo curso? y no rellenamos el quarter_id?
-      if @quarter
-        average_score = AverageScore.where(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id).first
-        AverageScore.create(:student_id => student.id, :tlresult_id => nil, :quarter_id => @quarter.id) unless average_score
       end
     end
   end

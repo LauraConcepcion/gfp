@@ -2,8 +2,8 @@
 - if can? :create, Student
   = link_to t(:new), new_resource_path, :class => 'btn btn-primary'
 - if can? :manage, Student
-  = link_to t(:all), all_students_students_path, :class => 'btn'
-  = link_to t(:for_profile), collection_path, :class => 'btn'
+  = link_to t(:all), students_path, :class => 'btn'
+  = link_to t(:for_profile), profile_students_path(:profile_id => current_teacher.current_profile.id), :class => 'btn'
 %br
 %h4= t(:import_students)
 = link_to t(:example), 'alumnos_ejemplo.csv'

@@ -22,8 +22,8 @@
   all: "Todos"
   import_students: "Importar estudiantes"
   main_data: "Datos generales"
-  tlresults_percentage: "Programaciones Seguimientos"
-  custom_tlresults: "Reas propios del perfil"
+  tlresults_percentage: "Programaciones y Seguimientos"
+  custom_tlresults: "Criterios/Reas propios del Curso"
   reports: "Informes Exportaciones"
   qualifyingentities: "Actividades"
   profiles: "Mis cursos"
@@ -33,7 +33,8 @@
   web: "www.teidalia.com"
   company: "Es un producto Teidalia."
   noticia_titulo: "Noticias"
-  noticia: "Este septiembre de 2013 arrancaremos con la beta de nuestra aplicación en abierto.
+  noticia: "Este septiembre de 2013 arrancaremos con la beta de nuestra aplicación en abierto y esta semana la aplicación estará en pruebas.
+  Todas las materias del Bachillerato de Canarias están actualizadas. 
   ¿Quién se anima a probarla?"
   points: "Puntos +/-"
   absences: "Faltas"

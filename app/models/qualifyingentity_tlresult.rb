@@ -6,7 +6,7 @@ class QualifyingentityTlresult < ActiveRecord::Base
   has_many :scores, :inverse_of => :qualifyingentity_tlresult
   has_many :students, :through => :scores
 
-  delegate :number, :to => :tlresult, :prefix => true
+  delegate :sortable_item, :to => :tlresult, :prefix => false
 
   validates :tlresult_id, :presence => true
   validates_uniqueness_of :tlresult_id, :scope => :qualifyingentity_id
