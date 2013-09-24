@@ -10,7 +10,7 @@
   = link_to t(:example), 'alumnos_ejemplo.csv'
   = form_tag import_students_path, multipart: true do 
     %p= file_field_tag :file
-    %p= text_area_tag :csv_data, nil, :rows => '6', :class => 'input-xxlarge'
+    %p= text_area_tag :csv_data, nil, :rows => '6', :class => 'input-xxlarge', :placeholder => t(:students_import_hint)
     %p= submit_tag t(:import), :class => 'btn'
 
 %table.table.table-striped
