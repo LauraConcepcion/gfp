@@ -8,7 +8,7 @@ class Qualifyingentity < ActiveRecord::Base
   belongs_to :quarter
   
   #Relación con los tlresult y sus porcentajes
-  has_many :qualifyingentity_tlresults, :include => :tlresult, :order => 'tlresults.name'
+  has_many :qualifyingentity_tlresults, :include => :tlresult, :order => 'tlresults.name', :dependent => :destroy
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
 
   has_many :qualifyingentity_criterions

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130912174506) do
+ActiveRecord::Schema.define(:version => 20130924175439) do
 
   create_table "aacces", :force => true do |t|
     t.string   "name"
@@ -206,6 +206,7 @@ ActiveRecord::Schema.define(:version => 20130912174506) do
     t.integer  "teacher_id"
     t.integer  "group_id"
     t.boolean  "default"
+    t.datetime "deleted_at"
   end
 
   add_index "profiles", ["institute_id"], :name => "index_profiles_on_institute_id"
@@ -290,6 +291,7 @@ ActiveRecord::Schema.define(:version => 20130912174506) do
     t.string   "record"
     t.date     "birthdate"
     t.integer  "teacher_id"
+    t.datetime "deleted_at"
   end
 
   create_table "teachers", :force => true do |t|
@@ -310,9 +312,8 @@ ActiveRecord::Schema.define(:version => 20130912174506) do
     t.string   "teacher_code"
     t.string   "dni"
     t.string   "phone"
-    t.string   "confirmation_token"
-    t.datetime "confirmation_sent_at"
     t.datetime "confirmed_at"
+    t.datetime "deleted_at"
   end
 
   add_index "teachers", ["email"], :name => "index_teachers_on_email", :unique => true

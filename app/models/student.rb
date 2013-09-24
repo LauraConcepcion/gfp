@@ -1,5 +1,8 @@
 # encoding: UTF-8
 class Student < ActiveRecord::Base
+
+  acts_as_paranoid
+
   attr_accessible :name, :firstsurname, :secondsurname, :dni, :phone, :student_code, :birthdate, :mail, :record, :score_ids, :classroom_ids, :teacher, :teacher_id
   # belongs_to :classroom, :inverse_of => :students
   has_and_belongs_to_many :classrooms

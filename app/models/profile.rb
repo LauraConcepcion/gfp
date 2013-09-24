@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  acts_as_paranoid
   attr_accessible :institute_id ,:teacher_id, :trainercycle_id, :matter_id, :group_id, :qualifyingentities_attributes, :qualifyingentity_tlresults_attributes, :own_tlresults_attributes, :tlresult_percentages_attributes
   belongs_to :institute
   belongs_to :trainercycle
@@ -8,7 +9,7 @@ class Profile < ActiveRecord::Base
   
   has_one :classroom
 
-  has_many :qualifyingentities, :dependent => :destroy, :order => 'date ASC'
+  has_many :qualifyingentities, :order => 'date ASC'
   has_many :qualifyingentity_tlresults, :through => :qualifyingentities, :order => 'qualifyingentities.date ASC, tlresults.name ASC'
   has_many :tlresults, :through => :qualifyingentity_tlresults, :order => 'name ASC'
   has_many :tlresult_percentages
@@ -33,10 +34,10 @@ class Profile < ActiveRecord::Base
   validates_associated :qualifyingentities
   validates_associated :qualifyingentity_tlresults
 
-  accepts_nested_attributes_for :qualifyingentities, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :qualifyingentities, :reject_if => :all_blank #, :allow_destroy => true
   # NOTE La edición de poneraciones está hecha mediante el has_many through
-  accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank, :allow_destroy => true
-  accepts_nested_attributes_for :own_tlresults, :reject_if => :all_blank
+  accepts_nested_attributes_for :qualifyingentity_tlresults, :reject_if => :all_blank #, :allow_destroy => true
+  accepts_nested_attributes_for :own_tlresults, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :tlresult_percentages, :reject_if => :all_blank
 
   scope :active, lambda {|teacher_id|

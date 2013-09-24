@@ -3,7 +3,7 @@ class QualifyingentityTlresult < ActiveRecord::Base
   belongs_to :qualifyingentity
   belongs_to :tlresult
 
-  has_many :scores, :inverse_of => :qualifyingentity_tlresult
+  has_many :scores, :inverse_of => :qualifyingentity_tlresult, :dependent => :destroy
   has_many :students, :through => :scores
 
   delegate :sortable_item, :to => :tlresult, :prefix => false

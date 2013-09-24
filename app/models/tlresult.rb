@@ -1,9 +1,9 @@
 class Tlresult < ActiveRecord::Base
   attr_accessible :name, :matter_id, :rayce_id 
-  has_many :qualifyingentity_tlresults
-  has_many :average_scores, :inverse_of => :tlresult
+  has_many :qualifyingentity_tlresults, :dependent => :destroy
+  has_many :average_scores, :inverse_of => :tlresult, :dependent => :destroy
   has_many :criterions
-  has_many :tlresult_percentages
+  has_many :tlresult_percentages,:dependent => :destroy 
   belongs_to :matter
 
 
