@@ -15,7 +15,7 @@ class StudentsController < InheritedResources::Base
   end
 
   def import
-    imported, updated, errors = Student.import(params[:file], current_teacher)
+    imported, updated, errors = Student.import(params[:file] || params[:csv_data], current_teacher)
     case errors
       when 0
         flash[:notice]= I18n.t(:all_students_added, :scope => 'flash.general', :imported => imported, :updated => updated)

@@ -4,12 +4,14 @@
 - if can? :manage, Student
   = link_to t(:all), students_path, :class => 'btn'
   = link_to t(:for_profile), profile_students_path(:profile_id => current_teacher.current_profile.id), :class => 'btn'
-%br
-%h4= t(:import_students)
-= link_to t(:example), 'alumnos_ejemplo.csv'
-= form_tag import_students_path, multipart: true do 
-  = file_field_tag :file
-  = submit_tag t(:import), :class => 'btn'
+%button.btn{'data-toggle' => 'collapse', 'data-target' => '#accordion_import'}= t(:import_students)
+
+%div.collapse{:id => 'accordion_import'}
+  = link_to t(:example), 'alumnos_ejemplo.csv'
+  = form_tag import_students_path, multipart: true do 
+    %p= file_field_tag :file
+    %p= text_area_tag :csv_data, nil, :rows => '6', :class => 'input-xxlarge'
+    %p= submit_tag t(:import), :class => 'btn'
 
 %table.table.table-striped
   %thead

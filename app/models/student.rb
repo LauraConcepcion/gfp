@@ -56,34 +56,40 @@ class Student < ActiveRecord::Base
     errors = 0
     imported = nil
     updated = nil
+    imported = 0
+    updated = 0
+
     if file.blank?
       errors = 1
-    else
-      imported = 0
-      updated = 0
+    elsif file.kind_of?(String)
+      str = file
+      col_sep = "\t"
+    elsif file.kind_of?(File)
       str = File.open(file.path).read
       # Quitamos el BOM de utf8 que mete el win7
       str.sub!(/^\xEF\xBB\xBF/, '')
-      CSV.parse(str, headers: true, :col_sep => ',') do |row|
-        if row["clase"].blank? || row["dni"].blank?
-          errors = 2
+      col_sep = ","
+    end
+
+    str && CSV.parse(str, headers: true, :col_sep => col_sep) do |row|
+      if row["clase"].blank? || row["dni"].blank?
+        errors = 2
+      else
+        student = Student.find_by_dni_and_teacher(row["dni"], teacher) || new
+        student.teacher = teacher if student.teacher.blank?
+        student.attributes = row.to_hash.slice(*accessible_attributes)
+        clase = teacher.classrooms.detect {|classroom| classroom.code_import == row["clase"].to_s}
+        if clase
+          if !student.classrooms.include?(clase)
+            student.classrooms << clase
+          end
         else
-          student = Student.find_by_dni_and_teacher(row["dni"], teacher) || new
-          student.teacher = teacher if student.teacher.blank?
-          student.attributes = row.to_hash.slice(*accessible_attributes)
-          clase = teacher.classrooms.detect {|classroom| classroom.code_import == row["clase"].to_s}
-          if clase
-            if !student.classrooms.include?(clase)
-              student.classrooms << clase
-            end
-          else
-            errors = 3
-          end
-          new_record = student.new_record?
-          if student.save
-            imported += 1 if new_record
-            updated += 1 if !new_record
-          end
+          errors = 3
+        end
+        new_record = student.new_record?
+        if student.save
+          imported += 1 if new_record
+          updated += 1 if !new_record
         end
       end
     end
