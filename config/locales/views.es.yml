@@ -52,7 +52,7 @@
   help: "Ayuda"
   manual: "Manual"
   home: "Inicio"
-  students_import_hint: "Puede importar los alumnos mediante un fichero .CSV (selecciónelo arriba) o copiando y pegando directamente en esta caja desde una hoja de cálculo."
+  students_import_hint: "Puede importar los alumnos mediante un fichero .CSV (selecciónelo arriba) o copiando y pegando directamente en esta caja desde una hoja de cálculo. La primera línea debe contener 'name,firstsurname,secondsurname,dni,birthdate,phone,mail,student_code,record,clase'"
   helpers:
     links:
       edit: "Editar"
