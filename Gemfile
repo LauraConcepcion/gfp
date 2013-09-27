@@ -51,8 +51,8 @@ group :test do
   gem 'database_cleaner'
 end  
 
+gem 'mysql2'
 group :production do
-  gem 'mysql2'
   gem "faker", :git => "https://github.com/stympy/faker.git"
 end
 
